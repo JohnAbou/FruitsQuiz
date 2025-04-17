@@ -1,0 +1,78 @@
+.button-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 16px;
+}
+  
+mat-card {
+    max-width: 100%;
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 8px;
+    padding: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    box-sizing: border-box;
+    height: auto;
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+  
+mat-card-header {
+    background-color: var(--primary-color, #009688);
+    color: white;
+    padding: 16px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+  
+mat-card-title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 500;
+}
+  
+mat-card-content {
+    padding: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+  
+mat-card-content p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 16px;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 12px;
+    background-color: var(--box-color, #b3d9b3);
+    border-radius: 8px;
+    flex: 1;
+}
+  
+button {
+    min-width: 80px;
+    border-radius: 4px;
+    font-weight: 500;
+}
+  
+button:nth-child(1) {
+    background-color: #4caf50;
+    color: white;
+}
+  
+button:nth-child(2) {
+    background-color: #ff9800;
+    color: white;
+}
+  
+button:nth-child(3) {
+    background-color: #f44336;
+    color: white;
+}
+  

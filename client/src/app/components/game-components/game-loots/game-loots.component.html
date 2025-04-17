@@ -1,0 +1,48 @@
+<div class="loots-container">
+    <div class="loot-box">
+        <div class="loot-header">
+            <span class="loot-title">{{ 'GameLoot.Coins' | translate }}</span>
+            <app-user-balance></app-user-balance>
+        </div>
+        <div class="loot-content">
+            <div class="loot-item">
+                <span>{{ 'GameLoot.CoinsGained' | translate }}:</span>
+                <span>{{ (coinLoot | async)?.coinGained ?? 0 }}</span>
+            </div>
+
+            <div class="loot-item">
+                <span>{{ 'GameLoot.ChallengeCoinsGained' | translate }}:</span>
+
+                <span>{{ (accomplishmentLoot | async) ?? 0 }}</span>
+            </div>
+
+            <div class="loot-item" *ngIf="showCoinsPaid">
+                <span>{{ 'GameLoot.CoinsPaid' | translate }}:</span>
+                <span>{{ (coinLoot | async)?.coinPayed ?? 0 }}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="loot-box">
+        <div class="loot-title">{{ 'GameLoot.Experience' | translate }}</div>
+        <div class="loot-content">
+            <div class="loot-item">
+                <span>{{ 'GameLoot.XPLabel' | translate }}:</span>
+                <span>{{ floor((experienceLoot | async)?.expEnd ?? 0)  }}</span>
+            </div>
+            <div class="loot-item">
+                <span>{{ 'GameLoot.XPGained' | translate }}:</span>
+                <span>{{ floor((experienceLoot | async)?.expGained ?? 0)  }}</span>
+            </div>
+
+            <div class="loot-item" *ngIf="(experienceLoot | async)?.leveledUp">
+                <span>{{ 'GameLoot.LevelUp' | translate }}</span>
+            </div>
+            <div class="xpLevel">
+                <mat-progress-bar class="custom-progress-bar" mode="determinate"
+                    [value]="(floor((experienceLoot | async)?.expEnd ?? 0)) / (floor((experienceLoot | async)?.expToNextLevel ?? 1)) * 100">
+                </mat-progress-bar>
+            </div>
+        </div>
+    </div>
+</div>

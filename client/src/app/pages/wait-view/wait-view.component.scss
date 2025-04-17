@@ -1,0 +1,212 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+#top-section {
+    margin-bottom: 1rem;
+}
+
+.player-admin-container {
+    display: flex;
+    gap: 2rem;
+    width: 100%;
+    justify-content: center;
+}
+
+.player-list-card {
+    width: 700px;
+    padding: 0;
+}
+
+.bottom-main {
+    width: 100%;
+    height: auto;
+    padding: 1rem 0;
+}
+
+.player-list-div {
+    display: block;
+    width: 700px;
+    padding-top: 70px;
+}
+
+.player-list-header {
+    padding: 16px;
+    text-align: center;
+}
+
+.player-list-title {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+.player-list-container {
+    overflow-y: auto;
+    margin: 2% 2% 4% 2%;
+    height: 300px;
+    max-height: 300px;
+    padding: 1.3vh;
+    border: 2px solid var(--primary-color-30);
+    border-radius: 16px;
+
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: var(--primary-color-10);
+        border-radius: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--primary-color-60);
+        border-radius: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: var(--primary-color);
+    }
+
+    &::-webkit-scrollbar-button {
+        display: none;
+    }
+}
+
+.admin-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 0 2px rgba(var(--primary-rgb), 0.6);
+    padding: 1.5rem;
+}
+
+.admin-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    align-items: center;
+    width: 100%;
+}
+
+.admin-buttons button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.2rem;
+    width: 100%;
+    max-width: 250px;
+}
+
+.admin-controls {
+    width: 100%;
+}
+
+.challenge-card {
+    width: 400px;
+    height: 250px;
+    border-radius: 8px;
+    padding: 16px;
+    padding-top: 180px;
+}
+
+.fruitz-card {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.centered-container {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    padding-top: 30px;
+}
+
+.waiting-card {
+    max-width: 400px;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+}
+
+.waiting-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.waiting-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.devider {
+    color: var(--primary-color);
+    width: 70%;
+}
+
+.spinner-container {
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    filter: drop-shadow(0 0 8px rgba(var(--primary-color), 0.3));
+}
+
+.mat-progress-spinner circle,
+.mat-spinner circle {
+    stroke: var(--primary-color);
+}
+
+h2.waiting-title {
+    margin: 3px !important;
+}
+
+.icon-left {
+    margin-right: 10px;
+    vertical-align: middle;
+    font-size: 21px;
+    width: 21px;
+}
+
+mat-divider {
+    margin-bottom: 8px;
+    margin-left: 2%;
+    margin-right: 2%;
+    border-top: 2px solid var(--primary-color-30);
+}
+
+.right-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    width: 25%;
+}
+
+.left-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    width: 65%;
+}
+
+.right-div > *,
+.left-div > * {
+    width: 100%;
+}
+
+.waiting-card,
+.admin-card,
+.fruitz-card,
+.player-list-card {
+    width: 100%;
+}

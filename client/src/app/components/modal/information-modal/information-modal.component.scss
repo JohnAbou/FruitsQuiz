@@ -1,0 +1,66 @@
+.information-modal {
+    .mat-dialog-content {
+        padding: 20px;
+        min-width: 300px;
+        max-width: 500px;
+        
+        .message-container {
+            ul {
+                margin: 0;
+                padding-left: 20px;
+                list-style-type: none;
+                
+                li {
+                    position: relative;
+                    padding: 8px 0;
+                    margin-bottom: 8px;
+                    font-size: 16px;
+                    line-height: 1.5;
+                    color: var(--text-color);
+
+                    &:before {
+                        content: "•";
+                        position: absolute;
+                        left: -20px;
+                        color: var(--primary-color);
+                        font-size: 20px;
+                        line-height: 1;
+                    }
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    .mat-dialog-actions {
+        padding: 16px;
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        margin-bottom: 0;
+
+        button {
+            min-width: 100px;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+
+            &:hover {
+                opacity: 0.9;
+                transform: translateY(-1px);
+            }
+        }
+    }
+}
+
+::ng-deep .mat-dialog-container {
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    background-color: var(--background-color);
+    padding: 0;
+    overflow: hidden;
+} 

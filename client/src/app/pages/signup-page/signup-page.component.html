@@ -1,0 +1,65 @@
+<div class="main-container">
+    <mat-card class="main-card fruitz-card">
+        <mat-card-header>
+            <mat-card-title class="title">{{ 'SignupPage.Title' | translate }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="card-content">
+            <form (ngSubmit)="signup()" #signupForm="ngForm">
+                <div class="floating-label-group">
+                    <input type="text" placeholder=" " [(ngModel)]="form.username" name="username" required />
+                    <label>{{ 'SignupPage.UsernameLabel' | translate }}</label>
+                    <p class="error-message" *ngIf="errors.username">{{ errors.username }}</p>
+                </div>
+                <div class="floating-label-group">
+                    <input type="email" placeholder=" " [(ngModel)]="form.email" name="email" required />
+                    <label>{{ 'SignupPage.EmailLabel' | translate }}</label>
+                    <p class="error-message" *ngIf="errors.email">{{ errors.email }}</p>
+                </div>
+                <div class="floating-label-group">
+                    <input type="password" placeholder=" " [(ngModel)]="form.password" name="password" required />
+                    <label>{{ 'SignupPage.PasswordLabel' | translate }}</label>
+                    <p class="error-message" *ngIf="errors.password">{{ errors.password }}</p>
+                </div>
+                <div class="floating-label-group">
+                    <input type="password" placeholder=" " [(ngModel)]="form.confirmPassword" name="confirmPassword" required />
+                    <label>{{ 'SignupPage.ConfirmPasswordLabel' | translate }}</label>
+                    <p class="error-message" *ngIf="errors.confirmPassword">{{ errors.confirmPassword }}</p>
+                </div>                               
+                <button class="submit-button" mat-raised-button color="primary" type="submit">
+                    {{ 'SignupPage.SubmitButton' | translate }}
+                </button>
+            </form>
+        </mat-card-content>
+        <mat-card-footer>
+            <div class="nav-link">
+                <span>{{ 'SignupPage.AlreadyHaveAccount' | translate }}</span>
+                <a routerLink="/login" class="teal-link">{{ 'SignupPage.LoginLink' | translate }}</a>
+            </div>
+        </mat-card-footer>
+    </mat-card>
+    <mat-card class="avatar-picker-box fruitz-card">
+        <mat-card-header>
+            <mat-card-title class="title">{{ 'AvatarModalComponent.ChooseAvatar' | translate }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="card-content">
+            <div class="avatar-options">
+                <div class="predefined-avatars">
+                    <div class="avatar-selection">
+                        <img *ngFor="let avatar of userAvatars"
+                            [src]="getSource(avatar)"
+                            [class.selected]="form.avatar === avatar"
+                            (click)="selectAvatar(avatar)"
+                            class="avatar-option" />
+                    </div>
+                    <div class="error-container">
+                        <p class="error-message" *ngIf="errors.avatar">{{ errors.avatar }}</p>
+                    </div>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>
+
+<button class="quit-button" (click)="closeApp()">
+    {{ 'HeaderComponent.QuitAppButton' | translate }}
+</button>

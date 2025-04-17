@@ -1,0 +1,38 @@
+.rating-container {
+    display: inline-flex;
+    align-items: center;
+}
+
+.floating-title {
+    position: absolute;
+    top: 0;
+    left: 20px;
+    transform: translateY(-40%);
+    background-color: white;
+    padding: 0 8px;
+    color: var(--primary-color);
+}
+
+.star-rating {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 4px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    
+    .rating-number {
+        color: var(--primary-color);
+        font-weight: bold;
+    }
+
+    .review-count {
+        color: gray;
+        font-size: 0.8em;
+    }
+}
+
+mat-icon {    
+    &.filled {
+        color: var(--primary-color);
+    }
+}

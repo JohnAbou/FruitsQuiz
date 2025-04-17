@@ -1,0 +1,60 @@
+<app-default-page-template>
+  <div class="shop-container">
+    <div class="shop-header">
+      <div class="filter-controls">
+        <mat-button-toggle-group [value]="currentFilter" (change)="onFilterChange($event)">
+          <mat-button-toggle *ngFor="let option of filterOptions" [value]="option">
+            {{ ('ShopPage.' + (option | titlecase)) | translate }}
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+      
+      <h1 class="fruitz-title">{{ 'ShopPage.shopTitle' | translate }}</h1>
+      
+      <div class="balance-container">
+        <app-user-balance></app-user-balance>
+      </div>
+    </div>
+
+    <div class="shop-content">
+      <div class="shop-grid">
+        <div *ngFor="let item of filteredItems" class="shop-item" 
+             [ngClass]="{ 
+               'not-bought': item.state === 0,
+               'bought': item.state === 1
+             }">
+          <div class="item-type-badge">
+            {{ ('ShopPage.' + (item.type | titlecase)) | translate }}
+          </div>
+          <div class="item-image-container">
+            <img [src]="item.image" [alt]="item.name" class="item-image">
+          </div>
+          
+          <div class="item-details">
+            <h3>{{ ('ShopPage.' + item.name) | translate }}</h3>
+            <p>
+              {{ 'ShopPage.Price' | translate }}
+              {{ item.price }}
+              {{ 'ShopPage.Coins' | translate }}
+            </p>
+            
+            <button 
+              mat-raised-button 
+              [color]="item.state === 1 ? 'basic' : 'primary'"
+              [ngClass]="{
+                'insufficient-funds-button': item.state === 0 && userBalance < item.price
+              }"
+              [disabled]="(item.state === 0 && userBalance < item.price) || item.state === 1"
+              (click)="handleItemAction(item)">
+              {{ getButtonText(item) }}
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <div *ngIf="filteredItems.length === 0" class="empty-state">
+        <p>{{ 'ShopPage.NoItems' | translate }}</p>
+      </div>
+    </div>
+  </div>
+</app-default-page-template>

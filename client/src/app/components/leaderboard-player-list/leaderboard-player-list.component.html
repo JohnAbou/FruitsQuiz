@@ -1,0 +1,10 @@
+<div class="main-card">
+    <app-line-playerlist
+        [showScore]="isClassicalGame"
+        [showBonus]="isClassicalGame"
+        [displayHeader]="true"
+        [showRoundSurvived]="!isClassicalGame"
+        [sortFunction]="sortFunction"
+        [maxHeight]="'30vh'"
+    />
+</div>

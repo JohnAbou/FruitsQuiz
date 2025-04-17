@@ -1,0 +1,12 @@
+<div class="image-uploader">
+  <input type="file" (change)="onFileSelected($event)" accept="image/*" hidden #fileInput>
+  
+  <button mat-icon-button (click)="fileInput.click()" matTooltip="Import Image">
+    <mat-icon>upload</mat-icon>
+  </button>
+  
+  <button *ngIf="question.imageId" mat-icon-button (click)="onDeleteImage()" matTooltip="Delete Image">
+    <mat-icon>delete</mat-icon>
+  </button>
+</div>
+

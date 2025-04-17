@@ -1,0 +1,39 @@
+<div class="main-container">
+    <mat-card class="main-card fruitz-card">
+        <mat-card-header>
+            <mat-card-title class="title">{{ 'LoginPage.Title' | translate }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="card-content">
+            <form (ngSubmit)="login()" #loginForm="ngForm">
+                <div class="floating-label-group">
+                    <input type="text" placeholder=" " [(ngModel)]="form.username" name="username" required />
+                    <label>{{ 'LoginPage.UsernameLabel' | translate }}</label>
+                </div>
+
+                <div class="floating-label-group">
+                    <input type="password" placeholder=" " [(ngModel)]="form.password" name="password" required />
+                    <label>{{ 'LoginPage.PasswordLabel' | translate }}</label>
+                </div>
+
+                <button class="submit-button" mat-raised-button color="primary" type="submit">
+                    {{ 'LoginPage.SubmitButton' | translate }}
+                </button>
+
+                <div *ngIf="error" class="error-container">
+                    <p class="error-message">{{ error | translate }}</p>
+                </div>
+            </form>
+        </mat-card-content>
+
+        <mat-card-footer>
+            <div class="nav-link">
+                <span>{{ 'LoginPage.NoAccount' | translate }} </span>
+                <a routerLink="/signup" class="teal-link">{{ 'LoginPage.SignupLink' | translate }}</a>
+            </div>
+        </mat-card-footer>
+    </mat-card>
+</div>
+
+<button class="quit-button" (click)="closeApp()">
+    {{ 'HeaderComponent.QuitAppButton' | translate }}
+</button>

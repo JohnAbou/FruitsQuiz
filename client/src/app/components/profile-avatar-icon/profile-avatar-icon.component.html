@@ -1,0 +1,13 @@
+<div
+    *ngIf="user"
+    class="avatar-container user"
+    [style.width]="size"
+    [style.height]="size"
+    (click)="navigateToProfile(user)"
+    matTooltip="{{ 'UsersList.VisitAccount' | translate }}"
+>
+    <img class="avatar-image" [src]="getAvatarSource(user)" />
+</div>
+<div *ngIf="bot" class="avatar-container bot" [style.width]="size" [style.height]="size">
+    <img class="avatar-image" [src]="getBotAvatarSource(bot)" />
+</div>

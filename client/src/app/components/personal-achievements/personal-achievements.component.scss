@@ -1,0 +1,56 @@
+.profile-card {
+    background: var(--sidebar-box);
+    border: 2px solid var(--sidebar-text);
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .achievements-container {
+    width:100%;
+    height: 90%;
+  }
+  
+  .achievements-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    padding-right: 230px;
+    padding-left:230px;
+  }
+  
+  .achievement {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 160px;
+    height: 160px;
+    background: var(--achievement-box);
+    padding-top: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--sidebar-text);
+    color: var(--sidebar-text);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+  }
+  
+  .achievement:hover {
+    transform: scale(1.05);
+  }
+  
+  .achievement img {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .achievement span {
+    margin-top: 6px;
+    font-size: 15px;
+    text-align: center;
+    line-height: 1.3;
+  }
+  

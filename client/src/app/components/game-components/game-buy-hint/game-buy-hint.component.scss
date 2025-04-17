@@ -1,0 +1,43 @@
+.hint-card {
+    background-color: transparent;
+    color: var(--text-color);
+    border-radius: 30px;
+    box-shadow: none;
+    padding: 8px 12px;
+  }
+  
+  .hint-button {
+    font-weight: bold;
+    font-size: 14px;
+    color: white;
+    border-radius: 10px;
+    background-color: var(--primary-color);
+  }
+  
+  .hint-button[disabled] {
+    opacity: 0.5;
+  }
+  
+
+.price {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: bold;
+}
+
+.balance {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 120px;
+    margin: 0;
+    text-align: left;
+}
+
+mat-card-content,
+.mat-mdc-card-content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    padding: 0 !important;
+}

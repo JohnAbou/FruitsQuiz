@@ -1,0 +1,102 @@
+<app-default-page-template>
+  <div class="admin-view-container">
+    <h1 class="fruitz-title">{{ 'AdminView.GameListTitle' | translate }}</h1>
+
+    <div class="content-wrapper">
+      <div class="scrollable-content">
+        <mat-expansion-panel hideToggle *ngFor="let quiz of quizzes" class="mat-expansion-panel">
+          <mat-expansion-panel-header>
+            <mat-panel-title class="mat-panel-title">
+              {{ quiz.title }}
+            </mat-panel-title>
+            <mat-panel-description class="panel-description">
+              <div class="quiz-meta">
+                <mat-icon class="meta-icon">update</mat-icon>
+                {{ quiz.lastModification | translatedDate: 'medium' }}
+              </div>
+              <div class="quiz-meta">
+                <mat-icon class="meta-icon">person</mat-icon>
+                {{ quiz.owner }}
+              </div>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <div class="quiz-content">
+            <div class="quiz-info-grid">
+              <div class="info-item">
+                <mat-icon>description</mat-icon>
+                <p>{{ truncateText(quiz.description) }}</p>
+
+              </div>
+              <div class="info-item">
+                <mat-icon>timer</mat-icon>
+                <p>{{ quiz.duration }} s</p>
+              </div>
+              <div class="info-item">
+                <mat-icon>quiz</mat-icon>
+                <p>{{ quiz.questions.length }} questions</p>
+              </div>
+              <div class="info-item">
+                <mat-icon>star</mat-icon>
+                <app-quiz-view-rating class="rating" [quizId]="quiz.id" backgroundColor="var(--sidebar-box)" />
+              </div>
+            </div>
+
+            <mat-divider></mat-divider>
+
+            <div class="questions-container">
+              <mat-expansion-panel class="questions-panel">
+                <mat-expansion-panel-header>
+                  <mat-panel-title class="title">
+                    <mat-icon class="panel-icon">format_list_bulleted</mat-icon>
+                    {{ 'AdminView.GameQuestions' | translate }} ({{ quiz.questions.length }})
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <div class="scrollable-questions">
+                  <mat-list class="question-list">
+                    <mat-list-item *ngFor="let question of quiz.questions; let i = index">
+                      <mat-icon matListItemIcon [ngSwitch]="question.type" class="question-type-icon">
+                        <ng-container *ngSwitchCase="'QCM'">check_box</ng-container>
+                        <ng-container *ngSwitchCase="'QRL'">subject</ng-container>
+                        <ng-container *ngSwitchCase="'QRE'">calculate</ng-container>
+                      </mat-icon>
+                      <div matListItemTitle>{{ i + 1 }}. {{ 'QuestionTypes.' + question.type + 'Description' | translate
+                        }}: {{ question.text }}</div>
+                    </mat-list-item>
+                  </mat-list>
+                </div>
+              </mat-expansion-panel>
+            </div>
+
+            <div class="action-buttons">
+              <button mat-fab [color]="canToggleVisibility(quiz) ? 'primary' : 'basic'" class="action-button"
+                (click)="toggleVisibility(quiz)" [disabled]="!canToggleVisibility(quiz)"
+                [matTooltip]="canToggleVisibility(quiz) ? (quiz.isPublic ? 'Make Private' : 'Make Public') : 'Cannot modify visibility'">
+                <mat-icon>{{ visibility(quiz) }}</mat-icon>
+              </button>
+              <button mat-fab color="primary" class="action-button" (click)="modifyQuiz(quiz)" routerLink="/quiz-form"
+                matTooltip="Edit Quiz">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-fab color="warn" class="action-button" (click)="deleteQuiz(quiz)" matTooltip="Delete Quiz">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </div>
+        </mat-expansion-panel>
+      </div>
+
+      <div class="fixed-bottom-buttons">
+        <button mat-raised-button color="primary" class="action-button" (click)="createNewQuiz()">
+          <mat-icon>add</mat-icon>
+          {{ 'AdminView.CreateNewGame' | translate }}
+        </button>
+        <button mat-raised-button color="primary" class="action-button" routerLink="/bank">
+          <mat-icon>library_books</mat-icon>
+          {{ 'AdminView.QuestionBank' | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</app-default-page-template>

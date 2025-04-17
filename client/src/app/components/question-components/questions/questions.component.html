@@ -1,0 +1,73 @@
+<h1 class="fruitz-title">{{ 'QuestionComponent.QuestionBank' | translate }}</h1>
+
+<div>
+    <app-question-filter></app-question-filter>
+</div>
+
+<div class="button-container">
+    <button mat-raised-button class="button" (click)="createQCMQuestion()">
+        {{ 'QuestionComponent.CreateQcm' | translate }}
+    </button>
+    <button mat-raised-button class="button" (click)="createQRLQuestion()">
+        {{ 'QuestionComponent.CreateQrl' | translate }}
+    </button>
+    <button mat-raised-button class="button" (click)="createQREQuestion()">
+        {{ 'QuestionComponent.CreateQre' | translate }}
+    </button>
+</div>
+
+<mat-expansion-panel hideToggle class="expansion-title" *ngFor="let question of questions"
+    [ngClass]="question.type === 'QCM' ? 'qcm-color' : (question.type === 'QRL' ? 'qrl-color' : 'qre-color')">
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            <span class="question-type">{{ 'QuestionTypes.' + question.type + 'Description' | translate }}: </span> <span>{{ question.text }}</span>   
+        </mat-panel-title>
+        <mat-panel-description class="panel-description">
+            <div>{{ 'QuestionComponent.LastModification' | translate }} {{ question.lastModification | translatedDate: 'medium' }}</div>
+            <span class="question-author" *ngIf="question.author" style="margin-left: auto; margin-right: 16px;">{{ 'QuestionComponent.Author' | translate }}: {{ question.author }}</span> 
+            <div class="button-container">
+                <button class="button" mat-raised-button (click)="openEditDialog(question)">
+                    {{ 'QuestionComponent.Modify' | translate }}
+                </button>
+                <button class="button" mat-raised-button (click)="deleteQuestion(question.id)">
+                    {{ 'QuestionComponent.Delete' | translate }}
+                </button>
+            </div>
+        </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <ng-container *ngIf="question.type === 'QCM'">
+        <div *ngIf="question.imageId">
+            <app-image-view [imageId]="question.imageId" [uploadType]="'question'"></app-image-view>
+        </div>        
+        <h3 class="game-title">{{ 'QuestionComponent.ResponseChoice' | translate }}</h3>
+        <ul *ngFor="let choice of question.choices">
+            <li>
+                <p>{{ choice.text }}</p>
+            </li>
+        </ul>
+    </ng-container>
+    
+    <ng-container *ngIf="question.type === 'QRL'">
+        <div *ngIf="question.imageId">
+            <app-image-view [imageId]="question.imageId" [uploadType]="'question'"></app-image-view>
+        </div>       
+        <p>{{ 'QuestionComponent.Qrl' | translate }}</p>
+    </ng-container>
+    
+    <ng-container *ngIf="question.type === 'QRE'">
+        <div *ngIf="question.imageId">
+            <app-image-view [imageId]="question.imageId" [uploadType]="'question'"></app-image-view>
+        </div>
+        <h3 class="game-title">{{ 'QuestionComponent.Estimations' | translate }}</h3>
+        <div *ngIf="question.estimations; else noEstimations">
+            <p>{{ 'QuestionComponent.ExactValue' | translate }}: {{ question.estimations.exactValue }}</p>
+            <p>{{ 'QuestionComponent.LowerBound' | translate }}: {{ question.estimations.lowerBound }}</p>
+            <p>{{ 'QuestionComponent.UpperBound' | translate }}: {{ question.estimations.upperBound }}</p>
+            <p>{{ 'QuestionComponent.ToleranceMargin' | translate }}: {{ question.estimations.toleranceMargin }}</p>
+        </div>
+        <ng-template #noEstimations>
+            <p>{{ 'QuestionComponent.NoEstimationsDefined' | translate }}</p>
+        </ng-template>
+    </ng-container>
+</mat-expansion-panel>

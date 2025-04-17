@@ -1,0 +1,32 @@
+<ng-container>
+  <img
+    [src]="imageUrl"
+    [ngClass]="{
+      'question-image': uploadType === 'question',
+      'avatar-image': uploadType === 'avatar'
+    }"
+    matTooltip="Zoom"
+    (click)="zoomIn()"
+  />
+</ng-container>
+
+<div *ngIf="zoomed" class="overlay" (click)="zoomOut()">
+  <img [src]="imageUrl" class="zoomed-image" alt="Zoomed Image" />
+</div>
+
+
+
+
+<!-- Use it like this for questions:
+
+<app-image-view
+  [imageUrl]="question.imageUrl"
+  [uploadType]="'question'"
+></app-image-view>
+
+Use it like this for avatar:
+
+<app-image-view
+  [imageUrl]="user.avatarUrl"
+  [uploadType]="'avatar'"
+></app-image-view> -->

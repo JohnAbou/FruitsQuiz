@@ -1,0 +1,34 @@
+.avatar-container {
+    border-radius: 50%;
+    border: 2px solid var(--primary-color);
+    overflow: hidden;
+    display: block;
+    box-sizing: border-box;
+
+    &.user {
+        cursor: pointer;
+    }
+
+    &.bot {
+        cursor: default;
+    }
+}
+
+.avatar-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+::ng-deep .no-padding-dialog .mat-mdc-dialog-surface {
+    background: transparent !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+}
+
+.locked-item-dialog .mat-dialog-container {
+    background-color: white !important;
+  }

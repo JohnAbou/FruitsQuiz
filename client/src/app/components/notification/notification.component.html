@@ -1,0 +1,14 @@
+<div class="container">
+    <mat-icon class="left-icon">{{ data.icon }}</mat-icon>
+    <span class="message">{{ data.message }}</span>
+
+    <ng-container *ngIf="data.arrowCallback">
+        <button class="icon" mat-icon-button (click)="callback()">
+            <mat-icon>north_east</mat-icon>
+        </button>
+    </ng-container>
+
+    <button mat-icon-button (click)="snackBarRef.dismiss()">
+        <mat-icon>close</mat-icon>
+    </button>
+</div>

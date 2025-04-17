@@ -1,0 +1,20 @@
+{
+    "accountValidation": {
+      "usernameRequired": "Le nom d'utilisateur est requis.",
+      "usernameInvalid": "Le nom d'utilisateur ne peut pas contenir de caractères spéciaux.",
+      "usernameLength": "Le nom d'utilisateur doit comporter entre 4 et 12 caractères.",
+      "usernameSystem" : "Le nom d'utilisateur ne peut pas contenir de mots réservés par le système.",
+      "passwordRequired": "Le mot de passe est requis.",
+      "passwordLength": "Le mot de passe doit comporter au moins 5 caractères.",
+      "passwordInvalid": "Le mot de passe ne peut contenir que des lettres, des chiffres et des caractères spéciaux.",
+      "emailRequired": "L'email est requis.",
+      "emailInvalid": "L'email doit respecter la forme exemple@domaine.com.",
+      "passwordMismatch": "Les mots de passe ne correspondent pas.",
+      "usernameTaken": "Le nom d'utilisateur est déjà utilisé.",
+      "emailTaken": "L'email est déjà utilisé.",
+      "incorrectCredentials": "Identifiants erronés.",
+      "alreadyLoggedIn": "Vous êtes déjà connecté sur un autre appareil.",
+      "missingFields": "Veuillez remplir tous les champs."
+    }
+  }
+  

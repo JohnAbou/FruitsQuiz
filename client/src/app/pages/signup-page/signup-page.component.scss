@@ -1,0 +1,207 @@
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #DFFFDE !important;
+    position: relative;
+    z-index: 1;
+    gap: 40px;
+    padding: 40px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.title {
+    color: #009688 !important;
+    font-size: 28px;
+    font-weight: 600;
+    margin: 20px 0;
+}
+
+.main-card, .avatar-picker-box {
+    width: 35%;
+    height: 70%;
+    min-width: unset;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    border-radius: 8px;
+    padding: 0;
+    overflow: auto;
+} 
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.floating-label-group {
+    position: relative;
+    margin-bottom: 32px;
+}
+
+.floating-label-group input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    outline: none;
+    background-color: #fff;
+}
+
+.floating-label-group input:focus {
+    border-color: #009688 !important;
+}
+
+.floating-label-group label {
+    position: absolute;
+    left: 16px;
+    top: 14px;
+    pointer-events: none;
+    transition: 0.2s ease all;
+    color: #999;
+    background: #fff;
+    padding: 0 4px;
+}
+
+.floating-label-group input:focus+label,
+.floating-label-group input:not(:placeholder-shown)+label {
+    top: -8px;
+    left: 12px;
+    font-size: 12px;
+    color: #009688 !important;
+}
+
+.submit-button {
+    width: 100%;
+    background-color: #009688 !important;
+    color: white !important;
+    font-weight: 600;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    position: absolute;
+    left: 0;
+    bottom: -16px;
+    margin: 0;
+}
+
+.nav-link {
+    text-align: center;
+    margin: 16px;
+}
+
+.teal-link {
+    color: #009688 !important;
+    font-weight: 550;
+    text-decoration: none;
+}
+
+.teal-link:hover {
+    text-decoration: underline;
+}
+
+mat-card-header {
+    display: flex;
+    justify-content: center;
+}
+
+mat-card-footer {
+    margin-top: auto;
+    text-align: left;
+}
+
+.avatar-selection {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin: 0;
+    padding: 10px;
+    justify-items: center;
+}
+
+.predefined-avatars {
+    width: 100%;
+    padding: 10px;
+    position: relative;
+}
+
+.predefined-avatars .error-message {
+    text-align: center;
+    margin-top: 8px;
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    display: block;
+}
+
+.avatar-options {
+    flex-grow: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.avatar-option {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.2s;
+    border: 2px solid transparent;
+    position: relative;
+    object-fit: cover;
+}
+  
+.avatar-option:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+.avatar-option.selected {
+  border: 6px solid #009688;
+  box-shadow: 0 0 10px rgba(0, 150, 136, 0.5);
+  transform: scale(1.05);
+}
+
+.error-container {
+    width: 100%;
+    text-align: center;
+    margin-top: 16px;
+}
+
+.quit-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 12px 20px;
+    background-color: #d32f2f !important; 
+    color: #fff !important;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 4px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    z-index: 1000;  
+    transition: background-color 0.2s ease;
+}
+
+.quit-button:hover {
+    background-color: #b71c1c !important;  
+}

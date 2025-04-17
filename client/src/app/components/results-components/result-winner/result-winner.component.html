@@ -1,0 +1,24 @@
+<div class="winner-content-wrapper">
+    <div class="winner-card fruitz-card">
+        <div class="card-content">
+            <div class="winner-content">
+                <div class="trophy-mini">
+                    <mat-icon>emoji_events</mat-icon>
+                </div>
+                <p class="winner-text">{{ 'ResultWinner.Winner' | translate }} <span class="winner-text">{{ (winnerName | async) }}</span></p>
+            </div>
+
+            <div *ngIf="(wasTie | async)" class="tie-breaker-box">
+                <mat-icon>auto_awesome</mat-icon>
+                <p class="tie-breaker-text">
+                    <strong>{{ 'ResultWinner.TieBreaker' | translate }}</strong> {{ (winnerName | async) }} {{ 'ResultWinner.AnsweredFaster' | translate }}
+                </p>
+            </div>
+            
+            <!-- Celebration tag -->
+            <div class="winner-badge" *ngIf="!(wasTie | async)">
+                <span>{{ 'Champion' | translate }}</span>
+            </div>
+        </div>
+    </div>
+</div>

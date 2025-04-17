@@ -1,0 +1,19 @@
+<div class="add-chat-container">
+    <div class="join-chat-container">
+        <div class="chat-list-container">
+            <div class="chat-name-input-container">
+                <input
+                    type="text"
+                    [(ngModel)]="searchTerm"
+                    placeholder="{{ 'AddChatComponent.FilterPlaceholder' | translate }}"
+                    class="chat-name-input"
+                />
+            </div>
+
+            <div class="chat-list">
+                <button class="form-button" *ngFor="let chat of filteredChatList()" (click)="joinChat(chat.id)">{{ chat.name }}</button>
+                <div *ngIf="filteredChatList().length === 0" class="empty-list-message">{{ 'AddChatComponent.NoChats' | translate }}</div>
+            </div>
+        </div>
+    </div>
+</div>

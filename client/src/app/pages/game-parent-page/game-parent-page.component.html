@@ -1,0 +1,30 @@
+<ng-container *ngIf="reloadComponent; else noReloadComponent"> </ng-container>
+
+<ng-template #noReloadComponent>
+    <div *ngIf="userState === 3 || userState === 4; else otherStates">
+        <app-game-intermission-view />
+    </div>
+
+    <ng-template #otherStates>
+        <app-game-header />
+        <div class="page-container">
+            <div [ngClass]="{ 'full-container': (isChatHidden | async), 'container': !(isChatHidden | async) }">
+                <div *ngIf="userState === 1">
+                    <app-wait-view [isOrganiser]="userRole === 1" />
+                </div>
+
+                <div *ngIf="userState === 2">
+                    <app-template-game-view />
+                </div>
+
+                <div *ngIf="userState === 5">
+                    <app-results-view />
+                </div>
+
+            </div>
+        </div>
+        <div [ngClass]="{ 'chat-detached': (isChatDetached | async), 'chat-container': !(isChatHidden | async) }">
+            <app-chat></app-chat>
+        </div>
+    </ng-template>
+</ng-template>

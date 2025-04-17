@@ -1,0 +1,66 @@
+.challenge-container {
+    margin: 16px;
+    padding: 16px;
+    max-width: 100%;
+
+    .challenge-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+        color: var(--primary-color);
+
+        h3 {
+            margin: 0;
+        }
+
+        .challenge-price {
+            margin: 0;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+    }
+
+    p {
+        margin: 0;
+        color: #666;
+    }
+}
+
+.challenge-status {
+    margin-top: 12px;
+    padding: 8px;
+    border-radius: 4px;
+    font-weight: 500;
+
+    &.success {
+        background-color: rgba(76, 175, 80, 0.1);
+        color: #2E7D32;
+    }
+
+    &.failure {
+        background-color: rgba(244, 67, 54, 0.1);
+        color: #C62828;
+    }
+
+    p {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+
+        &::before {
+            font-size: 1.2em;
+        }
+    }
+
+    &.success p::before {
+        content: "✓";
+    }
+
+    &.failure p::before {
+        content: "✗";
+    }
+}

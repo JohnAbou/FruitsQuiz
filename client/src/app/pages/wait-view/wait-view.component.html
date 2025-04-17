@@ -1,0 +1,54 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+<app-game-lobby-header />
+
+<div class="bottom-main">
+    <div class="player-admin-container">
+        <div class="left-div">
+            <mat-card class="fruitz-card player-list-card">
+                <div class="player-list-header">
+                    <h3 class="player-list-title">{{ 'WaitView.PlayerList' | translate }}</h3>
+                </div>
+                <mat-divider class="divider"></mat-divider>
+                <div class="player-list-container">
+                    <app-wait-page-player-list [canBanPlayer]="isOrganiser"></app-wait-page-player-list>
+                </div>
+            </mat-card>
+
+            <mat-card class="fruitz-card">
+                <app-challenge-presentation />
+            </mat-card>
+        </div>
+
+        <div class="right-div">
+            <mat-card class="fruitz-card waiting-card">
+                <div class="waiting-content">
+                    <h2 class="waiting-title">{{ 'WaitView.Title' | translate }}</h2>
+                    <div class="spinner-container">
+                        <mat-spinner diameter="40" strokeWidth="3"></mat-spinner>
+                    </div>
+                </div>
+            </mat-card>
+
+            <div *ngIf="isOrganiser" class="admin-controls">
+                <mat-card class="fruitz-card admin-card">
+                    <div class="admin-buttons">
+                        <button mat-raised-button color="primary" [disabled]="!(canStartGame() | async)" (click)="startGame()" class="admin-button">
+                            {{ 'WaitView.StartGameButton' | translate }}
+                        </button>
+                        <button mat-raised-button color="primary" (click)="toggleLobbyLock()" class="admin-button">
+                            <mat-icon class="icon-left">
+                                {{ roomLocked ? 'lock' : 'lock_open' }}
+                            </mat-icon>
+                            {{ roomLocked ? ('WaitView.UnlockButton' | translate) : ('WaitView.LockButton' | translate) }}
+                        </button>
+                        <button mat-raised-button color="primary" [disabled]="!(canAddBot() | async)" (click)="addBot()" class="admin-button">
+                            <mat-icon class="icon-left">smart_toy</mat-icon>
+                            {{ 'WaitView.AddBot' | translate }}
+                        </button>
+                    </div>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="side-bar-container" [ngClass]="{ minimized: isMinimized }">
+    <div *ngIf="!isMinimized" class="chat-header">
+        <div class="back-container">
+            <button class="back-icon" *ngIf="!(selected === null && chatPage === ChatPage.ChatSelection)" (click)="goBack()">
+                <mat-icon>arrow_back</mat-icon>
+            </button>
+            <div class="back-text" *ngIf="selected !== null">{{ 'AddChatComponent.OtherChatrooms' | translate }}</div>
+        </div>
+        {{ getTitle() }}
+        <img *ngIf="!isChatDetached" src="./assets/pop_out_arrow.svg" class="pop-out-icon" alt="Pop Out" (click)="openChatInNewWindow()" />
+        <button class="minimize-icon" *ngIf="!isChatDetached" alt="Minimize" (click)="toggleMinimize()">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+    <div class="chat-container" *ngIf="!isMinimized">
+        <app-chat-list
+            *ngIf="selected === null && chatPage === ChatPage.ChatSelection"
+            [chats]="(chatsObservable | async) ?? []"
+            [selectedChat]="selectedObservable | async"
+            [username]="username"
+            (onSetCreateChatPage)="setCreateChatPage()"
+            (onSetJoinChatPage)="setJoinChatPage()"
+        ></app-chat-list>
+        <app-chat-messages
+            *ngIf="selected !== null"
+            [messages]="getSelectedChatMessages((selectedObservable | async) ?? '1') ?? []"
+            [username]="username"
+            [isBanned]="(isBannedAndSelectedChat | async) ?? false"
+        ></app-chat-messages>
+        <div *ngIf="selected === null && chatPage === ChatPage.CreateChat" class="add-chat-container">
+            <app-chat-create (createChat)="onCreateChat($event)"></app-chat-create>
+        </div>
+        <div *ngIf="selected === null && chatPage === ChatPage.JoinChat" class="add-chat-container">
+            <app-chat-join></app-chat-join>
+        </div>
+    </div>
+    <div *ngIf="isMinimized" class="minimized-chat-icon" (click)="toggleMinimize()">
+        <mat-icon>chat</mat-icon>
+    </div>
+</div>

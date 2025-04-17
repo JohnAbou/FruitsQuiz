@@ -1,0 +1,40 @@
+<ng-container *ngIf="gameMetricsUpdate | async as gmUpdate">
+    <div class="metrics-container">
+        <p class="metrics-title">{{ 'GameMetrics.Title' | translate }}</p>
+
+        <div *ngIf="gmUpdate.gainedPoints" class="metrics-item">
+            <div class="metrics-content">
+                <p class="metrics-status">
+                    <strong>{{gmUpdate.newPoints}} (+{{gmUpdate.gainedPoints}})</strong>
+                    <span class="metrics-label">{{ 'GameMetrics.PointsGained' | translate }}</span>
+                </p>
+            </div>
+        </div>
+
+        <div *ngIf="gmUpdate.gainedSurvivedQuestion" class="metrics-item">
+            <div class="metrics-content">
+                <p class="metrics-status">
+                    <strong>{{gmUpdate.newSurvivedQuestion}} (+{{gmUpdate.gainedSurvivedQuestion}})</strong>
+                    <span class="metrics-label">{{ 'GameMetrics.QuestionsSurvived' | translate }}</span>
+                </p>
+            </div>
+        </div>
+
+        <div *ngIf="(gameWinStreakUpdate | async) as wsUpdate" class="metrics-item">
+            <div class="metrics-content">
+                <p class="metrics-status">
+                    <strong>{{wsUpdate.current}} (+{{wsUpdate.wsState != 1 ? 1 : 0}})</strong>
+                    <span class="metrics-label">{{ 'GameMetrics.GameWon' | translate }}</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="metrics-content">
+            <p class="metrics-status">
+                <strong>{{formatTimeUtil((gameTimesUpdate | async)?.currentTime ?? 0)}}
+                    (+{{formatTimeUtil((gameTimesUpdate | async)?.addedTime ?? 0)}})</strong>
+                <span class="metrics-label">{{ 'GameMetrics.GameTimeAdded' | translate }}</span>
+            </p>
+        </div>
+    </div>
+</ng-container>

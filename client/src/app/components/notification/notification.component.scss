@@ -1,0 +1,18 @@
+.container {
+    display: flex;
+    align-items: center;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 16px;
+    border-radius: 4px;
+    gap: 10px;
+}
+
+.message {
+    flex: 1;
+    font-weight: 500;
+}
+
+button {
+    margin: -8px -8px -8px 8px;
+}

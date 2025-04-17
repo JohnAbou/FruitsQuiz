@@ -1,0 +1,20 @@
+<div class="profile-card" *ngIf="userObservable | async as user">
+    <button *ngIf="dialogRef" mat-icon-button class="close-button" (click)="close()">
+        <mat-icon>close</mat-icon>
+    </button>
+    <app-friend-request-control [username]="user.username" />
+    <img [src]="getSource(user.activeAvatarId)" class="avatar" />
+
+    <div class="username-row">
+        <h2>{{ user.username }}</h2>
+    </div>
+
+    <div class="info-row">
+        <p>{{ 'PublicProfile.Level' | translate }}: {{ (levelObservable | async)?.level ?? 0 }}</p>
+        <p>{{ 'PublicProfile.XP' | translate }}: {{ formattedEXP }}</p>
+    </div>
+
+    <app-achievements-container 
+        [stats]="statsObservable | async">
+    </app-achievements-container>
+</div>

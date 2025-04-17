@@ -1,0 +1,27 @@
+<mat-card class="main-card">
+    <div *ngIf="isClassicalGame" class="score-content">
+      <span class="score-label">{{ 'GameScore.YourScore' | translate }}</span>
+      <span class="score-value">{{ (currentScoreObserver | async) || 0 }} pts</span>
+    </div>
+    <ng-container *ngIf="!isClassicalGame">
+      <ng-container *ngIf="(isEliminatedObserver | async) !== null">
+        <div class="status-content">
+          <mat-icon
+            class="status-icon"
+            [ngClass]="{
+              'alive': !(isEliminatedObserver | async),
+              'eliminated': (isEliminatedObserver | async)
+            }"
+          >
+            {{ (isEliminatedObserver | async) ? 'heart_broken' : 'favorite' }}
+          </mat-icon>
+          <span class="status-text">
+            {{ ((isEliminatedObserver | async) ? "GameScore.EliminatedState" : "GameScore.AliveState") | translate }}
+          </span>
+        </div>
+      </ng-container>
+    </ng-container>
+  </mat-card>
+  
+
+  

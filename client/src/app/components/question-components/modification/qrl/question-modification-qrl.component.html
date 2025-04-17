@@ -1,0 +1,46 @@
+<div class="qrl-editor">
+    <div class="question-section">
+        <div class="question-header">
+            <div class="form-group question-text">
+                <label class="label" for="input-question">{{ 'QuestionQcmComponent.Formulation' | translate }}</label>
+                <div class="input-wrapper">
+                    <input type="text" maxlength="75" [(ngModel)]="question.text" id="input-question" placeholder="{{ 'QuizModification.PlaceHolder' | translate }}" />
+                    <span class="char-limit">{{ question.text.length }}/75</span>
+                </div>
+                <div *ngIf="showValidation && !nameValidity.isValid" class="error-message">
+                    {{ nameValidity.errorMessage }}
+                </div>
+            </div>
+            <div class="form-group points">
+                <label class="label" for="input-points">{{ 'QuestionQcmComponent.Points' | translate }}</label>
+                <input type="number" [(ngModel)]="question.points" min="10" max="100" step="10" id="input-points" />
+                <div *ngIf="showValidation && !questionPointsValidity.isValid" class="error-message">
+                    {{ questionPointsValidity.errorMessage }}
+                </div>
+            </div>
+        </div>
+
+    <div class="image-section">
+        <app-image-edit
+            [question]="question"
+            [uploadType]="'question'"
+            (uploaded)="onImageUploaded($event, question)"
+            (deleted)="onImageDeleted(question)"
+        >
+        </app-image-edit>
+
+        <ng-container *ngIf="question.imageId">
+            <app-image-view [imageId]="question.imageId" [uploadType]="'question'"></app-image-view>
+        </ng-container>
+    </div>
+
+    <div class="actions-section">
+        <button mat-raised-button class="save-btn" (click)="addToQuestionBank()">
+            <mat-icon>save</mat-icon>
+            {{ 'QuestionQcmComponent.SaveQuestion' | translate }}
+        </button>
+        <p class="success-message" *ngIf="showMessage">
+            {{ 'QuestionQrlComponent.Success' | translate }}
+        </p>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+#buttons {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.modal-container {
+    background-color: white;
+    border-radius: 4px;
+    padding: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.custom-primary {
+    background-color: var(--button-box) !important;
+    color: var(--button-text) !important;
+}

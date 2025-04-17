@@ -1,0 +1,11 @@
+<app-header></app-header>
+
+<div class="page-container">
+  <div [ngClass]="{ 'main-content-full': (isChatHidden | async), 'main-content': !(isChatHidden | async) }">
+    <ng-content />
+  </div>
+</div>
+
+<div [ngClass]="{ 'chat-detached': (isChatDetached | async), 'chat-container': !(isChatHidden | async) }">
+  <app-chat></app-chat>
+</div>

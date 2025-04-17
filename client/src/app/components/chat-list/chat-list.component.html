@@ -1,0 +1,31 @@
+<div class="chat-list-container">
+    <div class="chat-list-actions">
+        <button class="chat-action" (click)="setCreateChatPage()">
+            <i class="fas fa-plus"></i>
+            <span class="chat-action-text">{{ 'AddChatComponent.Create' | translate }}</span>
+        </button>
+        <button class="chat-action" (click)="setJoinChatPage()">
+            <i class="fas fa-user-plus"></i>
+            <span class="chat-action-text">{{ 'AddChatComponent.Join' | translate }}</span>
+        </button>
+    </div>
+    <div class="chat-list">
+        <div *ngFor="let chat of orderChats()" class="chat-item" [ngClass]="{ selected: chat.id === selectedChat }" (click)="onChatClick(chat.id)">
+            <i
+                *ngIf="chat.creatorUsername === username && chat.name !== 'Partie' && chat.name !== 'Game' && chat.name !== 'Global'"
+                class="fa-solid fa-trash-can delete"
+                aria-hidden="true"
+                (click)="onDeleteChat(chat.id, chat.name); $event.stopPropagation()"
+            ></i>
+
+            <i
+                *ngIf="chat.creatorUsername !== username && chat.name !== 'Partie' && chat.name !== 'Game' && chat.name !== 'Global'"
+                class="fas fa-sign-out delete"
+                aria-hidden="true"
+                (click)="onLeaveChat(chat.id, chat.name); $event.stopPropagation()"
+            ></i>
+
+            {{ chat.name }}
+        </div>
+    </div>
+</div>

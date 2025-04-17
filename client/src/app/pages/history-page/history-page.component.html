@@ -1,0 +1,96 @@
+<app-default-page-template>  
+  <div class="history-container">
+    <h1 class="fruitz-title">{{ 'LogHistory.Title' | translate }}</h1>
+
+    <mat-card class="main-card fruitz-card">
+      <mat-card-header class="card-header bottom-border card-title">
+          <mat-tab-group [selectedIndex]="selectedTabIndex" (selectedIndexChange)="onTabChange($event)" class="history-tabs">
+            <mat-tab label="{{ 'LogHistory.GameLogs' | translate }}"></mat-tab>
+            <mat-tab label="{{ 'LogHistory.AuthLogs' | translate }}"></mat-tab>
+          </mat-tab-group>
+      </mat-card-header>
+      
+      <mat-card-content class="card-content">
+        <div class="table-container fruitz-scroll" *ngIf="selectedTabIndex === 0">
+          <table mat-table [dataSource]="tableDataGame">
+            <ng-container matColumnDef="startDate">
+              <th mat-header-cell *matHeaderCellDef>
+                {{ 'LogHistory.StartDate' | translate }}
+              </th>
+              <td mat-cell *matCellDef="let log">
+                {{ log.date | translatedDate: 'medium' }}
+              </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="hasWon">
+              <th mat-header-cell *matHeaderCellDef>
+                {{ 'LogHistory.HasWon' | translate }}
+              </th>
+              <td mat-cell *matCellDef="let log">
+                <mat-icon *ngIf="log.hasWon" class="green-icon">check_circle</mat-icon>
+                <mat-icon *ngIf="!log.hasWon">remove_circle_outline</mat-icon>
+              </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="hasAbandon">
+              <th mat-header-cell *matHeaderCellDef>
+                {{ 'LogHistory.HasAbandon' | translate }}
+              </th>
+              <td mat-cell *matCellDef="let log">
+                <mat-icon *ngIf="log.hasAbandon" class="red-icon">check_circle</mat-icon>
+                <mat-icon *ngIf="!log.hasAbandon">remove_circle_outline</mat-icon>
+              </td>
+            </ng-container>
+            
+            <tr mat-header-row *matHeaderRowDef="displayedGameColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedGameColumns;"></tr>
+          </table>
+        </div>
+        
+        <div class="table-container fruitz-scroll" *ngIf="selectedTabIndex === 1">
+          <table mat-table [dataSource]="tableDataAuth">
+            <ng-container matColumnDef="loginTime">
+              <th mat-header-cell *matHeaderCellDef>
+                {{ 'LogHistory.LoginTime' | translate }}
+              </th>
+              <td mat-cell *matCellDef="let log">
+                {{ log.loginTime | translatedDate:'medium' }}
+              </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="logoutTime">
+              <th mat-header-cell *matHeaderCellDef>
+                {{ 'LogHistory.LogoutTime' | translate }}
+              </th>
+              <td mat-cell *matCellDef="let log">
+                {{ log.logoutTime ? (log.logoutTime | translatedDate:'medium') : '-' }}
+              </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="deviceType">
+              <th mat-header-cell *matHeaderCellDef>
+                {{ 'LogHistory.DeviceType' | translate }}
+              </th>
+              <td mat-cell *matCellDef="let log">
+                {{
+                  log.deviceType === 'desktop'
+                    ? ('LogHistory.Desktop' | translate)
+                    : log.deviceType === 'android'
+                      ? ('LogHistory.Android' | translate)
+                      : (log.deviceType || 'N/A')
+                }}
+              </td>
+            </ng-container>
+            
+            <tr mat-header-row *matHeaderRowDef="displayedAuthColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedAuthColumns;"></tr>
+          </table>
+        </div>
+      </mat-card-content>
+      
+      <mat-card-footer class="card-footer">
+      </mat-card-footer>
+    </mat-card>
+  </div>
+</app-default-page-template>
+  

@@ -1,0 +1,13 @@
+<div class="rating-container">
+    <span class="floating-title">{{ (hasReviewed ? 'QuizSendRating.UpdateRating' : 'QuizSendRating.RateQuiz') | translate }}</span>
+    <div class="star-rating">
+        <mat-icon *ngFor="let star of hearts; let i = index" (click)=" rateQuiz(i + (i < score ? 0: 1))"
+            [ngClass]="{'filled': i < score}">
+            favorite
+        </mat-icon>
+        <div class="rating-display">
+            <span class="rating-number">{{ score }}</span>
+            <span class="rating-text">/5</span>
+        </div>
+    </div>
+</div>

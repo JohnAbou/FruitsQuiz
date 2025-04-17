@@ -1,0 +1,38 @@
+<div class="layout">
+  <nav class="sidebar">
+    <div class="avatar">
+      <div class="avatar-image-wrapper">
+        <img (click)="openAvatarChange()" [src]="(avatarUrl | async)" class="User-Avatar">
+        <div class="edit-icon">
+          <img (click)="openAvatarChange()" src="assets/edit.png" alt="Edit">
+        </div>
+      </div>
+    </div>
+    <ul class="list">
+      <li class="information">
+        <a (click)="setActivePage('information')" [class.active]="currentPage === 'information'">
+          <mat-icon>person</mat-icon> {{ 'SidebarProfileComponent.Information' | translate }}
+        </a>
+      </li>
+      <li class="accomplishments">
+        <a (click)="setActivePage('accomplishments')" [class.active]="currentPage === 'accomplishments'">
+          <mat-icon>emoji_events</mat-icon> {{ 'SidebarProfileComponent.Achievements' | translate }}
+        </a>
+      </li>
+      <li class="preferences">
+        <a (click)="setActivePage('preferences')" [class.active]="currentPage === 'preferences'">
+          <mat-icon>settings_account_box</mat-icon> {{ 'SidebarProfileComponent.Preferences' | translate }}
+        </a>
+      </li>
+      <li class="friends">
+        <a (click)="setActivePage('friends')" [class.active]="currentPage === 'friends'">
+          <mat-icon>group</mat-icon> {{ 'SidebarProfileComponent.Friends' | translate }}
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <app-avatar-modal *ngIf="avatarOpen"></app-avatar-modal>
+  <div class="content">
+  </div>
+</div>

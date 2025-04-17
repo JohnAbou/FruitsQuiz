@@ -1,0 +1,55 @@
+<div class="player-list-container">
+    <div class="player-list-wrapper">
+        <div id="player-list" class="player-list">
+            <ng-container *ngIf="!((players | async) ?? []).length">
+                <!-- <p>{{ 'LinePlayerList.NoPlayers' | translate }}</p> -->
+            </ng-container>
+
+            <ng-container *ngFor="let player of players | async; let i = index; let last = last">
+                <div class="player-entry" [ngClass]="{ 'odd-player': i % 2 === 0, 'even-player': i % 2 !== 0 }">
+                    <div class="player-name-container">
+                        <div class="player-info-container">
+                            <ng-container *ngIf="getPlayerUser(player) as user">
+                                <app-profile-avatar-icon [user]="user"></app-profile-avatar-icon>
+                            </ng-container>
+                            <ng-container *ngIf="isBotPlayer(player)">
+                                <app-profile-avatar-icon [bot]="player"></app-profile-avatar-icon>
+                            </ng-container>
+                            <p class="player-name">{{ player.name }}</p>
+                        </div>
+                    </div>
+
+                    <ng-container *ngIf="isBotPlayer(player)">
+                        <div *ngIf="!canBanPlayer" class="bot-difficulty-container2" [ngClass]="player.difficulty">
+                            <ng-container class="difficulty-text">
+                                <span class="difficulty-label" [ngClass]="player.difficulty">
+                                    {{ translateDifficulty(player.difficulty) }}
+                                </span>
+                            </ng-container>
+                        </div>
+                        <div class="bot-difficulty-container" *ngIf="canBanPlayer">
+                            <select
+                                id="difficulty-select"
+                                [(ngModel)]="player.difficulty"
+                                (change)="onDifficultyChange(player)"
+                                [ngClass]="player.difficulty"
+                            >
+                                <option *ngFor="let difficulty of difficulties" [value]="difficulty" [ngClass]="difficulty">
+                                    {{ translateDifficulty(difficulty) }}
+                                </option>
+                            </select>
+                        </div>
+                    </ng-container>
+                    <div *ngIf="!isBotPlayer(player)"></div>
+
+                    <div *ngIf="canBanPlayer" class="player-action">
+                        <button mat-fab color="primary" class="ban-button" (click)="removePlayer(player)">
+                            <mat-icon>block</mat-icon>
+                        </button>
+                    </div>
+                </div>
+                <mat-divider *ngIf="!last"></mat-divider>
+            </ng-container>
+        </div>
+    </div>
+</div>

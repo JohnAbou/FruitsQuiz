@@ -1,0 +1,11 @@
+<div class="header">
+    <app-logo-title class="header-logo"></app-logo-title>
+    <div class="right-button-container">
+        <button class="button" (click)="giveUp()">
+            {{ ((canLeaveSafely | async) ? 'GameHeader.Quit' : (isOrganizer | async) ? 'GameHeader.Terminate' : 'GameHeader.GiveUp') | translate }}
+        </button>
+        <button class="button" (click)="logout()">
+            {{ 'GameHeader.Logout' | translate }}
+        </button>
+    </div>
+</div>

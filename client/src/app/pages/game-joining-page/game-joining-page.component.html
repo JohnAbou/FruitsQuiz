@@ -1,0 +1,61 @@
+<app-default-page-template>
+    <div class="main-content">
+        <mat-card class="header-card">
+            <div class="header-content">
+                <app-quick-join />
+                <div class="user-balance">
+                    <app-user-balance></app-user-balance>
+                </div>
+            </div>
+        </mat-card>
+
+        <mat-card class="body-card">
+            <div class="placeholder"></div>
+            <mat-card-content>
+                <ng-container *ngIf="(games | async)?.length; else noGame">
+                    <div class="games-table">
+
+                        <div class="table-header">
+                            <div class="header-cell game-id">{{ 'GameJoining.GameID' | translate }}</div>
+                            <div class="header-cell title">{{ 'GameJoining.Title' | translate }}</div>
+                            <div class="header-cell rating">{{ 'GameJoining.Rating' | translate }}</div>
+                            <div class="header-cell game-type">{{ 'GameJoining.Mode' | translate }}</div>
+                            <div class="header-cell players">{{ 'GameJoining.Players' | translate }}</div>
+                            <div class="header-cell entry-fee">{{ 'GameCreation.EntryPrice' | translate }}</div>
+                            <div class="header-cell status">{{ 'GameJoining.Status' | translate }}</div>
+                        </div>
+
+                        <div class="table-body">
+                            <div *ngFor="let game of (games | async)" class="table-row" (click)="joinGame(game)">
+                                <div class="cell game-id">{{ game.gameId }}</div>
+                                <div class="cell title">{{ getGameTitle(game) }}</div>
+                                <div class="cell rating">
+                                    <app-quiz-view-rating-line [quizId]="game.quizToPlay.id"></app-quiz-view-rating-line>
+                                </div>
+                                <div class="cell game-type">{{ getGameType(game) }}</div>
+                                <div class="cell players">{{ game.playersNb }}</div>
+                                <div class="cell entry-fee">{{ game.entryFee }}</div>
+                                <div class="cell status">
+                                    <mat-icon class="lock-icon">
+                                        {{ game.isLocked ? 'lock' : 'lock_open' }}
+                                    </mat-icon>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+
+                <ng-template #noGame>
+                    <div class="empty-state" (click)="goToCreateGame()">
+                        <div class="empty-state-content">
+                            <p>{{ "GameJoining.NoGameCurrently" | translate }}</p>
+                            <p class="create-game">{{ "GameJoining.CreateOne" | translate }}</p>
+                        </div>
+                    </div>
+                </ng-template>
+
+            </mat-card-content>
+            <div class="placeholder"></div>
+        </mat-card>
+    </div>
+</app-default-page-template>

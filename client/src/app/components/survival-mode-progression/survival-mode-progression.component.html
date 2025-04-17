@@ -1,0 +1,21 @@
+<mat-card class="survival-card fruitz-card">
+    <mat-card-header>
+        <mat-card-title> {{"SurvivalModeProgression.Title" | translate }}</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content class="card-content">
+        <div class="progress-container">
+            <mat-progress-spinner class="progress-background" [color]="'primary'" [mode]="'determinate'" [value]="100"
+                [diameter]="100">
+            </mat-progress-spinner>
+
+            <mat-progress-spinner class="progress-indicator" [color]="'accent'" [mode]="'determinate'"
+                [value]="((questionSurvived | async) ?? 0) / questionCount * 100" [diameter]="100">
+            </mat-progress-spinner>
+
+            <div class="center-text">
+                {{ questionSurvived | async }} / {{ questionCount }}
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

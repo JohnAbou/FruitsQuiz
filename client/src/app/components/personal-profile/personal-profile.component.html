@@ -1,0 +1,91 @@
+<h1 class="fruitz-title">{{ 'PersonalInfoComponent.InformationHeader' | translate }}</h1>
+
+<div class="personal-info">
+    <div class="box-container">
+        <div class="boxes-row">
+            <div class="profile">
+                <div class="profile-title">{{ 'PersonalInfoComponent.Profile' | translate }}</div>
+                <div class="username">
+                    <div *ngIf="!modal" class="username-container">
+                        <span class="displayUsername">
+                            {{ 'PersonalInfoComponent.UsernameLabel' | translate }}
+                        </span>
+                        <span class="info-value">
+                            {{ (user | async)?.username }}
+                        </span>
+                        <img (click)="usernameModify()" src="./assets/document.png" class="modify-icon">
+                    </div>
+
+                    <div *ngIf="modal" class="username-edit-container">
+                        <label for="modifyUsername">
+                            {{ 'PersonalInfoComponent.UsernameLabel' | translate }}
+                        </label>
+                        <input type="text" name="modifyUsername" [(ngModel)]="newUsername" maxlength="12">
+
+                        <button mat-icon-button class="no-contour" (click)="saveUsername()" title="{{ 'PersonalInfoComponent.ChangeLabel' | translate }}">
+                            <mat-icon class="white-icon">check</mat-icon>
+                          </button>
+                          <button mat-icon-button class="no-contour" (click)="cancelUsernameEdit()" title="{{ 'PersonalInfoComponent.CancelLabel' | translate }}">
+                            <mat-icon class="white-icon">close</mat-icon>
+                          </button>
+                          
+                          
+                          
+                    </div>
+                </div>
+                <div class="error-message" *ngIf="usernameError">
+                    {{ usernameError | translate}}
+                </div>
+                <div class="email">
+                    <span>{{ 'PersonalInfoComponent.EmailLabel' | translate }}</span>
+                    <span class="info-value">{{cropEmail((user|async)?.email ?? '')}}</span>
+                </div>
+            </div>
+
+            <div class="level">
+                <div class="profile-title"> {{'PersonalInfoComponent.LevelLabel' | translate}}</div>
+                <div class="current-level">{{'PersonalInfoComponent.LevelLabel' | translate}} {{level?.level}}</div>
+                <div class="xpLevel">
+                    <div class="XPContainer">
+                        <span class="XPLabel">{{ 'PersonalInfoComponent.XPLabel' | translate }}</span>
+                        <span class="XPpercentage">{{ level?.experience }}/{{ nextLevel }}
+                            {{'PersonalInfoComponent.nextLevel' | translate}}</span>
+                    </div>
+                    <mat-progress-bar class="custom-progress-bar" mode="determinate"
+                        [value]="progression"></mat-progress-bar>
+                </div>
+            </div>
+        </div>
+
+        <div class="boxes-row">
+            <div class="statistics">
+                <div class="profile-title">{{ 'PersonalInfoComponent.StatisticsLabel' | translate }}</div>
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <span class="stat-label">{{ 'PersonalInfoComponent.ChallengesCompletedLabel' | translate
+                            }}</span>
+                        <span class="stat-value">{{(userStats)?.challengeCompleted ?? 0}}</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">{{ 'PersonalInfoComponent.GamesPlayedLabel' | translate }}</span>
+                        <span class="stat-value">{{(userStats)?.totalGamePlayed ?? 0}}</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">{{ 'PersonalInfoComponent.GamesWonLabel' | translate }}</span>
+                        <span class="stat-value">{{(userStats)?.totalGameWon ?? 0}}</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">{{ 'PersonalInfoComponent.AvgCorrectAnswersLabel' | translate }}</span>
+                        <span class="stat-value">{{((userStats)?.totalQuestionGotten ?? 0) /
+                            ((userStats)?.totalQuestionAnswered ?? 1) * 100 | number:'1.1-1'}}%</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">{{ 'PersonalInfoComponent.AvgGameTimeLabel' | translate }}</span>
+                        <span class="stat-value">{{formatTime((((userStats)?.totalGameTime ?? 0)) /
+                            (((userStats)?.totalGamePlayed) ?? 1))}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

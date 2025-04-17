@@ -1,0 +1,52 @@
+#title {
+    text-align: center;
+    font-size: 44px;
+    color: var(--primary-color);
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 20px;
+    margin-bottom: 35px;
+}
+
+.panel-description {
+    display: flex;
+    justify-content: space-between;
+}
+
+.choices-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.choice {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button {
+    color: var(--button-color);
+    padding: 20px 40px;
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+
+.qcm-color {
+    background-color: var(--qcm-bank);
+}
+
+.qrl-color {
+    background-color: var(--qrl-bank);
+}
+
+.qre-color {
+    background-color: var(--qre-bank);
+}

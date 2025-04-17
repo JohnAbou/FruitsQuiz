@@ -1,0 +1,39 @@
+<div class="slider-outer-container">
+  <div class="centered">
+    <ng-container *ngIf="isInteractive">
+      <p *ngIf="gameCorrectedAnswerService.shouldShowCorrectedAnswer()" class="numeric-value correct">
+        {{ 'AnswerQreComponent.CorrectAnswer' | translate }} {{ gameCorrectedAnswerService.getNumericAnswer() }}
+      </p>
+    </ng-container>
+  </div>
+  
+  <div class="centered-input">
+    <input
+      type="number"
+      #directInput
+      [value]="currentValue"
+      [min]="getValueBounds()[0]"
+      [max]="getValueBounds()[1]"
+      [disabled]="!canSubmitAnswer()"
+      [class.correct]="gameCorrectedAnswerService.shouldShowCorrectedAnswer()"
+      class="direct-input"
+      (input)="onDirectInputChange(directInput.value)">
+  </div>
+  
+  <div class="slider-wrapper">
+    <input 
+      type="range"
+      class="custom-slider"
+      [class.correct]="gameCorrectedAnswerService.shouldShowCorrectedAnswer()"
+      [min]="getValueBounds()[0]"
+      [max]="getValueBounds()[1]"
+      [step]="1"
+      [value]="currentValue"
+      [disabled]="!canSubmitAnswer()"
+      (input)="onSliderChange($event)">
+    <div class="slider-value-display">
+      <span class="min-value">{{ getValueBounds()[0] }}</span>
+      <span class="max-value">{{ getValueBounds()[1] }}</span>
+    </div>
+  </div>
+</div>

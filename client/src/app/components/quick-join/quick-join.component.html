@@ -1,0 +1,6 @@
+<div class="main-card">
+    <app-floating-text-input [(ngModel)]="code" [label]="'QuickJoin.GameCode' | translate" name="code" (keydown.enter)="joinGame()" />
+    <button mat-raised-button color="primary" (click)="joinGame()" class="button">
+        {{ "QuickJoin.Join" | translate }}
+    </button>
+</div>

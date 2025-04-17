@@ -1,0 +1,41 @@
+<h1 class="fruitz-title">{{ (hasWonGame ? 'SurvivalResultView.WonTitle' : 'SurvivalResultView.LostTitle') | translate }}
+</h1>
+
+<div class="result-section">
+    <div class="left-section">
+        <mat-card class="result-card fruitz-card">
+            <mat-card-header class="card-header bottom-border">
+                <mat-card-title class="card-title">{{ 'SurvivalResultView.SurvivedQuestions' | translate }}</mat-card-title>
+                <mat-card-subtitle>
+                    {{ 'SurvivalResultView.QuestionsCorrect' | translate: { questionSurvived: questionSurvived,
+                    questionCount: questions.length } }}
+                </mat-card-subtitle>
+            </mat-card-header>
+
+            <mat-card-content class="card-content">
+                <div class="questions-container">
+                    <div *ngFor="let question of questions; let i = index" class="question-item bottom-border">
+                        <div class="question-header">
+                            <span class="question-index">{{i + 1}}</span>
+                            <span class="question-name">{{question.text}}</span>
+                            <span class="question-result">
+                                <mat-icon [class.correct]="i < questionSurvived"
+                                    [class.incorrect]="!(i < questionSurvived)">
+                                    {{i < questionSurvived ? 'check_circle' : 'cancel' }} </mat-icon>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </mat-card-content>
+
+            <mat-card-footer class="card-footer" />
+        </mat-card>
+
+        <app-game-loots [showCoinsPaid]="false" />
+    </div>
+
+    <div class="stat-section">
+        <app-survival-best-score />
+        <app-game-results />
+    </div>
+</div>

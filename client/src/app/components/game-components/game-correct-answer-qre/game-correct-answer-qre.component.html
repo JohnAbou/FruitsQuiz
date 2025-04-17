@@ -1,0 +1,10 @@
+<div *ngIf="question?.estimations" class="estimations-container">
+    <div class="exact-value">
+      <span class="numeric-value correct">
+        {{'GameCorrectAnswerQreComponent.ExactValue' | translate}} {{ question.estimations!.exactValue }}
+        <ng-container *ngIf="question.estimations!.toleranceMargin !== 0">
+          ± {{ question.estimations!.toleranceMargin }}
+        </ng-container>
+      </span>
+    </div>
+</div>

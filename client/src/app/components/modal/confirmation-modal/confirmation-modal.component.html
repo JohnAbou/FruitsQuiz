@@ -1,0 +1,17 @@
+<div class="modal-container">
+    <mat-dialog-content>
+        <div>
+            <p *ngFor="let message of messages">
+                {{ message }}
+            </p>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions id="buttons" style="margin-top: 0; margin-bottom: 16px;">
+        <button mat-stroked-button class="custom-primary" (click)="confirm()">
+            {{ 'ConfirmationModalComponent.Yes' | translate }}
+        </button>
+        <button mat-stroked-button class="custom-primary" (click)="closeModal()">
+            {{ 'ConfirmationModalComponent.No' | translate }}
+        </button>
+    </mat-dialog-actions>
+</div>

@@ -1,0 +1,127 @@
+@use '@angular/material' as mat;
+
+.layout {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    height: 100vh;
+    background-color: var(--sidebar-box);
+    color: var(--sidebar-text);
+    padding: 10px 20px;
+    transition: background-color 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+.avatar {
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top: 50%;
+  
+    .avatar-image-wrapper {
+      position: relative;
+      display: inline-block;
+  
+      .User-Avatar {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid var(--accent-color);
+        transition: filter 0.3s;
+      }
+  
+      .edit-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: opacity 0.3s;
+        pointer-events: none;
+  
+        img {
+          width: 24px;
+          height: 24px;
+        }
+      }
+  
+      &:hover .User-Avatar {
+        opacity:30%;
+      }
+  
+      &:hover .edit-icon {
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
+  }
+  
+  
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    flex-grow: 1;
+
+    li {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 8px;
+    }
+
+    a {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        color: var(--sidebar-text);
+        text-decoration: none;
+        font-size: 16px;
+        padding: 8px;
+        transition: background-color 0.3s ease;
+        border-radius: 5px;
+
+        &:hover {
+            background-color: var(--sidebar-button-selected);
+        }
+
+        &.active {
+            background-color: var(--sidebar-button-selected);
+            font-weight: bold;
+        }
+    }
+}
+.mat-icon{
+  padding-right:10px;
+}
+
+
+.icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+.avatar-modal-overlay {
+    z-index: 1000 !important;
+}
+
+.sidebar a,
+.User-Avatar,
+.avatar-image-wrapper .edit-icon {
+  cursor: pointer;
+}

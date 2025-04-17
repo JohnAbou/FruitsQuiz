@@ -1,0 +1,53 @@
+<div *ngIf="friendStatusObservable | async as status" class="friend-status-box">
+    <ng-container [ngSwitch]="status">
+      <ng-container *ngSwitchCase="1">
+        <div class="status-content">
+            <p>{{ 'FriendRequests.AddFriend' | translate }}</p>
+          <button mat-icon-button color="primary" (click)="sendRequest()">
+            <mat-icon>person_add</mat-icon>
+          </button>
+        </div>
+      </ng-container>
+  
+      <ng-container *ngSwitchCase="2">
+        <div class="status-content">
+            <p>{{ 'FriendRequests.DeleteFriend' | translate }}</p>
+          <button mat-icon-button color="warn" (click)="removeFriend()">
+            <mat-icon>person_remove</mat-icon>
+          </button>
+        </div>
+      </ng-container>
+  
+      <ng-container *ngSwitchCase="3">
+        <div class="status-content">
+          <p>{{ 'FriendRequests.ReceivedRequest' | translate }}</p>
+          <div class="action-buttons">
+            <button mat-icon-button color="primary" (click)="answerRequest(true)">
+              <mat-icon>check_circle</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="answerRequest(false)">
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </div>
+        </div>
+      </ng-container>
+  
+      <ng-container *ngSwitchCase="4">
+        <div class="status-content">
+          <p>{{ 'FriendRequests.SentRequest' | translate }}</p>
+          <button mat-icon-button color="warn" (click)="deleteRequest()">
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </div>
+      </ng-container>
+  
+      <ng-container *ngSwitchCase="5">
+        <div class="status-content">
+          <p>{{ 'FriendRequests.AddYourself' | translate }}</p>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+  
+  
+  

@@ -1,0 +1,14 @@
+<p> {{'SpecialQuiz.CountSelected' | translate : {count} }}</p>
+
+<ng-container *ngIf="totalQuestions != 5">
+    <div class="question-count-container">
+        <p>{{ 'SpecialQuiz.NbQuestionsDetails' | translate }}</p>
+        <mat-slider min="5" [max]="totalQuestions" step="1" thumbLabel discrete>
+            <input matSliderThumb [value]="count" [(ngModel)]="count">
+        </mat-slider>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="totalQuestions == 5">
+    <p>{{ 'SpecialQuiz.CantChange' | translate }}</p>
+</ng-container>

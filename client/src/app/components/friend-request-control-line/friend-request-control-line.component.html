@@ -1,0 +1,22 @@
+<div *ngIf="friendStatusObservable | async as status">
+    <div class="container">
+        <!-- no relation -->
+        <ng-container *ngIf="status == 1">
+            <p> {{ 'FriendRequests.AddFriend' | translate }} </p>
+            <mat-icon class="fruitz-icon" (click)="sendRequest()">person_add</mat-icon>
+        </ng-container>
+
+        <!-- received request -->
+        <ng-container *ngIf="status == 3">
+            <p> {{ 'FriendRequests.AnswerRequest' | translate }} </p>
+            <mat-icon class="fruitz-icon" (click)="answerRequest(true)">check</mat-icon>
+            <mat-icon class="fruitz-icon" (click)="answerRequest(false)">close</mat-icon>
+        </ng-container>
+
+        <!-- sent request -->
+        <ng-container *ngIf="status == 4">
+            <p> {{ 'FriendRequests.RevokeSentRequest' | translate }} </p>
+            <mat-icon class="fruitz-icon" (click)="deleteRequest()">delete</mat-icon>
+        </ng-container>
+    </div>
+</div>

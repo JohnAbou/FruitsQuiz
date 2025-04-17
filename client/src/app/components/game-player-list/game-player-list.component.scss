@@ -1,0 +1,19 @@
+.main-card {
+    display: block;
+    width: auto;
+
+    margin: 2%;
+    padding: 2% 5%;
+}
+
+app-line-playerlist {
+    display: block;
+}
+
+.main-card h2 {
+    text-align: center;
+    font-weight: normal;
+    font-size: 20px;
+    font-weight: 550;
+    color: var(--primary-color);
+}

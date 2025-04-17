@@ -1,0 +1,16 @@
+<mat-card-header>
+  <mat-card-title>{{ quizTitle }}</mat-card-title>
+  <mat-card-subtitle>{{"ResultView.QuizRating.CreatedBy" | translate}}{{ quizOwner }}</mat-card-subtitle>
+</mat-card-header>
+
+<mat-divider></mat-divider>
+
+<mat-card-content>
+  <div class="ratings" *ngIf="shouldRateQuiz else noRating">
+    <app-quiz-view-rating [quizId]="quizId" />
+    <app-quiz-send-rating [quizId]="quizId" />
+  </div>
+  <ng-template #noRating>
+    <p>{{ 'ResultView.QuizRating.CantRateSystemQuiz' | translate }}</p>
+  </ng-template>
+</mat-card-content>

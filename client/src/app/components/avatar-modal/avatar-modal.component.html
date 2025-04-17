@@ -1,0 +1,51 @@
+<div class="avatar-modal-overlay" (click)="closeModal()">
+    <div class="avatar-modal" (click)="$event.stopPropagation()">
+        <h2>{{ 'AvatarModalComponent.ChangeAvatar' | translate }}</h2>
+
+        <div class="avatar-options">
+            <div class="predefined-avatars">
+                <p>{{ 'AvatarModalComponent.ChooseAvatar' | translate }}</p>
+                <div class="avatar-selection">
+                    <img *ngFor="let avatar of basicAvatars" 
+                        [src]="getSource(avatar)" 
+                        [class.selected]="selectedAvatar === avatar"
+                        (click)="selectAvatar(avatar)" 
+                        class="avatar-option">
+                </div>
+            </div>
+
+            <div class="predefined-avatars" *ngIf="premiumAvatars.length > 0">
+                <p>{{ 'AvatarModalComponent.PremiumAvatar' | translate }}</p>
+                <div class="avatar-selection">
+                    <div *ngFor="let avatar of premiumAvatars" class="avatar-container">
+                        <img [src]="avatar.image" 
+                             [class.selected]="selectedAvatar === avatar.id"
+                             [class.locked]="avatar.locked"
+                             (click)="selectPremiumAvatar(avatar)" 
+                             class="avatar-option">
+                        <div class="lock-overlay" *ngIf="avatar.locked">
+                                <mat-icon>lock</mat-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider">{{ 'AvatarModalComponent.Choice' | translate }}</div>
+
+            <label class="custom-file-button">
+                <img src="./assets/upload.png" class="upload">  {{ 'AvatarModalComponent.UploadImage' | translate }}
+                <input type="file" accept="image/*" (change)="onFileSelected($event)" class="hidden-input"/>
+            </label>
+            <div class="preview-container" *ngIf="uploadedPreview">
+                <img [src]="uploadedPreview" class="uploaded-preview" />
+            </div>
+        </div>
+
+        <div class="modal-buttons">
+            <button (click)="closeModal()">{{ 'AvatarModalComponent.Cancel' | translate }}</button>
+            <button (click)="saveAvatar()" [disabled]="!selectedAvatar && !uploadedFile">
+                {{ 'AvatarModalComponent.Close' | translate }}
+            </button>
+        </div>
+    </div>
+</div>

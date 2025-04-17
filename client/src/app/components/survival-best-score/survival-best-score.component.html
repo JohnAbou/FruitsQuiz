@@ -1,0 +1,17 @@
+<div class="win-streak-container">
+    <div class="score-header">
+        <span>{{ 'SurvivalBestScore.Title' | translate }}</span>
+    </div>
+    <div class="score-content">
+        <div class="score-item current-score">
+            <i class="fas fa-star"></i>
+            <span class="score-label">{{ 'SurvivalBestScore.CurrentScore' | translate }}:</span>
+            <span class="score-value">{{ questionSurvived | async }}</span>
+        </div>
+        <div class="score-item best-score">
+            <i class="fas fa-trophy"></i>
+            <span class="score-label">{{ 'SurvivalBestScore.BestScore' | translate }}:</span>
+            <span class="score-value">{{ survivalResult | async }}</span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+.main-div {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 90%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+app-friends-list,
+app-friend-requests {
+    width: 40%;
+    height: 80%;
+}

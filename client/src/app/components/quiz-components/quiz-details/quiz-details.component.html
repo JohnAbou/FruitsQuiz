@@ -1,0 +1,28 @@
+<div class="top">
+  <button mat-icon-button (click)="backToList()" color="primary">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <p class="quiz-title">{{quiz.title}}</p>
+</div>
+
+<div class="flex-container">
+  <div class="left-info">
+    <p>{{quiz.description}}</p>
+    <p> {{ 'QuizDetailComponent.TimeToRespond' | translate }} {{quiz.duration}}s</p>
+    <p> {{ 'QuizDetailComponent.NbQuestions' | translate }} {{quiz.questions.length}}</p>
+    <p> {{ 'QuizDetailComponent.LastModification' | translate }} {{quiz.lastModification | date:'dd/MM/yyyy'}}</p>
+    <p> {{ 'QuizDetailComponent.Creator' | translate }} {{quiz.owner}}</p>
+    <app-quiz-view-rating [quizId]="quiz.id" />
+  </div>
+
+  <div class="right-info">
+    <p>{{ 'QuizDetailComponent.QuestionList' | translate }} </p>
+    <mat-list>
+      <mat-list-item *ngFor="let question of quiz.questions; let i = index" class="left-align">
+        {{ i + 1 }}. {{ 'QuestionTypes.' + question.type + 'Description' | translate }}: {{question.text}}
+      </mat-list-item>
+    </mat-list>
+  </div>
+</div>
+
+<div class="placeholder"></div>

@@ -1,0 +1,10 @@
+<div class="rating-container" *ngIf="((review | async) ?? (defaultReview)) as reviewInfo" [style.--floating-title-bg]="backgroundColor">
+    <span class="floating-title">{{ 'QuizViewRating.QuizRating' | translate }}</span>
+    <div class="star-rating">
+        <div class="rating-display">
+            <span class="rating-text">{{ reviewInfo.reviewCount }} {{ 'QuizViewRating.Reviews' | translate }}</span>
+            <span class="rating-number">{{ reviewInfo.averageScore | number:'1.1-1' }}</span>
+            <span class="rating-text">/5</span>
+        </div>
+    </div>
+</div>

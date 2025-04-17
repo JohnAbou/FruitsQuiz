@@ -1,0 +1,140 @@
+<div class="results-page">
+    <div class="results-container">
+        <ng-container *ngIf="gameType != 2; else survivalResult">
+            <app-result-winner />
+
+            <!-- Stats Carousel -->
+            <div class="stats-container">
+                <div class="carousel-wrapper">
+                    <!-- Vertical Carousel Controls -->
+                    <div class="carousel-controls">
+                        <div class="controls-container">
+                            <button 
+                                class="slide-indicator" 
+                                [class.active]="currentSlide === 0"
+                                (click)="goToSlide(0)">
+                                <mat-icon>leaderboard</mat-icon>
+                            </button>
+                            <button 
+                                *ngIf="challengeCode !== 0"
+                                class="slide-indicator" 
+                                [class.active]="currentSlide === 1"
+                                (click)="goToSlide(1)">
+                                <mat-icon>flag</mat-icon>
+                            </button>
+                            <button 
+                                class="slide-indicator" 
+                                [class.active]="currentSlide === (challengeCode !== 0 ? 2 : 1)"
+                                (click)="goToSlide(challengeCode !== 0 ? 2 : 1)">
+                                <mat-icon>analytics</mat-icon>
+                            </button>
+                            <button 
+                                *ngIf="(gameRole | async) != 1"
+                                class="slide-indicator" 
+                                [class.active]="currentSlide === (challengeCode !== 0 ? 3 : 2)"
+                                (click)="goToSlide(challengeCode !== 0 ? 3 : 2)">
+                                <mat-icon>emoji_events</mat-icon>
+                            </button>
+                            <button 
+                                *ngIf="(gameRole | async) != 1"
+                                class="slide-indicator" 
+                                [class.active]="currentSlide === (challengeCode !== 0 ? 4 : 3)"
+                                (click)="goToSlide(challengeCode !== 0 ? 4 : 3)">
+                                <mat-icon>monetization_on</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="carousel-container">
+                        <div class="carousel-track">
+                            <!-- Leaderboard Section -->
+                            <div class="carousel-slide" [class.active]="currentSlide === 0">
+                                <div class="stats-section">
+                                    <div class="stats-header">
+                                        <mat-icon>leaderboard</mat-icon>
+                                        <h2>{{ 'ResultView.Leaderboard' | translate }}</h2>
+                                    </div>
+                                    <div class="stats-content">
+                                        <app-leaderboard-player-list />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="carousel-slide" *ngIf="challengeCode !== 0" [class.active]="currentSlide === 1">
+                                <div class="stats-section">
+                                    <div class="stats-header">
+                                        <mat-icon>flag</mat-icon>
+                                        <h2>{{ 'ResultView.Challenges' | translate }}</h2>
+                                    </div>
+                                    <div class="stats-content">
+                                        <app-challenge-presentation />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Quiz Stats Section -->
+                            <div class="carousel-slide" [class.active]="currentSlide === (challengeCode !== 0 ? 2 : 1)">
+                                <div class="stats-section">
+                                    <div class="stats-header">
+                                        <mat-icon>analytics</mat-icon>
+                                        <h2>{{ 'ResultView.QuizStats' | translate }}</h2>
+                                    </div>
+                                    <div class="stats-content">
+                                        <app-results-stats-quiz />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Game Results Section -->
+                            <div class="carousel-slide" *ngIf="(gameRole | async) != 1" [class.active]="currentSlide === (challengeCode !== 0 ? 3 : 2)">
+                                <div class="stats-section">
+                                    <div class="stats-header">
+                                        <mat-icon>emoji_events</mat-icon>
+                                        <h2>{{ 'ResultView.Achivements' | translate }}</h2>
+                                    </div>
+                                    <div class="stats-content">
+                                        <app-game-results />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Game Loots Section -->
+                            <div class="carousel-slide" *ngIf="(gameRole | async) != 1" [class.active]="currentSlide === (challengeCode !== 0 ? 4 : 3)">
+                                <div class="stats-section">
+                                    <div class="stats-header">
+                                        <mat-icon>monetization_on</mat-icon>
+                                        <h2>{{ 'ResultView.GameLoot' | translate }}</h2>
+                                    </div>
+                                    <div class="stats-content">
+                                        <app-game-loots />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+
+        <ng-template #survivalResult>
+            <app-survival-result-view />
+        </ng-template>
+    </div>
+
+    <div class="button-container">
+        <button mat-raised-button color="primary" class="footer-button" (click)="quit()">
+            <mat-icon>exit_to_app</mat-icon>
+            {{ 'SurvivalResultView.Quit' | translate }}
+        </button>
+
+        <button *ngIf="gameType != 2" mat-raised-button color="primary" class="footer-button" (click)="previousSlide()">
+            <mat-icon>skip_previous</mat-icon>
+            {{ 'ResultView.PreviousSlide' | translate }}
+        </button>
+
+        <button *ngIf="gameType != 2" mat-raised-button color="primary" class="footer-button" (click)="nextSlide()">
+            <mat-icon>skip_next</mat-icon>
+            {{ 'ResultView.NextSlide' | translate }}
+        </button>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+:host {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    padding: 2% 0;
+    gap: 2.5%;
+}
+
+.achievement {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 22%;
+    margin-bottom: 2.5%;
+    aspect-ratio: 1/1;
+    background: var(--box-color);
+    border-radius: 12px;
+    border: 2px solid var(--sidebar-text);
+    color: var(--sidebar-text);
+    transition: transform 0.2s ease;
+    position: relative;
+}
+
+.achievement img {
+    width: 45%;
+    margin-bottom: 10%;
+}
+
+.achievement span {
+    width: 90%;
+    font-size: 1vw;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.achievement-title {
+    font-weight: 550;
+}

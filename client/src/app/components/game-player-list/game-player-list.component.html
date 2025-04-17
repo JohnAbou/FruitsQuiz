@@ -1,0 +1,15 @@
+<div>
+    <mat-card class="fruitz-card main-card">
+        <h2>{{ 'TemplateView.PlayerListTitle' | translate }}</h2>
+        <mat-divider style="border-top-width: 3px; margin: 12px 0; border-top-color: var(--primary-color)" />
+        <app-line-playerlist
+            [showScore]="isClassicalGame"
+            [showBonus]="false"
+            [showRoundSurvived]="!isClassicalGame"
+            [sortFunction]="sortFunction"
+            [reducedView]="true"
+            [displayHeader]="true"
+            [maxHeight]="'40vh'"
+        />
+    </mat-card>
+</div>

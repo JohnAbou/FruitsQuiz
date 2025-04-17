@@ -1,0 +1,32 @@
+.title-card {
+    color: var(--primary-color);
+    font-size: 48;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.card-container {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    text-align: center;
+    padding: 20px;
+    max-width: fit-content;
+}
+
+.title {
+    margin: 15px;
+    font-size: 32;
+    font-weight: 500;
+}
+
+.timer-container {
+    margin: 20px;
+}

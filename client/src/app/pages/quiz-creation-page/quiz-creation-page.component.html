@@ -1,0 +1,120 @@
+<app-default-page-template>
+  <div class="quiz-creation-container">
+    <div class="quiz-header">
+      <div class="quiz-meta-controls">
+        <div class="top-row">
+          <div class="form form-name">
+            <label for="quiz-name">{{ 'QuizCreation.QuizName' | translate }}</label>
+            <input type="text" id="quiz-name" [(ngModel)]="quiz.title" maxlength="70"/>
+            <small class="char-counter">{{ quiz.title.length }}/70</small>
+            <div *ngIf="quizValidationService.showValidation && !nameValidity.isValid" class="error-message">
+              {{ nameValidity.errorMessage }}
+            </div>
+          </div>
+
+          <div class="form form-duration">
+            <label for="quiz-duration">{{ 'QuizCreation.QuizDuration' | translate }}</label>
+            <input type="number" id="quiz-duration" [(ngModel)]="quiz.duration" min="10" max="60" step="1" />
+            <div *ngIf="quizValidationService.showValidation && !quizDurationValidity.isValid" class="error-message">
+              {{ quizDurationValidity.errorMessage }}
+            </div>
+          </div>
+
+          <div class="form form-visibility">
+            <mat-slide-toggle id="visibility-toggle" [(ngModel)]="quiz.isPublic" [disabled]="isVisibilityDisabled">
+              {{ ('QuizCreation.QuizPublic' | translate) }}
+            </mat-slide-toggle>
+          </div>
+
+          <button mat-raised-button color="primary" class="save-button" (click)="submitQuiz()">
+            <mat-icon>save</mat-icon>
+            {{ 'QuizCreation.SaveButton' | translate }}
+          </button>
+        </div>
+
+        <div class="bottom-row">
+          <div class="form form-description">
+            <label for="quiz-description">{{ 'QuizCreation.QuizDescription' | translate }}</label>
+            <input type="text" id="quiz-description" [(ngModel)]="quiz.description" maxlength="100" />
+            <div *ngIf="quizValidationService.showValidation && !quizDescriptioneValidity.isValid" class="error-message error-description">
+              {{ quizDescriptioneValidity.errorMessage }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="quiz-content">
+      <!-- Sidebar with question list -->
+      <div class="questions-sidebar">
+        <div class="sidebar-header">
+          <h3>{{ 'QuizCreation.QuestionList2' | translate }}</h3>
+          <div class="add-question-buttons">
+            <button mat-icon-button matTooltip="{{ 'QuestionTypes.QCMDescription' | translate }}" (click)="addQCMQuestion()">
+              <mat-icon>check_box</mat-icon>
+            </button>
+            <button mat-icon-button matTooltip="{{ 'QuestionTypes.QRLDescription' | translate }}" (click)="addQRLQuestion()">
+              <mat-icon>subject</mat-icon>
+            </button>
+            <button mat-icon-button matTooltip="{{ 'QuestionTypes.QREDescription' | translate }}" (click)="addQREQuestion()">
+              <mat-icon>calculate</mat-icon>
+            </button>
+            <button mat-icon-button matTooltip="{{ 'QuizCreation.ImportFromBank' | translate }}" (click)="openQuestionBankModal()">
+              <mat-icon>library_books</mat-icon>
+            </button>
+          </div>
+        </div>
+        
+        <mat-list class="questions-list">
+          <mat-list-item *ngFor="let question of quiz.questions; let i = index" 
+                         [class.selected]="selectedQuestionIndex === i"
+                         (click)="selectQuestion(i)">
+            <mat-icon matListItemIcon [ngSwitch]="question.type">
+              <ng-container *ngSwitchCase="'QCM'">check_box</ng-container>
+              <ng-container *ngSwitchCase="'QRL'">subject</ng-container>
+              <ng-container *ngSwitchCase="'QRE'">calculate</ng-container>
+            </mat-icon>
+            <div matListItemTitle class="question-list-title">
+              Question {{ i + 1 }}
+              <button mat-icon-button class="delete-button" (click)="$event.stopPropagation(); deleteQuestion(i)">
+                <mat-icon>clear</mat-icon>
+              </button>
+            </div>
+          </mat-list-item>
+        </mat-list>
+      </div>
+
+      <!-- Main content area -->
+      <div class="question-content" *ngIf="quiz.questions.length > 0">
+        <div class="question-navigation">
+          <button mat-icon-button [disabled]="selectedQuestionIndex === 0" (click)="navigateQuestion(-1)">
+            <mat-icon>chevron_left</mat-icon>
+          </button>
+          <span class="question-counter">{{ selectedQuestionIndex + 1 }} / {{ quiz.questions.length }}</span>
+          <button mat-icon-button [disabled]="selectedQuestionIndex === quiz.questions.length - 1" (click)="navigateQuestion(1)">
+            <mat-icon>chevron_right</mat-icon>
+          </button>
+        </div>
+
+        <div class="question-editor">
+          <ng-container *ngIf="quiz.questions[selectedQuestionIndex] as question">
+            <ng-container *ngIf="question.type === 'QCM'">
+              <app-question-modification-qcm [question]="question"></app-question-modification-qcm>
+            </ng-container>
+            <ng-container *ngIf="question.type === 'QRL'">
+              <app-question-modification-qrl [question]="question"></app-question-modification-qrl>
+            </ng-container>
+            <ng-container *ngIf="question.type === 'QRE'">
+              <app-question-modification-qre [question]="question"></app-question-modification-qre>
+            </ng-container>
+          </ng-container>
+        </div>
+      </div>
+
+      <div class="empty-state" *ngIf="quiz.questions.length === 0">
+        <mat-icon>quiz</mat-icon>
+        <p>{{ 'QuizCreation.NoQuestions' | translate }}</p>
+      </div>
+    </div>
+  </div>
+</app-default-page-template>

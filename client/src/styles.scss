@@ -1,0 +1,642 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+@include mat.core();
+
+// ===== LE MON THEME VARIABLES =====
+$lemon-primary: mat.define-palette(mat.$teal-palette);
+$lemon-accent: mat.define-palette(mat.$lime-palette);
+$lemon-warn: mat.define-palette(mat.$green-palette);
+$lemon-primary-5: rgb(0, 150, 136, 5%);
+$lemon-primary-10: rgb(0, 150, 136, 10%);
+$lemon-primary-30: rgb(0, 150, 136, 30%);
+$lemon-primary-60: rgb(0, 150, 136, 60%);
+$lemon-primary-80: rgb(0, 150, 136, 80%);
+$lemon-background: #dfffde;
+$lemon-sidebar: #a7e8a4;
+$lemon-header: #d1eed0;
+$lemon-text: #467a45;
+$lemon-box: #d1eed0;
+$lemon-accent-text: #009688;
+$lemon-sidebar-text: #618a5e;
+$lemon-sidebar-box: #badab8;
+$lemon-chat-box: #badab8;
+$lemon-chat-list-background: #7ba688e1;
+$lemon-chat-list-selected: #698d74e1;
+$lemon-chat-hover: #cddc39;
+$lemon-chat-input: #d1eed0;
+$lemon-sidebar-button-selected: #a2d39e;
+$lemon-game-card: #d1eed0;
+$lemon-scrollbar-thumb: #009688;
+$lemon-button-box: #009688;
+$lemon-button-text: white;
+$lemon-scrollbar-track: #2f2f2f;
+$lemon-qcm-bank: #c0f3d8;
+$lemon-qrl-bank: #8fd8b7;
+$lemon-qre-bank: #8adaa6e3;
+$lemon-box: #b4e5a8;
+$lemon-darker-box: #b1dca0;
+$lemon-achievement-box: #a2c794;
+$lemon-theme: mat.define-light-theme(
+    (
+        color: (
+            primary: $lemon-primary,
+            accent: $lemon-accent,
+            warn: $lemon-warn,
+        ),
+    )
+);
+
+// ===== ORANGES THEME VARIABLES =====
+$oranges-palette: (
+    50: #ffe0b2,
+    100: #ffcc80,
+    200: #ffb74d,
+    300: #ffa726,
+    400: #ff9800,
+    500: #fb8c00,
+    600: #f57c00,
+    700: #ef6c00,
+    800: #e65100,
+    contrast: (
+        500: white,
+    ),
+);
+$oranges-primary: mat.define-palette($oranges-palette, 100);
+$oranges-accent: mat.define-palette($oranges-palette, 400);
+$oranges-warn: mat.define-palette(mat.$deep-orange-palette);
+$oranges-primary-5: rgb(251, 140, 0, 5%);
+$oranges-primary-10: rgb(251, 140, 0, 10%);
+$oranges-primary-30: rgb(251, 140, 0, 30%);
+$oranges-primary-60: rgb(251, 140, 0, 60%);
+$oranges-primary-80: rgb(251, 140, 0, 80%);
+$oranges-background: #ffe9d6;
+$oranges-sidebar: #f4caaf;
+$oranges-header: #f2c69f;
+$oranges-text: #a56324;
+$oranges-box: #f2c69f;
+$oranges-accent-text: #ff9800;
+$oranges-sidebar-text: #a56324;
+$oranges-sidebar-box: #f4caaf;
+$oranges-chat-box: #f4caaf;
+$oranges-chat-list-background: #ffcc80;
+$oranges-chat-list-selected: #e6b16ae1;
+$oranges-chat-hover: #ff9800;
+$oranges-chat-input: #f2c69f;
+$oranges-sidebar-button-selected: #e1997a;
+$oranges-game-card: #f2c69f;
+$oranges-button-box: #ffcc80;
+$oranges-button-text: #000;
+$oranges-scrollbar-thumb: #ff9800;
+$oranges-scrollbar-track: #2f2f2f;
+$oranges-qcm-bank: #ff965c96;
+$oranges-qrl-bank: #ff9b76;
+$oranges-qre-bank: rgb(255 177 120 / 89%);
+$oranges-box: #e5caa8;
+$oranges-darker-box: #ddaf83;
+$oranges-achievement-box: #dcc1a0;
+
+$oranges-theme: mat.define-light-theme(
+    (
+        color: (
+            primary: $oranges-primary,
+            accent: $oranges-accent,
+            warn: $oranges-warn,
+        ),
+    )
+);
+
+// ===== STRAWBERRIES THEME VARIABLES =====
+$strawberries-palette: (
+    50: #ffebee,
+    100: #ffcdd2,
+    200: #ef9a9a,
+    300: #e57373,
+    400: #ef5350,
+    500: #f44336,
+    600: #e53935,
+    700: #d32f2f,
+    800: #c62828,
+    contrast: (
+        500: white,
+    ),
+);
+$strawberries-primary: mat.define-palette($strawberries-palette, 100);
+$strawberries-accent: mat.define-palette($strawberries-palette, 400);
+$strawberries-warn: mat.define-palette(mat.$red-palette);
+$strawberries-primary-5: rgb(244, 67, 54, 5%);
+$strawberries-primary-10: rgb(244, 67, 54, 10%);
+$strawberries-primary-30: rgb(244, 67, 54, 30%);
+$strawberries-primary-60: rgb(244, 67, 54, 60%);
+$strawberries-primary-80: rgb(244, 67, 54, 80%);
+$strawberries-background: #ffd6df;
+$strawberries-sidebar: #f4afc5;
+$strawberries-header: #f6bbcf;
+$strawberries-text: #a5245c;
+$strawberries-box: #f6bbcf;
+$strawberries-accent-text: #ef5350;
+$strawberries-sidebar-text: #a5245c;
+$strawberries-sidebar-box: #f4afc5;
+$strawberries-chat-box: #f4afc5;
+$strawberries-chat-list-background: #ffcdd2;
+$strawberries-chat-list-selected: #e699a0e1;
+$strawberries-chat-hover: #ef5350;
+$strawberries-chat-input: #f6bbcf;
+$strawberries-sidebar-button-selected: #e17aa7;
+$strawberries-game-card: #f6bbcf;
+$strawberries-button-box: #ffcdd2;
+$strawberries-button-text: #000;
+$strawberries-scrollbar-thumb: #ef5350;
+$strawberries-scrollbar-track: #2f2f2f;
+$strawberries-qcm-bank: #ff5c6d96;
+$strawberries-qrl-bank: #f54f4fa1;
+$strawberries-qre-bank: rgb(255 161 175 / 89%);
+$strawberries-box: #e5a8a8;
+$strawberries-darker-box: #d78f84;
+$strawberries-achievement-box: #dca7a0;
+
+$strawberries-theme: mat.define-light-theme(
+    (
+        color: (
+            primary: $strawberries-primary,
+            accent: $strawberries-accent,
+            warn: $strawberries-warn,
+        ),
+    )
+);
+
+// ===== BLUEBERRIES THEME VARIABLES =====
+$blueberries-palette: (
+    50: #e3f2fd,
+    100: #bbdefb,
+    200: #90caf9,
+    300: #64b5f6,
+    400: #42a5f5,
+    500: #2196f3,
+    600: #1e88e5,
+    700: #1976d2,
+    800: #1565c0,
+    contrast: (
+        500: white,
+    ),
+);
+$blueberries-primary: mat.define-palette($blueberries-palette, 100);
+$blueberries-accent: mat.define-palette($blueberries-palette, 400);
+$blueberries-warn: mat.define-palette(mat.$blue-grey-palette);
+$blueberries-primary-5: rgb(33, 150, 243, 5%);
+$blueberries-primary-10: rgb(33, 150, 243, 10%);
+$blueberries-primary-30: rgb(33, 150, 243, 30%);
+$blueberries-primary-60: rgb(33, 150, 243, 60%);
+$blueberries-primary-80: rgb(33, 150, 243, 80%);
+$blueberries-background: #d6ecff;
+$blueberries-sidebar: #afd0f4;
+$blueberries-header: #bbd2f6;
+$blueberries-text: #243ea5;
+$blueberries-box: #bbd2f6;
+$blueberries-accent-text: #42a5f5;
+$blueberries-sidebar-text: #243ea5;
+$blueberries-sidebar-box: #afd0f4;
+$blueberries-chat-box: #afd0f4;
+$blueberries-chat-list-background: #bbdefb;
+$blueberries-chat-list-selected: #90bce0e1;
+$blueberries-chat-hover: #42a5f5;
+$blueberries-chat-input: #bbd2f6;
+$blueberries-sidebar-button-selected: #7ab3e1;
+$blueberries-game-card: #bbd2f6;
+$blueberries-button-box: #bbdefb;
+$blueberries-button-text: #000;
+$blueberries-scrollbar-thumb: #42a5f5;
+$blueberries-scrollbar-track: #2f2f2f;
+$blueberries-qcm-bank: #a69ef396;
+$blueberries-qrl-bank: #6d5ff1a1;
+$blueberries-qre-bank: rgb(161 169 255 / 89%);
+$blueberries-box: #a8cbe5;
+$blueberries-darker-box: #84b3d7;
+$blueberries-achievement-box: #a0c4dc;
+
+$blueberries-theme: mat.define-light-theme(
+    (
+        color: (
+            primary: $blueberries-primary,
+            accent: $blueberries-accent,
+            warn: $blueberries-warn,
+        ),
+    )
+);
+
+$watermelon-green-palette: (
+    50: #e3f8e7,
+    100: #c1eac5,
+    200: #a3dbb4,
+    300: #7bc47f,
+    400: #57ae5b,
+    500: #3f9142,
+    600: #2f8132,
+    700: #207227,
+    800: #1a5e20,
+    900: #0f4210,
+    contrast: (
+        500: white,
+    ),
+);
+$watermelon-red-palette: (
+    50: #ffe8e8,
+    100: #ffcfcf,
+    200: #ffb6b6,
+    300: #ff9d9d,
+    400: #ff8a8a,
+    500: #ff7676,
+    600: #ff5f5f,
+    700: #ff4848,
+    800: #ff3333,
+    900: #ff1e1e,
+    contrast: (
+        500: white,
+    ),
+);
+$watermelon-primary: mat.define-palette($watermelon-green-palette, 100);
+$watermelon-accent: mat.define-palette($watermelon-red-palette, 400);
+$watermelon-warn: mat.define-palette(mat.$red-palette);
+$watermelon-primary-5: rgb(63, 145, 66, 5%);
+$watermelon-primary-10: rgb(63, 145, 66, 10%);
+$watermelon-primary-30: rgb(63, 145, 66, 30%);
+$watermelon-primary-60: rgb(63, 145, 66, 60%);
+$watermelon-primary-80: rgb(63, 145, 66, 80%);
+$watermelon-background: #e6f5e6;
+$watermelon-sidebar: #c2e0c2;
+$watermelon-header: #b3d9b3;
+$watermelon-text: #2f4f2f;
+$watermelon-box: #b3d9b3;
+$watermelon-accent-text: #ff7676;
+$watermelon-sidebar-text: #2f4f2f;
+$watermelon-sidebar-box: #d0ead0;
+$watermelon-chat-box: #d0ead0;
+$watermelon-chat-list-background: #ffcfcf;
+$watermelon-chat-list-selected: #ffb6b6;
+$watermelon-chat-hover: #ff9d9d;
+$watermelon-chat-input: #b3d9b3;
+$watermelon-sidebar-button-selected: #a8d3a8;
+$watermelon-game-card: #b3d9b3;
+$watermelon-scrollbar-thumb: #3f9142;
+$watermelon-scrollbar-track: #2f2f2f;
+$watermelon-button-box: #ff7676;
+$watermelon-button-text: white;
+$watermelon-qcm-bank: #d0f0c0;
+$watermelon-qrl-bank: #f5c6cb;
+$watermelon-qre-bank: rgb(255 200 200 / 89%);
+$watermelon-darker-box: #84b3d7;
+$watermelon-achievement-box: #a0c4dc;
+$watermelon-theme: mat.define-light-theme(
+    (
+        color: (
+            primary: $watermelon-primary,
+            accent: $watermelon-accent,
+            warn: $watermelon-warn,
+        ),
+    )
+);
+
+// ===== THEME-SPECIFIC STYLES =====
+body.lemon-theme {
+    @include mat.all-component-themes($lemon-theme);
+    --primary-color: #{mat.get-color-from-palette($lemon-primary, 500)};
+    --accent-color: #{mat.get-color-from-palette($lemon-accent, 500)};
+    --warn-color: #{mat.get-color-from-palette($lemon-warn, 500)};
+    --primary-color-5: #{$lemon-primary-5};
+    --primary-color-10: #{$lemon-primary-10};
+    --primary-color-30: #{$lemon-primary-30};
+    --primary-color-60: #{$lemon-primary-60};
+    --primary-color-80: #{$lemon-primary-80};
+    --background-color: #{$lemon-background};
+    --sidebar-color: #{$lemon-sidebar};
+    --header-color: #{$lemon-header};
+    --text-color: #{$lemon-text};
+    --box-color: #{$lemon-box};
+    --accent-text: #{$lemon-accent-text};
+    --sidebar-text: #{$lemon-sidebar-text};
+    --sidebar-box: #{$lemon-sidebar-box};
+    --chat-box: #{$lemon-chat-box};
+    --chat-list-background: #{$lemon-chat-list-background};
+    --chat-list-selected: #{$lemon-chat-list-selected};
+    --chat-hover: #{$lemon-chat-hover};
+    --chat-input: #{$lemon-chat-input};
+    --sidebar-button-selected: #{$lemon-sidebar-button-selected};
+    --game-card: #{$lemon-game-card};
+    --scrollbar-thumb: #{$lemon-scrollbar-thumb};
+    --scrollbar-track: #{$lemon-scrollbar-track};
+    --button-box: #{$lemon-button-box};
+    --button-text: #{$lemon-button-text};
+    --qcm-bank: #{$lemon-qcm-bank};
+    --qrl-bank: #{$lemon-qrl-bank};
+    --qre-bank: #{$lemon-qre-bank};
+    --flexbox: #{$lemon-box};
+    --darker-box: #{$lemon-darker-box};
+    --achievement-box: #{$lemon-achievement-box};
+    --logo-url: url('/assets/logo.png');
+    --logo-url: url(./assets/logo.png);
+    --background-url: url(./assets/lemonbackground.png);
+    --site-name: 'FRUITS QUIZ';
+}
+
+body.oranges-theme {
+    @include mat.all-component-colors($oranges-theme);
+    --primary-color: #{mat.get-color-from-palette($oranges-primary, 500)};
+    --accent-color: #{mat.get-color-from-palette($oranges-accent, 500)};
+    --warn-color: #{mat.get-color-from-palette($oranges-warn, 500)};
+    --primary-color-5: #{$oranges-primary-5};
+    --primary-color-10: #{$oranges-primary-10};
+    --primary-color-30: #{$oranges-primary-30};
+    --primary-color-60: #{$oranges-primary-60};
+    --primary-color-80: #{$oranges-primary-80};
+    --background-color: #{$oranges-background};
+    --sidebar-color: #{$oranges-sidebar};
+    --header-color: #{$oranges-header};
+    --text-color: #{$oranges-text};
+    --box-color: #{$oranges-box};
+    --accent-text: #{$oranges-accent-text};
+    --sidebar-text: #{$oranges-sidebar-text};
+    --sidebar-box: #{$oranges-sidebar-box};
+    --chat-box: #{$oranges-chat-box};
+    --chat-list-background: #{$oranges-chat-list-background};
+    --chat-list-selected: #{$oranges-chat-list-selected};
+    --chat-hover: #{$oranges-chat-hover};
+    --chat-input: #{$oranges-chat-input};
+    --sidebar-button-selected: #{$oranges-sidebar-button-selected};
+    --game-card: #{$oranges-game-card};
+    --scrollbar-thumb: #{$oranges-scrollbar-thumb};
+    --scrollbar-track: #{$oranges-scrollbar-track};
+    --button-box: #{$oranges-button-box};
+    --button-text: #{$oranges-button-text};
+    --qcm-bank: #{$oranges-qcm-bank};
+    --qrl-bank: #{$oranges-qrl-bank};
+    --qre-bank: #{$oranges-qre-bank};
+    --logo-url: url(./assets/orangeslogo.png);
+    --background-url: url(./assets/orangesbackground.png);
+    --site-name: 'ORANGE QUIZ';
+    --flexbox: #{$oranges-box};
+    --darker-box: #{$oranges-darker-box};
+    --achievement-box: #{$oranges-achievement-box};
+    --logo-url: url('./assets/orangeslogo.png');
+    --site-name: 'FRUITS QUIZ';
+}
+
+body.strawberries-theme {
+    @include mat.all-component-colors($strawberries-theme);
+    --primary-color: #{mat.get-color-from-palette($strawberries-primary, 500)};
+    --accent-color: #{mat.get-color-from-palette($strawberries-accent, 500)};
+    --warn-color: #{mat.get-color-from-palette($strawberries-warn, 500)};
+    --primary-color-5: #{$strawberries-primary-5};
+    --primary-color-10: #{$strawberries-primary-10};
+    --primary-color-30: #{$strawberries-primary-30};
+    --primary-color-60: #{$strawberries-primary-60};
+    --primary-color-80: #{$strawberries-primary-80};
+    --background-color: #{$strawberries-background};
+    --sidebar-color: #{$strawberries-sidebar};
+    --header-color: #{$strawberries-header};
+    --text-color: #{$strawberries-text};
+    --box-color: #{$strawberries-box};
+    --accent-text: #{$strawberries-accent-text};
+    --sidebar-text: #{$strawberries-sidebar-text};
+    --sidebar-box: #{$strawberries-sidebar-box};
+    --chat-box: #{$strawberries-chat-box};
+    --chat-list-background: #{$strawberries-chat-list-background};
+    --chat-list-selected: #{$strawberries-chat-list-selected};
+    --chat-hover: #{$strawberries-chat-hover};
+    --chat-input: #{$strawberries-chat-input};
+    --sidebar-button-selected: #{$strawberries-sidebar-button-selected};
+    --game-card: #{$strawberries-game-card};
+    --scrollbar-thumb: #{$strawberries-scrollbar-thumb};
+    --scrollbar-track: #{$strawberries-scrollbar-track};
+    --button-box: #{$strawberries-button-box};
+    --button-text: #{$strawberries-button-text};
+    --qcm-bank: #{$strawberries-qcm-bank};
+    --qrl-bank: #{$strawberries-qrl-bank};
+    --qre-bank: #{$strawberries-qre-bank};
+    --logo-url: url(./assets/strawberrylogo.png);
+    --background-url: url(./assets/strawberrybackground.png);
+    --flexbox: #{$strawberries-box};
+    --darker-box: #{$strawberries-darker-box};
+    --achievement-box: #{$strawberries-achievement-box};
+    --logo-url: url('./assets/strawberrylogo.png');
+    --site-name: 'FRUITS QUIZ';
+}
+
+body.blueberries-theme {
+    @include mat.all-component-colors($blueberries-theme);
+    --primary-color: #{mat.get-color-from-palette($blueberries-primary, 500)};
+    --accent-color: #{mat.get-color-from-palette($blueberries-accent, 500)};
+    --warn-color: #{mat.get-color-from-palette($blueberries-warn, 500)};
+    --primary-color-5: #{$blueberries-primary-5};
+    --primary-color-10: #{$blueberries-primary-10};
+    --primary-color-30: #{$blueberries-primary-30};
+    --primary-color-60: #{$blueberries-primary-60};
+    --primary-color-80: #{$blueberries-primary-80};
+    --background-color: #{$blueberries-background};
+    --sidebar-color: #{$blueberries-sidebar};
+    --header-color: #{$blueberries-header};
+    --text-color: #{$blueberries-text};
+    --box-color: #{$blueberries-box};
+    --accent-text: #{$blueberries-accent-text};
+    --sidebar-text: #{$blueberries-sidebar-text};
+    --sidebar-box: #{$blueberries-sidebar-box};
+    --chat-box: #{$blueberries-chat-box};
+    --chat-list-background: #{$blueberries-chat-list-background};
+    --chat-list-selected: #{$blueberries-chat-list-selected};
+    --chat-hover: #{$blueberries-chat-hover};
+    --chat-input: #{$blueberries-chat-input};
+    --sidebar-button-selected: #{$blueberries-sidebar-button-selected};
+    --game-card: #{$blueberries-game-card};
+    --scrollbar-thumb: #{$blueberries-scrollbar-thumb};
+    --scrollbar-track: #{$blueberries-scrollbar-track};
+    --button-box: #{$blueberries-button-box};
+    --button-text: #{$blueberries-button-text};
+    --qcm-bank: #{$blueberries-qcm-bank};
+    --qrl-bank: #{$blueberries-qrl-bank};
+    --qre-bank: #{$blueberries-qre-bank};
+    --flexbox: #{$blueberries-box};
+    --darker-box: #{$blueberries-darker-box};
+    --achievement-box: #{$blueberries-achievement-box};
+    --logo-url: url(./assets/blueberrylogo1.png);
+    --background-url: url(./assets/blueberrybackground.png);
+    --background-url: url(/assets/blueberrybackground.png);
+    --site-name: 'FRUITS QUIZ';
+}
+
+body.watermelon-theme {
+    @include mat.all-component-colors($watermelon-theme);
+    --primary-color: #{mat.get-color-from-palette($watermelon-primary, 500)};
+    --accent-color: #{mat.get-color-from-palette($watermelon-accent, 500)};
+    --warn-color: #{mat.get-color-from-palette($watermelon-warn, 500)};
+    --primary-color-with-opacity: rgba(var(--primary-color), 0.3);
+    --primary-color-5: #{$watermelon-primary-5};
+    --primary-color-10: #{$watermelon-primary-10};
+    --primary-color-30: #{$watermelon-primary-30};
+    --primary-color-60: #{$watermelon-primary-60};
+    --primary-color-80: #{$watermelon-primary-80};
+    --background-color: #{$watermelon-background};
+    --sidebar-color: #{$watermelon-sidebar};
+    --header-color: #{$watermelon-header};
+    --text-color: #{$watermelon-text};
+    --box-color: #{$watermelon-box};
+    --accent-text: #{$watermelon-accent-text};
+    --sidebar-text: #{$watermelon-sidebar-text};
+    --sidebar-box: #{$watermelon-sidebar-box};
+    --chat-box: #{$watermelon-chat-box};
+    --chat-list-background: #{$watermelon-chat-list-background};
+    --chat-list-selected: #{$watermelon-chat-list-selected};
+    --chat-hover: #{$watermelon-chat-hover};
+    --chat-input: #{$watermelon-chat-input};
+    --sidebar-button-selected: #{$watermelon-sidebar-button-selected};
+    --game-card: #{$watermelon-game-card};
+    --scrollbar-thumb: #{$watermelon-scrollbar-thumb};
+    --scrollbar-track: #{$watermelon-scrollbar-track};
+    --button-box: #{$watermelon-button-box};
+    --button-text: #{$watermelon-button-text};
+    --qcm-bank: #{$watermelon-qcm-bank};
+    --qrl-bank: #{$watermelon-qrl-bank};
+    --qre-bank: #{$watermelon-qre-bank};
+    --flexbox: #{$watermelon-box};
+    --darker-box: #{$watermelon-darker-box};
+    --achievement-box: #{$watermelon-achievement-box};
+    --logo-url: url(./assets/watermelonlogo.png);
+    --background-url: url(./assets/watermelonbackground.png);
+    --site-name: 'FRUITS QUIZ';
+}
+
+body.bg-none {
+    background-image: none;
+}
+
+body.bg-lemon,
+body.bg-oranges,
+body.bg-strawberries,
+body.bg-blueberries,
+body.bg-watermelon {
+    position: relative;
+}
+
+body.bg-lemon::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(./assets/lemonbackground.png);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    opacity: 0.5;
+    z-index: -1;
+}
+
+body.bg-oranges::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(./assets/orangesbackground.png);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    opacity: 0.5;
+    z-index: -1;
+}
+
+body.bg-strawberries::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(./assets/strawberrybackground.png);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    opacity: 0.5;
+    z-index: -1;
+}
+
+body.bg-blueberries::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(./assets/blueberrybackground.png);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    opacity: 0.5;
+    z-index: -1;
+}
+
+body.bg-watermelon::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(./assets/watermelonbackground.png);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    opacity: 0.5;
+    z-index: -1;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
+    background-color: var(--background-color);
+}
+
+.fruitz-title {
+    text-align: center;
+    font-size: 44px;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.fruitz-card {
+    border-radius: 20px !important;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2) !important;
+}
+
+.fruitz-icon {
+    color: var(--primary-color);
+    cursor: pointer;
+    padding: 8px;
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+.fruitz-scroll::-webkit-scrollbar {
+    width: 4px;
+}
+
+.fruitz-scroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.fruitz-scroll::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+    opacity: 0.4;
+    border-radius: 20px;
+}
+
+.fruitz-scroll::-webkit-scrollbar-thumb:hover {
+    opacity: 0.6;
+}

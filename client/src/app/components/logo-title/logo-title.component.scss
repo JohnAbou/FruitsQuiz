@@ -1,0 +1,26 @@
+#lemon-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    height: 100%;
+}
+
+#lemon-container img {
+    width: 4vw;
+    height: 6vh;
+    object-fit: contain;
+}
+
+#label {
+    color: var(--text-color);
+    font-family: 'Jua-Regular', Helvetica;
+    font-weight: 600;
+    font-size: 1vw;
+    display: flex;
+    align-items: center;
+    margin-left: 2px;
+}
+
+#header-logo {
+    background-image: var(--logo-url);
+}

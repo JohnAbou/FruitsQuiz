@@ -1,0 +1,15 @@
+<ng-container *ngIf="(review | async) ?? defaultReview as reviewInfo">
+    <div class="rating-container" *ngIf="!isSpecialQuiz">
+        <div class="star-rating">
+            <span class="rating-number">{{ reviewInfo.averageScore | number:'1.1-1' }}</span>
+            <span class="rating-text">/5</span>
+            <span class="review-count">({{ reviewInfo.reviewCount }} {{ 'QuizViewRating.Reviews' | translate }})</span>
+        </div>
+    </div>
+</ng-container>
+
+<div class="rating-container" *ngIf="isSpecialQuiz">
+    <div class="star-rating">
+        <span class="rating-text">{{ 'QuizViewRating.Unrateable' | translate }}</span>
+    </div>
+</div>

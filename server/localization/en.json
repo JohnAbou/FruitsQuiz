@@ -1,0 +1,20 @@
+{
+    "accountValidation": {
+      "usernameRequired": "Username is required.",
+      "usernameInvalid": "Username cannot contain special characters.",
+      "usernameSystem" : "Username cannot contain system reserved words.",
+      "usernameLength": "Username must be between 4 and 12 characters.",
+      "passwordRequired": "Password is required.",
+      "passwordLength": "Password must be at least 5 characters long.",
+      "passwordInvalid": "Password can only contain letters, numbers, and special characters.",
+      "emailRequired": "Email is required.",
+      "emailInvalid": "Email must be in the format example@domain.com.",
+      "passwordMismatch": "Passwords do not match.",
+      "usernameTaken": "Username is already in use.",
+      "emailTaken": "Email is already in use.",
+      "incorrectCredentials": "Incorrect credentials.",
+      "alreadyLoggedIn": "You are already logged in on another device.",
+      "missingFields": "Please fill in all fields."
+    }
+  }
+  

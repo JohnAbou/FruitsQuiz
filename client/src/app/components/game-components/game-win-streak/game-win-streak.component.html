@@ -1,0 +1,29 @@
+<ng-container *ngIf="winStreakUpdate | async as update">
+    <div class="win-streak-container" [ngClass]="{
+        'streak-lost': update.wsState === 1,
+        'streak-improved': update.wsState === 2,
+        'streak-best': update.wsState === 3,
+      }">
+        <div class="win-streak-icon">
+            <ng-container [ngSwitch]="update.wsState">
+                <i *ngSwitchCase="1" class="fas fa-times"></i>
+                <i *ngSwitchCase="2" class="fas fa-arrow-up"></i>
+                <i *ngSwitchCase="3" class="fas fa-trophy"></i>
+                <i *ngSwitchDefault class="fas fa-fire"></i>
+            </ng-container>
+        </div>
+        <div class="win-streak-content">
+            <div class="win-streak-status">
+                <ng-container [ngSwitch]="update.wsState">
+                    <span *ngSwitchCase="1">{{ 'GameWinStreak.StreakLost' | translate }}</span>
+                    <span *ngSwitchCase="2">{{ 'GameWinStreak.StreakImproved' | translate }}</span>
+                    <span *ngSwitchCase="3">{{ 'GameWinStreak.StreakBest' | translate }}</span>
+                </ng-container>
+            </div>
+            <div class="win-streak-number">
+                <i class="fas fa-fire mr-2"></i>
+                <div class="placeholder"> </div>{{ update.current }}
+            </div>
+        </div>
+    </div>
+</ng-container>

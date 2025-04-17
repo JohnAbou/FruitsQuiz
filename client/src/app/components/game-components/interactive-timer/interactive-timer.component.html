@@ -1,0 +1,15 @@
+<mat-card class="card-container">
+    <div class="timer-container">
+        <app-game-countdown [radius]="50"></app-game-countdown>
+    </div>
+
+    <div class="button-container">
+        <button [disabled]="(canToggleStopObservable | async) === false" (click)="toggleStop()" mat-raised-button color="primary">
+            <img [src]="iconPausePath" width="30" height="30" alt="Pause" />
+        </button>
+
+        <button [disabled]="(canStartPanicObservable | async) === false" (click)="startPanic()" mat-raised-button color="primary">
+            <img [src]="iconPanicPath" width="30" height="30" alt="Panic" />
+        </button>
+    </div>
+</mat-card>

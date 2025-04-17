@@ -1,0 +1,10 @@
+<div class="top">
+    <button mat-icon-button (click)="backToList()" color="primary">
+        <mat-icon>arrow_back</mat-icon>
+    </button>
+    <p class="quiz-title">{{ 'SurvivalQuizDetailsComponent.SurvivalQuiz' | translate }}</p>
+</div>
+
+<p>{{ 'SurvivalQuizDetailsComponent.RandomSelection' | translate }}</p>
+<p>{{ 'SurvivalQuizDetailsComponent.TimeToRespond' | translate }}</p>
+<app-question-count-selection />

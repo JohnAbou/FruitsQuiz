@@ -1,0 +1,58 @@
+<app-game-question-info-header />
+
+<div class="game-section">
+    <div class="left-side-container">
+        <div class="game-controls">
+            <div style="height: 25px;"></div>
+            <ng-container *ngIf="userRole === 1; else countdown">
+                <app-interactive-timer [radius]="50" />
+            </ng-container>
+            <ng-template #countdown>
+                <app-game-countdown [radius]="50" />
+            </ng-template>
+            <ng-container *ngIf="userRole !== 1">
+                <app-game-score />
+            </ng-container>
+            
+            <app-game-buy-hint *ngIf="userRole === 0" class="no-padding" />
+
+            <ng-container *ngIf="userRole === 1">
+                <app-game-organizer-control class="no-padding" />
+            </ng-container>
+        </div>
+    </div>
+
+    <div class="question-container">
+        <div class="image-section">
+            <div class="question-image-wrapper" *ngIf="question.imageId">
+                <app-image-view [imageId]="question.imageId" [uploadType]="'question'"></app-image-view>
+            </div>
+        </div>
+        
+        <div class="answer-section">
+            <ng-container *ngIf="question.type === 'QCM'">
+                <app-answer-qcm [isInteractive]="userRole === 0" />
+            </ng-container>
+            <ng-container *ngIf="question.type === 'QRL'">
+                <app-answer-qrl [isInteractive]="userRole === 0" />
+            </ng-container>
+            <ng-container *ngIf="question.type === 'QRE'">
+                <ng-container *ngIf="userRole === 1">
+                    <app-game-correct-answer-qre [question]="question"></app-game-correct-answer-qre>
+                </ng-container>
+                <app-answer-qre [isInteractive]="userRole === 0" />
+            </ng-container>
+        </div>
+        
+        <div class="button-section">
+            <ng-container *ngIf="userRole === 0">
+                <button mat-raised-button class="submit-button" [color]="'primary'" [disabled]="!canSubmitAnswer()" (click)="submitButtonHandler()">
+                    {{ 'PlayerGameView.Submit' | translate }}
+                </button>
+            </ng-container>
+        </div>
+    </div>
+
+    <app-game-player-list *ngIf="gameType !== 2" [userRole]="userRole" />
+    <app-survival-mode-progression *ngIf="gameType === 2"/>
+</div>

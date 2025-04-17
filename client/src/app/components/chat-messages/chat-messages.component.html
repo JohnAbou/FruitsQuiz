@@ -1,0 +1,39 @@
+<div class="chat-container">
+    <div class="messages" #scrollContainer>
+        <div *ngFor="let message of translateMessages(messages)" [ngClass]="getMessageClass(message)">
+            <div *ngIf="message.user === username" class="message-user-info me">
+                <span class="message-user">{{ message.user }}</span>
+                <span>
+                    <app-profile-avatar-icon
+                        *ngIf="message.user !== 'System' && message.user !== 'Système'"
+                        [user]="getFriendUser(message.user)!"
+                        [size]="'30px'"
+                    />
+                </span>
+            </div>
+            <div *ngIf="message.user !== username && !(message.user === 'System' || message.user === 'Système')" class="message-user-info other">
+                <span>
+                    <app-profile-avatar-icon
+                        *ngIf="message.user !== 'System' && message.user !== 'Système'"
+                        [user]="getFriendUser(message.user)!"
+                        [size]="'30px'"
+                    />
+                </span>
+                <span class="message-user">{{ message.user }}</span>
+            </div>
+            <div *ngIf="message.user === 'System' || message.user === 'Système'" class="message-user-info system">
+                <span class="message-user">{{ message.user }}</span>
+            </div>
+            <div class="message" [ngClass]="getMessageClass(message)">
+                <span class="message-content">{{ message.content }}</span>
+                <span class="message-time">{{ message.time | date: 'HH:mm:ss' }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="chat-input">
+        <input [disabled]="isBanned" [(ngModel)]="newMessage" maxlength="200" type="text" (keydown.enter)="sendMessage()" #inputElement />
+        <button [disabled]="isBanned" (click)="sendMessage(); keepFocus(inputElement)">
+            <i class="fa fa-paper-plane"> </i>
+        </button>
+    </div>
+</div>

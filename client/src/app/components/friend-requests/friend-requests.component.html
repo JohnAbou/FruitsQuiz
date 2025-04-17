@@ -1,0 +1,51 @@
+<mat-card class="main-card fruitz-card">
+    <mat-card-header class="card-header bottom-border">
+        <mat-card-title class="card-title">{{ 'FriendRequests.Title' | translate }}</mat-card-title>
+    </mat-card-header>
+
+    <div class="custom-tabs-header bottom-border">
+        <div class="tab-button" [class.active]="activeTab === 'received'" (click)="activeTab = 'received'">
+            {{ 'FriendRequests.ReceivedRequests' | translate }}
+        </div>
+        <div class="tab-button" [class.active]="activeTab === 'sent'" (click)="activeTab = 'sent'">
+            {{ 'FriendRequests.SentRequests' | translate }}
+        </div>
+    </div>
+
+    <mat-card-content class="card-content">
+        <div class="requests-container">
+            <div class="tab-content" *ngIf="activeTab === 'received'">
+                <div *ngFor="let request of (receivedRequest | async)" class="request-item bottom-border">
+                    <div class="user-info">
+                        <app-profile-avatar-icon [user]="getFriendUser(request.senderUsername)!" [size]="'30px'" />
+                        <h3 class="request-username">{{ request.senderUsername }}</h3>
+                    </div>
+                    <div>
+                        <mat-icon (click)="answerRequest(request.id, true)" class="fruitz-icon">check_circle</mat-icon>
+                        <mat-icon (click)="answerRequest(request.id, false)" class="fruitz-icon">cancel</mat-icon>
+                    </div>
+                </div>
+
+                <div *ngIf="(receivedRequest | async)?.length === 0" class="no-results">
+                    {{ 'FriendRequests.NoReceivedRequests' | translate }}
+                </div>
+            </div>
+
+            <div class="tab-content" *ngIf="activeTab === 'sent'">
+                <div *ngFor="let request of (sentRequest | async)" class="request-item bottom-border">
+                    <div class="user-info">
+                        <app-profile-avatar-icon [user]="getFriendUser(request.receiverUsername)!" [size]="'30px'" />
+                        <h3 class="request-username">{{ request.receiverUsername }}</h3>
+                    </div>
+                    <mat-icon (click)="deleteRequest(request.receiverUsername)" class="fruitz-icon">cancel</mat-icon>
+                </div>
+
+                <div *ngIf="(sentRequest | async)?.length === 0" class="no-results">
+                    {{ 'FriendRequests.NoSentRequests' | translate }}
+                </div>
+            </div>
+        </div>
+    </mat-card-content>
+
+    <mat-card-footer class="card-footer"></mat-card-footer>
+</mat-card>

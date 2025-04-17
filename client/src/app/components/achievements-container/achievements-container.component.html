@@ -1,0 +1,35 @@
+<div class="achievement">
+    <img src="./assets/badges/bestStreak-removebg-preview.png" alt="Badge" />
+    <span class="achievement-title">{{'LeaderboardPage.BestStreak' | translate}}</span>
+    <span class="achievement-value">{{ stats?.bestWinStreak ?? 0 }}</span>
+</div>
+<div class="achievement">
+    <img src="./assets/badges/currentStreak-removebg-preview.png" alt="Badge" />
+    <span class="achievement-title">{{'LeaderboardPage.CurrentStreak' | translate}}</span>
+    <span class="achievement-value">{{ stats?.currentWinStreak ?? 0 }}</span>
+</div>
+<div class="achievement">
+    <img src="./assets/badges/totalGames-removebg-preview.png" alt="Badge" />
+    <span class="achievement-title">{{'LeaderboardPage.GamesWon' | translate}}</span>
+    <span class="achievement-value">{{ stats?.totalGameWon ?? 0 }}</span>
+</div>
+<div class="achievement">
+    <img src="./assets/badges/totalPoints-removebg-preview.png" alt="Badge" />
+    <span class="achievement-title">{{'LeaderboardPage.Points' | translate}}</span>
+    <span class="achievement-value">{{ stats?.totalPoints ?? 0 }}</span>
+</div>
+<div class="achievement">
+    <img src="./assets/badges/coinsSpent-removebg-preview.png" alt="Badge" />
+    <span class="achievement-title">{{'LeaderboardPage.CoinsSpent' | translate}}</span>
+    <span class="achievement-value">{{ stats?.coinSpent ?? 0 }}</span>
+</div>
+<div class="achievement">
+    <img src="./assets/badges/coinsSpent-removebg-preview.png" alt="Badge" />
+    <span class="achievement-title">{{'LeaderboardPage.CoinsGained' | translate}}</span>
+    <span class="achievement-value">{{ stats?.coinGained ?? 0 }}</span>
+</div>
+<div class="achievement">
+    <img src="./assets/badges/gameTime-removebg-preview.png" alt="Badge" />
+    <span class="achievement-title">{{'LeaderboardPage.GameTime' | translate}}</span>
+    <span class="achievement-value">{{ formattedGameTime }}</span>
+</div>

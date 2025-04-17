@@ -1,0 +1,59 @@
+.next-question-button {
+    width: 100%;
+    max-width: 370px;
+    min-height: 70px;
+    font-size: 1.2rem;
+    font-weight: 800;
+    border-radius: 14px;
+    padding: 0; /* Remove internal padding to prevent clipping */
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    overflow: visible; /* Important: prevent icon from being clipped */
+  
+    &:hover:not(:disabled) {
+      transform: scale(1.05);
+      background-color: var(--accent-color); // or darken it
+    }
+  
+    &:active:not(:disabled) {
+      transform: scale(0.98);
+    }
+  
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      background-color: #ccc;
+      color: #888;
+      box-shadow: none;
+    }
+  }
+  
+  .button-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .button-label {
+    flex-grow: 1;
+    text-align: left;
+  }
+  
+  .next-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    margin-left: 16px;
+  }
+  
+  
+  
+  
+  

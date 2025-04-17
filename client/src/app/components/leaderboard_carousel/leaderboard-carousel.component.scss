@@ -1,0 +1,78 @@
+.carousel-container {
+    width: 95%;
+    max-width: 95%;
+    overflow: hidden;
+    background-color: var(--game-card);
+    border: 2px solid var(--chat-hover);
+    border-radius: 12px;
+    padding: 12px 0;
+    box-sizing: border-box;
+    margin: 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: var(--text-color);
+    position: relative;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: var(--game-card);
+      opacity: 0.1;
+      z-index: 1;
+    }
+  }
+  
+  .ticker {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    z-index: 2;
+  }
+  
+  .ticker__wrap {
+    display: inline-flex;
+    animation: ticker 90s linear infinite; 
+  }
+  
+  .ticker__content {
+    display: flex;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+  
+  .ticker__item {
+    display: inline-block;
+    padding: 0 10px;
+    font-weight: 400;
+    color: var(--text-color);
+  }
+  
+  .separator {
+    margin-left: 8px;
+    color: var(--chat-hover);
+    font-weight: bold;
+  }
+  
+  @keyframes ticker {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  
+  @media (max-width: 768px) {
+    .carousel-container {
+      padding: 8px 0;
+          }
+    
+    .ticker__item {
+      padding: 0 8px;
+      font-size: 0.9em;
+    }
+  }

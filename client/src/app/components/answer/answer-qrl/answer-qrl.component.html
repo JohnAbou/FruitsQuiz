@@ -1,0 +1,26 @@
+<ng-container *ngIf="(isCorrecting | async) === 2">
+    <ng-container *ngIf="!isInteractive">
+        <app-organizer-correction />
+    </ng-container>
+    <ng-container *ngIf="isInteractive">
+        <app-player-correction />
+    </ng-container>
+</ng-container>
+
+<ng-container *ngIf="(isCorrecting | async) === 1">
+    <div class="textarea-container">
+        <textarea matInput [(ngModel)]="longAnswer" [placeholder]=" (isInteractive ? 'AnswerQrlComponent.EnterAnswer' : 'AnswerQrlComponent.PlayerAnswering') | translate"
+            class="custom-textarea" [disabled]="!canSubmitAnswer()" [maxLength]="maxCharacters" (input)="onTextModified()" >
+        </textarea>
+
+        <ng-container *ngIf="isInteractive">
+            <p class="character-count" style="text-align: left;">{{ longAnswer.length }}/{{ maxCharacters }}</p>
+        </ng-container>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="(isCorrecting | async) === 3">
+    <div class="completion-message">
+        {{ 'AnswerQrlComponent.CorrectionFinished' | translate }}
+    </div>
+</ng-container>

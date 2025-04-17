@@ -1,0 +1,293 @@
+<!-- Game Mode Selection View -->
+<app-default-page-template>
+    <div class="main-content">
+        <div class="game-modes-container" *ngIf="!selectedGameMode">
+            <mat-card class="game-mode-card" (click)="selectGameMode('classic')">
+                <mat-card-header>
+                    <mat-card-title>{{ 'GameCreation.ClassicMode' | translate }}</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <mat-icon class="mode-icon">extension</mat-icon>
+                    <p>{{ 'GameCreation.ClassicModeDescription' | translate }}</p>
+                </mat-card-content>
+            </mat-card>
+
+            <mat-card class="game-mode-card" (click)="selectGameMode('elimination')" [class.disabled]="!areSpecialQuizAvailable()" 
+                     [matTooltip]="!areSpecialQuizAvailable() ? ('GameCreation.NotEnoughQuestionsTooltip' | translate) : ''"
+                     [matTooltipDisabled]="areSpecialQuizAvailable()">
+                <mat-card-header>
+                    <mat-card-title>{{ 'GameCreation.EliminationMode' | translate }}</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <mat-icon class="mode-icon">format_list_numbered</mat-icon>
+                    <p>{{ 'GameCreation.EliminationModeDescription' | translate }}</p>
+                </mat-card-content>
+            </mat-card>
+
+            <mat-card class="game-mode-card" (click)="selectGameMode('survival')" [class.disabled]="!areSpecialQuizAvailable()"
+                     [matTooltip]="!areSpecialQuizAvailable() ? ('GameCreation.NotEnoughQuestionsTooltip' | translate) : ''"
+                     [matTooltipDisabled]="areSpecialQuizAvailable()">
+                <mat-card-header>
+                    <mat-card-title>{{ 'GameCreation.SurvivalMode' | translate }}</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <mat-icon class="mode-icon">timer</mat-icon>
+                    <p>{{ 'GameCreation.SurvivalModeDescription' | translate }}</p>
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+        <!-- Game Settings View -->
+        <div *ngIf="selectedGameMode" class="game-settings-view">
+            <div *ngIf="selectedGameMode === 'classic'" class="classic-mode-layout">
+                <div *ngIf="!selectedQuiz" class="quiz-selection-container">
+                    <div class="fixed-header">
+                        <button mat-icon-button class="back-button" (click)="backToModeSelection()">
+                            <mat-icon>arrow_back</mat-icon>
+                    </button>
+                    </div>
+                    <div class="scrollable-content">
+                        <div class="quiz-grid">
+                            <mat-card *ngFor="let quiz of quizzes" class="quiz-card" (click)="selectQuiz(quiz)">
+                                <mat-card-header>
+                                    <mat-card-title>{{ quiz.title }}</mat-card-title>
+                                    <mat-card-subtitle>{{ quiz.questions.length }} questions</mat-card-subtitle>
+                                </mat-card-header>
+                                <mat-card-content>
+                                    <app-quiz-view-rating [quizId]="quiz.id"></app-quiz-view-rating>
+                                </mat-card-content>
+                            </mat-card>
+                        </div>
+                    </div>
+                </div>
+
+                <mat-card *ngIf="selectedQuiz" class="quiz-info-card">
+                    <mat-card-content>
+                        <div class="quiz-details-header">
+                            <div class="header-title">
+                                <button mat-icon-button (click)="unselectQuiz()">
+                                    <mat-icon>arrow_back</mat-icon>
+                                </button>
+                                <h2 class="quiz-title">{{ selectedQuiz.title }}</h2>
+                            </div>
+                        </div>
+
+                        <div class="quiz-info-grid">
+                            <div class="info-item">
+                                <mat-icon>description</mat-icon>
+                                <p class="description">{{ selectedQuiz.description || 'N/A' }}</p>
+                            </div>
+                            <div class="info-item">
+                                <mat-icon>timer</mat-icon>
+                                <p class="bold">{{ 'AdminView.ResponseTime' | translate }} {{ selectedQuiz.duration }}s</p>
+                            </div>
+                            <div class="info-item">
+                                <mat-icon>quiz</mat-icon>
+                                <p class="bold">{{ 'GameCreation.QuestionCount' | translate }}{{ selectedQuiz.questions.length }}</p>
+                            </div>
+                            <div class="info-item">
+                                <mat-icon>person</mat-icon>
+                                <p class="bold">{{ 'AdminView.GameCreator' | translate }} {{ selectedQuiz.owner }}</p>
+                            </div>
+                            <div class="info-item">
+                                <mat-icon>star</mat-icon>
+                                <app-quiz-view-rating [quizId]="selectedQuiz.id"></app-quiz-view-rating>
+                            </div>
+                        </div>
+
+                        <div class="game-options">
+                            <div class="options-row">
+                                <div class="entry-price-container">
+                                    <span>{{ 'GameCreation.EntryPrice' | translate }}</span>
+                                    <div class="price-controls">
+                                        <button class="control-button" (click)="entryPrice = Math.max(0, entryPrice - 1)">
+                                            <mat-icon>remove</mat-icon>
+                                        </button>
+                                        <input type="number" min="0" [(ngModel)]="entryPrice" class="price-input" />
+                                        <button class="control-button" (click)="entryPrice = entryPrice + 1">
+                                            <mat-icon>add</mat-icon>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <button mat-raised-button [matMenuTriggerFor]="gameTypeMenu" color="primary">
+                                    <div class="button-content">
+                                        <mat-icon>{{ isFriendsOnly ? 'group' : 'public' }}</mat-icon>
+                                        {{ (isFriendsOnly ? 'GameCreation.FriendsOnlyGame' : 'GameCreation.PublicGame') | translate }}
+                                    </div>
+                                    <mat-icon class="dropdown-icon">arrow_drop_down</mat-icon>
+                                </button>
+                                <mat-menu #gameTypeMenu="matMenu">
+                                    <button mat-menu-item (click)="toggleFriendGame(false)" [class.selected]="!isFriendsOnly">
+                                        <mat-icon>public</mat-icon>
+                                        <span>{{ 'GameCreation.PublicGame' | translate }}</span>
+                                    </button>
+                                    <button mat-menu-item (click)="toggleFriendGame(true)" [class.selected]="isFriendsOnly">
+                                        <mat-icon>group</mat-icon>
+                                        <span>{{ 'GameCreation.FriendsOnlyGame' | translate }}</span>
+                                    </button>
+                                </mat-menu>
+
+                                <button mat-raised-button color="primary" (click)="createGame()">
+                                    {{ 'GameCreation.CreateGame' | translate }}
+                                </button>
+                            </div>
+                        </div>
+
+                        <mat-divider class="section-divider"></mat-divider>
+
+                        <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    <mat-icon class="panel-icon">format_list_bulleted</mat-icon>
+                                    {{ 'GameCreation.QuestionList' | translate }} ({{ selectedQuiz.questions.length }})
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            
+                            <mat-list class="question-list">
+                                <mat-list-item *ngFor="let question of selectedQuiz.questions; let i = index">
+                                    <mat-icon matListItemIcon [ngSwitch]="question.type" class="question-type-icon">
+                                        <ng-container *ngSwitchCase="'QCM'">check_box</ng-container>
+                                        <ng-container *ngSwitchCase="'QRL'">subject</ng-container>
+                                        <ng-container *ngSwitchCase="'QRE'">calculate</ng-container>
+                                    </mat-icon>
+                                    <div matListItemTitle>{{ i + 1 }}. {{ getQuestionTypeLabel(question.type) }}: {{ question.text }}</div>
+                                </mat-list-item>
+                            </mat-list>
+                        </mat-expansion-panel>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+
+            <div *ngIf="selectedGameMode === 'elimination'" class="classic-mode-layout">
+                <mat-card class="quiz-info-card">
+            <mat-card-content>
+                        <div class="quiz-details-header">
+                            <div class="header-title">
+                                <button mat-icon-button (click)="backToModeSelection()">
+                                    <mat-icon>arrow_back</mat-icon>
+                                </button>
+                                <h2 class="mode-title">{{ 'GameCreation.EliminationMode' | translate }}</h2>
+                            </div>
+                            <app-user-balance></app-user-balance>
+                        </div>
+
+                        <div class="quiz-info-grid">
+                            <div class="info-item">
+                                <mat-icon>information</mat-icon>
+                                <p>{{ 'GameCreation.EliminationModeDescription' | translate }}</p>
+                            </div>
+                        </div>
+
+                        <div class="question-count-controls">
+                            <div class="price-controls">
+                                <div class="question-count-header">
+                                    <mat-icon>quiz</mat-icon>
+                                    <span>{{ 'GameCreation.QuestionCount' | translate }}</span>
+                                </div>
+                                <button class="control-button" (click)="questionCount = Math.max(5, questionCount - 1)">
+                                    <mat-icon>remove</mat-icon>
+                                </button>
+                                <input type="number" min="5" [max]="availableQuestionsCount" [(ngModel)]="questionCount" class="price-input" />
+                                <button class="control-button" (click)="questionCount = Math.min(availableQuestionsCount, questionCount + 1)">
+                                    <mat-icon>add</mat-icon>
+                                </button>
+                                <button mat-raised-button color="primary" class="max-button" (click)="questionCount = availableQuestionsCount">
+                                    MAX {{ availableQuestionsCount }}
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="game-options">
+                            <div class="options-row">
+                                <div class="entry-price-container">
+                                    <span>{{ 'GameCreation.EntryPrice' | translate }}</span>
+                                    <div class="price-controls">
+                                        <button class="control-button" (click)="entryPrice = Math.max(0, entryPrice - 1)">
+                                            <mat-icon>remove</mat-icon>
+                                        </button>
+                                        <input type="number" min="0" [(ngModel)]="entryPrice" class="price-input" />
+                                        <button class="control-button" (click)="entryPrice = entryPrice + 1">
+                                            <mat-icon>add</mat-icon>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <button mat-raised-button [matMenuTriggerFor]="gameTypeMenu" color="primary">
+                                    <div class="button-content">
+                                        <mat-icon>{{ isFriendsOnly ? 'group' : 'public' }}</mat-icon>
+                                        {{ (isFriendsOnly ? 'GameCreation.FriendsOnlyGame' : 'GameCreation.PublicGame') | translate }}
+                                    </div>
+                                    <mat-icon class="dropdown-icon">arrow_drop_down</mat-icon>
+                                </button>
+                                <mat-menu #gameTypeMenu="matMenu">
+                                    <button mat-menu-item (click)="toggleFriendGame(false)" [class.selected]="!isFriendsOnly">
+                                        <mat-icon>public</mat-icon>
+                                        <span>{{ 'GameCreation.PublicGame' | translate }}</span>
+                                    </button>
+                                    <button mat-menu-item (click)="toggleFriendGame(true)" [class.selected]="isFriendsOnly">
+                                        <mat-icon>group</mat-icon>
+                                        <span>{{ 'GameCreation.FriendsOnlyGame' | translate }}</span>
+                                    </button>
+                                </mat-menu>
+
+                                <button mat-raised-button color="primary" (click)="createGame()">
+                                    {{ 'GameCreation.CreateGame' | translate }}
+                                </button>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+                </div>
+
+            <div *ngIf="selectedGameMode === 'survival'" class="classic-mode-layout">
+                <mat-card class="quiz-info-card">
+                    <mat-card-content>
+                        <div class="quiz-details-header">
+                            <div class="header-title">
+                                <button mat-icon-button (click)="backToModeSelection()">
+                                    <mat-icon>arrow_back</mat-icon>
+                                </button>
+                                <h2 class="mode-title">{{ 'GameCreation.SurvivalMode' | translate }}</h2>
+                            </div>
+                        </div>
+
+                        <div class="quiz-info-grid">
+                            <div class="info-item">
+                                <mat-icon>information</mat-icon>
+                                <p>{{ 'GameCreation.SurvivalModeDescription' | translate }}</p>
+                            </div>
+                        </div>
+
+                        <div class="question-count-controls">
+                            <div class="price-controls">
+                                <div class="question-count-header">
+                                    <mat-icon>quiz</mat-icon>
+                                    <span>{{ 'GameCreation.QuestionCount' | translate }}</span>
+                                </div>
+                                <button class="control-button" (click)="questionCount = Math.max(5, questionCount - 1)">
+                                    <mat-icon>remove</mat-icon>
+                                </button>
+                                <input type="number" min="5" [max]="availableQuestionsCount" [(ngModel)]="questionCount" class="price-input" />
+                                <button class="control-button" (click)="questionCount = Math.min(availableQuestionsCount, questionCount + 1)">
+                                    <mat-icon>add</mat-icon>
+                                </button>
+                                <button mat-raised-button color="primary" class="max-button" (click)="questionCount = availableQuestionsCount">
+                                    MAX {{ availableQuestionsCount }}
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="game-options">
+                            <div class="options-row">
+                                <button mat-raised-button color="primary" (click)="createGame()">
+                                    {{ 'GameCreation.CreateGame' | translate }}
+                                </button>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+                </div>
+    </div>
+</app-default-page-template>

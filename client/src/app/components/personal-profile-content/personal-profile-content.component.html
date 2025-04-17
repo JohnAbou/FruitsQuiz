@@ -1,0 +1,6 @@
+<div class="content">
+    <app-personal-profile *ngIf="currentPage === 'information'" />
+    <app-personal-profile-friends *ngIf="currentPage === 'friends'" />
+    <app-preferences *ngIf="currentPage === 'preferences'" />
+    <app-personal-achievements *ngIf="currentPage === 'accomplishments'"></app-personal-achievements>
+</div>

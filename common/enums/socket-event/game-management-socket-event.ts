@@ -1,0 +1,16 @@
+export enum GameManagementSocketEvent {
+    CreateGameLobby = 'createGameLobby',
+    CreateGameSurvival = 'createGameSurvival',
+    GetGamesInfo = 'getGamesInfo',
+    JoinGameLobby = 'joinGameLobby',
+    BanPlayer = 'banPlayer',
+    ToggleLock = 'toggleLock',
+    StartGame = 'startGame',
+    CanStartGame = 'canStartGame',
+    NextQuestion = 'goToNextQuestion',
+    OnGameStarted = 'onGameStarted',
+    CanGoToNextQuestion = 'canGoToNextquestionEvent',
+    AddBot = 'addBot',
+    RemoveBot = 'removeBot',
+    UpdateBotDifficulty = 'updateBotDifficulty',
+}

@@ -1,0 +1,22 @@
+.countdown {
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    font-weight: 500;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    
+    &:hover {
+        cursor: default;
+    }
+
+    p {
+        margin: 0;
+        line-height: 1;
+    }
+}

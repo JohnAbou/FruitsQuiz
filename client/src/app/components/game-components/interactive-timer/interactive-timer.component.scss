@@ -1,0 +1,25 @@
+.timer-container {
+    align-self: center;
+    align-items: center;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+}
+
+button {
+    margin: 5px;
+}
+
+.card-container {
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: fit-content;
+    min-width: 0;
+}

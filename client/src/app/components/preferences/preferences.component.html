@@ -1,0 +1,62 @@
+<div class="preferences-wrapper">
+  <div class="card">
+    <h2>{{ 'PreferencesComponent.SelectTheme' | translate }}</h2>
+    <div class="grid-container">
+      <div *ngFor="let theme of themes"
+           class="theme-option"
+           [ngClass]="{
+             'selected': isThemeSelected(theme.name),
+             'locked': theme.locked
+           }"
+           (click)="handleThemeClick(theme)">
+        <div class="theme-logo">
+          <img [src]="theme.logoUrl">
+          <div class="lock-overlay" *ngIf="theme.locked">
+            <mat-icon>lock_outline</mat-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+    
+    <h2>{{ 'LanguageSettingsComponent.LanguageChoice' | translate }}</h2>
+    <div class="language-options">
+      <div class="language-option"
+           [ngClass]="{'selected': isLanguageSelected('en')}"
+           (click)="selectLanguage('en')">
+        <mat-icon>
+          {{ isLanguageSelected('en') ? 'radio_button_checked' : 'radio_button_unchecked' }}
+        </mat-icon>
+        <span>{{ 'LanguageSettingsComponent.English' | translate }}</span>
+      </div>
+      <div class="language-option"
+           [ngClass]="{'selected': isLanguageSelected('fr')}"
+           (click)="selectLanguage('fr')">
+        <mat-icon>
+          {{ isLanguageSelected('fr') ? 'radio_button_checked' : 'radio_button_unchecked' }}
+        </mat-icon>
+        <span>{{ 'LanguageSettingsComponent.French' | translate }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <h2>{{ 'PreferencesComponent.Select_background' | translate }}</h2>
+    <div class="grid-container">
+      <div *ngFor="let bg of backgrounds"
+           class="background-option"
+           [ngClass]="{
+             'selected': isBackgroundSelected(bg.name),
+             'locked': bg.locked
+           }"
+           (click)="handleBackgroundClick(bg)">
+        <div class="background-image" *ngIf="bg.backgroundUrl">
+          <img [src]="bg.backgroundUrl">
+          <div class="lock-overlay" *ngIf="bg.locked">
+            <mat-icon>lock_outline</mat-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

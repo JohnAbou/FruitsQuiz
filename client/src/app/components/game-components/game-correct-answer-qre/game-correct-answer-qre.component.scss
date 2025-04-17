@@ -1,0 +1,25 @@
+.estimations-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 0;
+  }
+  
+  .exact-value {
+    margin-bottom: 16px;
+  }
+  
+  .numeric-value {
+    font-size: 32px;    
+    font-weight: bold;  
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    max-width: 100%; 
+  }
+
+  .numeric-value.correct {
+    color: #009688  ;
+    font-weight: bold;
+  }

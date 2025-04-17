@@ -1,0 +1,30 @@
+<div class="add-chat-container">
+    <div>
+        <form [formGroup]="chatForm" class="create-chat-container">
+            <input
+                class="chat-name-input"
+                type="text"
+                placeholder="{{ 'AddChatComponent.ChatNamePlaceholder' | translate }}"
+                formControlName="chatName"
+                autofocus
+                maxlength="10"
+            />
+
+            <p
+                class="error-message"
+                *ngIf="chatForm.get('chatName')?.touched && chatForm.get('chatName')?.invalid && chatForm.get('chatName')?.dirty"
+            >
+                <span *ngIf="chatForm.get('chatName')?.errors">{{ chatNameErrors }}</span>
+            </p>
+
+            <div class="channel-option">
+                <label>
+                    <input type="checkbox" formControlName="isFriendsOnly" />
+                    {{ 'AddChatComponent.FriendsOnly' | translate }}
+                </label>
+            </div>
+
+            <button type="submit" class="form-button" (click)="onCreateChat()">{{ 'AddChatComponent.Create' | translate }}</button>
+        </form>
+    </div>
+</div>

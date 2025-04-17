@@ -1,0 +1,46 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.page-container {
+  display: flex;
+  flex: 1;
+  position: relative;
+  width: 100%;
+  overflow: auto;
+}
+
+.main-content { 
+  height: 92vh;
+  width: 80vw;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20vw;
+}
+
+.main-content-full {
+  height: 92vh;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+  margin-right: 0;
+}
+
+.chat-container {
+  position: fixed;
+  right: 0;
+  top: 8vh;
+  width: 20vw;
+  height: 92vh;
+  z-index: 5;
+}
+
+.chat-detached {
+  opacity: 0;
+  pointer-events: none;
+  height: 0;
+}

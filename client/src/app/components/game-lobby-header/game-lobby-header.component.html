@@ -1,0 +1,12 @@
+<div class="center-div">
+    <mat-card class="fruitz-card main-card">
+        <div class="main-div">
+            <p class="bordered-text"> {{ gameMode }} </p>
+            <p class="bordered-text"> {{ quizInfo }} </p>
+            <div class="game-id-container bordered-text">
+                <p> Code: {{ gameId }} </p>
+                <mat-icon class="copy-icon" (click)="copyGameId()" title="Copy Game code">content_copy</mat-icon>
+            </div>
+        </div>
+    </mat-card>
+</div>

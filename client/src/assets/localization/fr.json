@@ -1,0 +1,777 @@
+{
+    "QuestionTypes": {
+        "QRE": "QRE",
+        "QCM": "QCM",
+        "QRL": "QRL",
+        "QREDescription": "Réponse Estimée",
+        "QCMDescription": "Choix Multiple",
+        "QRLDescription": "Réponse Longue"
+    },
+    "AdminView": {
+        "GameListTitle": "Liste de questionnaires",
+        "LastModified": "Dernière modification:",
+        "ResponseTime": "Temps de réponse:",
+        "GameDescription": "Description du jeu:",
+        "GameCreator": "Créateur:",
+        "GameQuestions": "Les questions du jeu:",
+        "CreateNewGame": "Créer un nouveau quiz",
+        "QuestionBank": "Banque de questions",
+        "GameHistory": "Consulter l'historique des jeux"
+    },
+    "GameCreation": {
+        "SelectGameMode": "Sélectionner le Mode de Jeu",
+        "ClassicMode": "Mode Classique",
+        "EliminationMode": "Mode Élimination",
+        "SurvivalMode": "Mode Survie",
+        "ClassicModeDescription": "Jouez à un quiz spécifique et accumulez des points",
+        "EliminationModeDescription": "Affrontez d'autres joueurs dans une série de questions",
+        "SurvivalModeDescription": "Testez votre endurance avec des questions aléatoires",
+        "SelectGame": "Sélectionner un Jeu",
+        "CreateGame": "Créer une Partie",
+        "FriendsOnlyGame": "Entre Amis",
+        "PublicGame": "Partie Publique",
+        "EntryPrice": "Prix d'Entrée",
+        "NotEnoughCurrency": "Pas assez de monnaie pour créer cette partie",
+        "QuestionCount": "Nombre de Questions:",
+        "MinimumQuestionsError": "Le nombre minimum de questions requis est de {{min}}",
+        "LastModif": "Dernière modification:",
+        "QuestionList": "Liste de questions",
+        "AvailableQuestions": "Nombre de Questions: ",
+        "QuestionCountHint": "Utilisez les controles ci-dessous pour ajuster le nombre de questions pour votre jeu",
+        "NotEnoughQuestionsTooltip": "Il n'y a pas assez de questions dans la banque pour créer un jeu"
+    },
+    "GameHistory": {
+        "Title": "Historique des jeux",
+        "GameName": "Nom",
+        "StartDate": "Date de début",
+        "PlayersNb": "Nombre de joueurs",
+        "BestScore": "Meilleur score",
+        "DeleteGames": "Supprimer",
+        "Back": "Retour"
+    },
+    "GameJoin": {
+        "ImpossibleJoin": "Impossible de rejoindre la partie"
+    },
+    "GameJoining": {
+        "NoGameFound": "La partie n'existe pas",
+        "InvalidGameId": "L'identifiant doit être un nombre à 4 chiffres",
+        "LobbyLocked": "Cette salle de jeu est verrouillée",
+        "GameAlreadyStarted": "La partie est en cours",
+        "BannedUser": "Vous êtes banni de la partie",
+        "FriendsOnlyResponse": "Cette salle de jeu est réservée aux amis",
+        "NoGameCurrently": "Il n'y a pas de partie active pour le moment",
+        "NotEnoughCoins": "Vous n'avez pas assez de pièces pour rejoindre cette partie",
+        "PayToJoin": "Vous devez payer {{amount}} pièces pour rejoindre cette partie",
+        "CreateOne": "Créez-en une!",
+        "GameID": "ID de partie",
+        "Title": "Titre",
+        "Rating": "Note du quiz",
+        "Mode": "Mode",
+        "Players": "Joueurs",
+        "Status": "Statut"
+    },
+    "ChatJoining": {
+        "FriendsOnlyResponse": "Ce canal est réservé aux amis de {{username}}"
+    },
+    "QuickJoin": {
+        "GameCode": "Code de la partie",
+        "Join": "Rejoindre"
+    },
+    "HomePage": {
+        "JoinGame": "Rejoindre une partie",
+        "CreateGame": "Créer une partie",
+        "AdminGames": "Administrer les jeux",
+        "JoinGameNow": "Prêt à jouer? Rejoignez un jeu dès maintenant!",
+        "Team": "Équipe 101",
+        "TeamMembers": "Lyne Dahan, Jérôme Fréchette, Skander Hellal, Philippe Martin, John Abou Nakoul, Yacine Barka"
+    },
+    "LoginPage": {
+        "Title": "Connectez-vous",
+        "UsernameLabel": "Nom d'utilisateur",
+        "PasswordLabel": "Mot de passe",
+        "SubmitButton": "Connexion",
+        "ErrorMessage": "Erreur lors de la connexion",
+        "NoAccount": "Pas de compte ?",
+        "SignupLink": "Créez-en un"
+    },
+    "PlayerGameView": {
+        "For": "pour",
+        "Submit": "Soumettre",
+        "AnswersSent": "Réponses envoyées"
+    },
+    "GameScore": {
+        "YourScore": "Votre Pointage:",
+        "EliminatedState": "Éliminé",
+        "AliveState": "En vie"
+    },
+    "QuizCreation": {
+        "CreateQuiz": "Créer votre questionnaire",
+        "ModifyQuiz": "Modifiez votre questionnaire",
+        "QuizName": "Nom du quiz :",
+        "QuizDuration": "Temps alloué:",
+        "QuizDescription": "Description :",
+        "SaveButton": "Enregistrer le Jeu",
+        "QuestionList": "Liste de questions",
+        "QuestionList2": "Ajouter des questions",
+        "AddQCM": "Ajouter un QCM",
+        "AddQRL": "Ajouter un QRL",
+        "AddQre": "Ajouter un QRE",
+        "AddButton": "Ajouter une question à",
+        "AddButtonPrime": "",
+        "Visibility": "Visibilité:",
+        "QuizPublic": "Quiz Public",
+        "QuizPrivate": "Quiz Privé",
+        "ImportFromBank" : "Importer de la banque de questions",
+        "NoQuestions": "Aucune question"
+    },
+    "ResultView": {
+        "Title": "Résultats de la partie",
+        "GameStats": "Statistiques de la partie",
+        "PreviousGraph": "Précédent",
+        "NextGraph": "Prochain",
+        "QuizStats": "Questionnaire & Retour",
+        "Leaderboard": "Classement",
+        "GameResults": "Résultats du jeu",
+        "Achivements": "Accomplissements",
+        "Challenges": "Défis de partie",
+        "GameLoot": "Récompenses de partie",
+        "UserStats": "Joueurs",
+        "FunStats": "Statistiques Fun",
+        "NextSlide": "Suivant",
+        "PreviousSlide": "Précédent",
+        "QuizRating": {
+            "CreatedBy": "Créé par: ",
+            "CantRateSystemQuiz": "Impossible d'évaluer un questionnaire système"
+        }
+    },
+    "SurvivalResultView": {
+        "WonTitle": "Victoire, vous avez survécu jusqu'à la fin",
+        "LostTitle": "Défaite, vous n'avez pas pu survivre",
+        "Mode": "Mode Survie",
+        "SurvivedQuestions": "Questions Survécues",
+        "QuestionsCorrect": "Vous avez survécu aux {{questionSurvived}} premières questions sur {{questionCount}}",
+        "Quit": "Quitter"
+    },
+    "QuizViewRating": {
+        "QuizRating": "Évaluation",
+        "Reviews": "avis",
+        "Unrateable": "Non évaluable"
+    },
+    "QuizSendRating": {
+        "RateQuiz": "Évaluer le quiz",
+        "UpdateRating": "Reévaluer le quiz"
+    },
+    "SignupPage": {
+        "Title": "Créer un compte",
+        "UsernameLabel": "Nom d'utilisateur",
+        "EmailLabel": "Courriel",
+        "PasswordLabel": "Mot de passe",
+        "ConfirmPasswordLabel": "Confirmer le mot de passe",
+        "SubmitButton": "S'inscrire",
+        "AlreadyHaveAccount": "Vous avez déjà un compte ? ",
+        "LoginLink": "Connectez-vous",
+        "AcceptTerms": "J'accepte les termes et conditions"
+    },
+    "WaitView": {
+        "UnlockButton": "Verrouillé",
+        "LockButton": "Déverrouillé",
+        "StartGameButton": "Commencer la partie",
+        "Title": "En attente des joueurs...",
+        "AddBot": "Ajouter un bot",
+        "PlayerList": "Liste des joueurs"
+    },
+    "TemplateView": {
+        "PlayerListTitle": "Liste des joueurs"
+    },
+    "GameMode": {
+        "Elimination": "Élimination",
+        "Classical": "Classique",
+        "Survival": "Survie"
+    },
+    "AnswerQrlComponent": {
+        "EnterAnswer": "Entrez votre réponse",
+        "PlayerAnswering": "Les joueurs sont en train de répondre",
+        "CorrectionFinished": "Correction terminée"
+    },
+    "CorrectionComponent": {
+        "EvaluateResponse": "Évaluez la réponse",
+        "CorrectionResponse": "Correction des Réponses",
+        "OrganizerCorrecting": "L'organisateur corrige les réponses"
+    },
+    "IntermissionComponent": {
+        "PrepareYourself": "Préparez-vous"
+    },
+    "LocalQuestionBankComponent": {
+        "QuestionBank": "Banque de question",
+        "AddToQuiz": "Ajouter au Quiz"
+    },
+    "LogoutButtonComponent": {
+        "Logout": "Déconnexion"
+    },
+    "BaseInputModalComponent": {
+        "EnterYour": "Entrez votre",
+        "Cancel": "Annuler",
+        "Submit": "Soumettre",
+        "Okay": "Okay"
+    },
+    "ConfirmationModalComponent": {
+        "Yes": "Oui",
+        "No": "Non"
+    },
+    "InformationModalComponent": {
+        "Understood": "Compris"
+    },
+    "EliminationModal": {
+        "Title": "Éliminé"
+    },
+    "LinePlayerList": {
+        "NoPlayers": "Aucun joueur pour le moment",
+        "BanConfirmMessage": "Êtes-vous sûr de vouloir bannir ",
+        "Points": "Pointage",
+        "BonusNumber": "Bonus",
+        "RoundSurvived": "Manches survécues",
+        "Player": "Joueur"
+    },
+    "QuestionQcmComponent": {
+        "Formulation": "Formulation de la question: ",
+        "Points": "Points:",
+        "ResponseChoice": "Choix de réponse: ",
+        "Choice": "Choix :",
+        "CorrectAnswer": "Réponse correcte:",
+        "AddChoice": "Ajouter un choix de réponse",
+        "SaveQuestion": "Enregistrer la question dans la banque",
+        "Success": "La question a été ajoutée à la banque avec succès!"
+    },
+    "QuestionQrlComponent": {
+        "Formulation": "Formulation de la question: :",
+        "Points": "Points:",
+        "SaveQuestion": "Enregistrer la question",
+        "Success": "La question a été ajoutée à la banque avec succès!"
+    },
+    "QuestionFilterComponent": {
+        "SelectFilter": "Sélectionnez un filtre",
+        "None": "Aucun:"
+    },
+    "AnswerQreComponent": {
+        "EnterAnswer": "Entrez votre réponse",
+        "CorrectAnswer": "La réponse correcte est"
+    },
+    "GameCorrectAnswerQreComponent": {
+        "ValueRange": "Rangée des valeurs:",
+        "ExactValue": "Valeur exacte:"
+    },
+    "QuestionQreComponent": {
+        "Formulation": "Formulation de la question:",
+        "Points": "Points:",
+        "SaveQuestion": "Enregistrer la question",
+        "Success": "La question a été ajoutée à la banque avec succès!",
+        "Estimations": "Estimations",
+        "ExactValue": "Valeur exacte",
+        "ExactValueTooltip": "Entrez la valeur exacte attendue pour la réponse.",
+        "ExactValuePlaceholder": "Entrez la valeur exacte",
+        "LowerBound": "Borne inférieure",
+        "LowerBoundTooltip": "C'est la valeur minimale acceptable pour la réponse.",
+        "LowerBoundPlaceholder": "Définir la valeur minimale acceptable",
+        "UpperBound": "Borne Supérieure",
+        "UpperBoundTooltip": "C'est la valeur maximale acceptable pour la réponse.",
+        "UpperBoundPlaceholder": "Définir la valeur maximale acceptable",
+        "ToleranceMargin": "Marge de Tolérance",
+        "ToleranceMarginTooltip": "La réponse est considérée  correcte si elle se trouve dans la marge de tolérance.",
+        "ToleranceMarginPlaceholder": "Définir l'écart autorisé par rapport à la valeur exacte"
+    },
+    "QuestionComponent": {
+        "QuestionBank": "Banque de questions",
+        "CreateQcm": "Créer une question à choix multiples",
+        "CreateQrl": "Créer une question à réponse longue",
+        "CreateQre": "Créer une question à réponse estimée",
+        "LastModification": "Dernière modification :",
+        "Modify": "Modifier",
+        "Delete": "Supprimer",
+        "ResponseChoice": "Choix de réponse :",
+        "Qrl": "C'est une question à réponse longue",
+        "Qre": "C'est une question à réponse estimée",
+        "Qcm": "C'est une question à choix multiples",
+        "Estimations": "Estimation de la valeur",
+        "ExactValue": "Valeur exacte",
+        "LowerBound": "Limite inférieure",
+        "UpperBound": "Limite supérieure",
+        "ToleranceMargin": "Marge de tolérance",
+        "NoEstimationsDefined": "Aucune estimation définie",
+        "Author": "Créateur"
+    },
+    "QuizDetailComponent": {
+        "TimeToRespond": "Temps pour répondre:",
+        "NbQuestions": "Nombre de question:",
+        "LastModification": "Dernière modification:",
+        "QuestionList": "Liste de question:",
+        "Creator": "Créateur:"
+    },
+    "QuizHeaderComponent": {
+        "Contains": "Contient"
+    },
+    "RandomQuizDetailsComponent": {
+        "RandomQuiz": "Quiz en mode élimination",
+        "RandomSelection": "Les questions sont sélectionnées aléatoirement depuis la banque de quiz",
+        "TimeToRespond": "Temps pour répondre: 20s"
+    },
+    "RandomQuizHeaderComponent": {
+        "RandomQuiz": "Quiz Élimination"
+    },
+    "SurvivalQuizDetailsComponent": {
+        "SurvivalQuiz": "Quiz en mode survie",
+        "RandomSelection": "Les questions sont sélectionnées aléatoirement depuis la banque de quiz",
+        "TimeToRespond": "Temps pour répondre: 20s"
+    },
+    "SurvivalQuizHeaderComponent": {
+        "SurvivalQuiz": "Quiz Survie"
+    },
+    "SpecialQuiz": {
+        "CantChange": "Créez des nouveaux QCM ou QRE si vous voulez plus de 5 questions",
+        "CountSelected": "Vous avez sélectionné {{count}} questions",
+        "NbQuestionsDetails": "Sélectionnez un nombre de questions: ",
+        "NbQuestionHeader": "Contient de 5 à {{totalQuestions}} questions",
+        "ActivateCondition": "Il faut au moins 5 QCM ou QRE pour activer ce quiz"
+    },
+    "GameIntermissionComponent": {
+        "RandomQuiz": "Préparez-vous"
+    },
+    "LogoutButtonComponenent": {
+        "ConfirmLogout": "Voulez-vous vraiment vous déconnecter ?"
+    },
+    "LogHistory": {
+        "Title": "Mon historique",
+        "GameLogs": "Sessions de jeu",
+        "StartDate": "Début de la partie",
+        "HasWon": "Victoire",
+        "HasAbandon": "Abandonné",
+        "AuthLogs": "Historique de connexion",
+        "LoginTime": "Connecté à",
+        "LogoutTime": "Déconnecté à",
+        "DeviceType": "Appareil",
+        "Back": "Retour à l'accueil",
+        "Desktop": "Ordinateur",
+        "Android": "Mobile"
+    },
+    "HeaderComponent": {
+        "CreateGameButton": "Créer une partie",
+        "JoinGameButton": "Rejoindre une partie",
+        "LibraryButton": "Bibliothèque",
+        "LeaderboardButton": "Classement",
+        "UsersButton": "Utilisateurs",
+        "ShopButton": "Boutique",
+        "AvatarButton": "AVATAR",
+        "ProfileButton": "Profile",
+        "HistoryButton": "Historique",
+        "LogoutButton": "Déconnexion",
+        "QuitAppButton": "Quitter",
+        "GameMenu": "Menu de jeu",
+        "Administer": "Administrer jeux"
+    },
+    "QuitButtonComponent": {
+        "ConfirmQuit": "Voulez-vous vraiment quitter l'application ?"
+    },
+    "PersonalInfoComponent": {
+        "Profile": "Profil",
+        "InformationHeader": "Informations",
+        "UsernameLabel": "Nom d'utilisateur: ",
+        "EmailLabel": "Adresse courriel: ",
+        "LevelLabel": "Niveau",
+        "XPLabel": "Niveau EXP : ",
+        "ChangeLabel": "Changer",
+        "CancelLabel": "Annuler",
+        "ErrorTitle": "Erreur",
+        "SuccessTitle": "Succès",
+        "UsernameEmpty": "Le nom d'utilisateur ne peut pas être vide.",
+        "UsernameUpdated": "Votre nom d'utilisateur a été changé avec succès.",
+        "UsernameTaken": "Le nom d'utilisateur est déjà pris. Choississez un autre.",
+        "nextLevel": "EXP",
+        "lemonTheme": "Thème Citron",
+        "strawberryTheme": "Thème Fraise",
+        "blueberryTheme": "Thème Bleuet",
+        "orangeTheme": "Thème Orange",
+        "watermelonTheme": "Thème Pastèque",
+        "StatisticsLabel": "Statistiques",
+        "GamesPlayedLabel": "Parties jouées",
+        "GamesWonLabel": "Parties gagnées",
+        "AvgCorrectAnswersLabel": "Moyenne de bonnes réponses",
+        "AvgGameTimeLabel": "Temps moyen par partie",
+        "ChallengesCompletedLabel": "Défis complétés"
+    },
+    "ProfileModalComponent": {
+        "ProfileTitle": "Profil de",
+        "LevelSectionTitle": "Niveau ",
+        "ProgressionTitle": "Progression vers le niveau",
+        "AchievementsSectionTitle": "Accomplissements"
+    },
+    "SidebarProfileComponent": {
+        "ChangePFP": "Changer votre avatar",
+        "Information": "Informations",
+        "Achievements": "Accomplissements",
+        "Preferences": "Préférences",
+        "Friends": "Amis"
+    },
+    "PreferencesComponent": {
+        "SelectTheme": "Choisir un Thème",
+        "Select_background": "Choisir un Fond",
+        "Lemon_theme": "Citron",
+        "Orange_theme": "Orange",
+        "Strawberry_theme": "Fraise",
+        "Blueberry_theme": "Bleuet",
+        "Watermelon_theme": "Pastèque",
+        "information_profile_username": "Utilisateur",
+        "ItemLocked": "Objet verrouillé",
+        "VisitShop": "Visiter la boutique pour acheter des objets.",
+        "GoShop": "Visiter la boutique",
+        "Cancel": "Annuler"
+    },
+    "AvatarModalComponent": {
+        "ChangeAvatar": "Changer votre avatar",
+        "ChooseAvatar": "Choississez un avatar",
+        "UploadImage": "Télécharger image pour votre avatar",
+        "Choice": "Ou",
+        "ChooseImage": "Choississez un fichier",
+        "Close": "Sauvegarder votre avatar",
+        "Cancel": "Annuler",
+        "PremiumAvatar": "Avatars premium"
+    },
+    "ChatBannedService": {
+        "Organizer": "L'organisateur a",
+        "Removed": "retiré",
+        "Added": "alloué",
+        "ChatRight": "votre droit d'utiliser le chat de la partie."
+    },
+    "ChatMessageService": {
+        "System": "Système",
+        "Quit": "a quitté",
+        "Joined": "a rejoint",
+        "Game": "la partie",
+        "Canal": "le canal"
+    },
+    "DialogModalService": {
+        "Close": "Fermer"
+    },
+    "HomeCarousel": {
+        "MostWins": "Plus de victoires",
+        "MostCoinsSpent": "Plus de pièces dépensées",
+        "MostPoints": "Plus de points",
+        "BestSurvivalScore": "Meilleur score de survie",
+        "LongestGameTime": "Temps de jeu le plus long",
+        "HighestCurrentWinStreak": "Plus grande série de victoires actuelle",
+        "BestWinStreak": "Meilleure série de victoires",
+        "NoDataAvailable": "Aucune donnée disponible"
+    },
+    "AccountValidation": {
+        "RequiredUsername": "Le nom d'utilisateur est requis",
+        "NoSpecialCharactersUser": "Le nom d'utilisateur est invalide. Il ne peut contenir que des lettres, des chiffres et des underscores",
+        "InvalidUsername": "Le nom d'utilisateur ne peut pas contenir de mots réservés par le système",
+        "UsernameCharacterLimit": "Le nom d'utilisateur doit comporter entre 4 et 12 caractères",
+        "UsernameExists": "Ce nom d'utilisateur est déjà pris",
+        "UsernameRequired": "Le nom d'utilisateur est requis",
+        "UsernameInvalid": "Le nom d'utilisateur est invalide. Il ne peut contenir que des lettres, des chiffres et des underscores",
+        "UsernameLength": "Le nom d'utilisateur doit comporter entre 4 et 12 caractères",
+        "UsernameSystem": "Le nom d'utilisateur ne peut pas contenir de mots réservés par le système",
+        "RequiredPassword": "Le mot de passe est requis",
+        "PasswordNbCharacter": "Le mot de passe doit comporter au moins 5 caractères",
+        "NoSpecialCharactersPassword": "Le mot de passe ne peut contenir que des lettres, des chiffres et des caractères spéciaux",
+        "RequiredEmail": "L'email est requis",
+        "EmailFormat": "L'email doit respecter la forme exemple@domaine.com",
+        "MathcingPassword": "Les mots de passe ne correspondent pas",
+        "RequiredAvatar": "Veuillez sélectionner un avatar",
+        "RequiredTerms": "Veuillez accepter les termes et conditions",
+        "MissingFields": "Le nom d'utilisateur et le mot de passe sont requis",
+        "IncorrectCredentials": "Nom d'utilisateur ou mot de passe incorrect",
+        "AlreadyLoggedIn": "Ce compte est déjà connecté",
+        "EmailTaken": "Cette adresse courriel est déjà utilisée",
+        "UsernameTaken": "Ce nom d'utilisateur est déjà pris",
+        "UpdateError": "Une erreur s'est produite lors de la mise à jour de votre nom d'utilisateur",
+        "UnknownError": "Une erreur inconnue s'est produite"
+    },
+    "GameMessage": {
+        "ContinueButton": "Suivant",
+        "WrongInputDefault": "Entrez une valeur valide",
+        "WrongUsernameDefault": "Entrez un pseudonyme valide",
+        "WrongGameIDDefault": "Entrez un identifant de partie valide",
+        "GameIDFormatError": "Entrez un nombre à 4 chiffre",
+        "WrongPassword": "Le mot de passe est invalide",
+        "EmptyField": "Ce champ ne peut pas être vide",
+        "CorrectionWithBonus": "Vous avez obtenu {{score}} points grâce au bonus",
+        "CorrectionWithoutBonus": "Vous avez obtenu {{score}} points",
+        "CorrectionWithPercentage": "Vous avez obtenu {{percent}}% soit {{points}} points"
+    },
+    "QuestionValidationError": {
+        "PointsRange": "Les points pour une bonne réponse doivent être dans l'intervalle [10 à 100]",
+        "PointsMultiple": "Les points pour une bonne réponse doivent être un multiple de 10",
+        "ChoiceTextEmpty": "Le texte du choix ne peut pas être vide",
+        "AtLeastOneCorrectIncorrect": "Il doit y avoir au moins une réponse correcte et une réponse incorrecte",
+        "DuplicateQuestionTitle": "Une question avec ce titre existe déjà",
+        "ErrorsRemaining": "Il y a des erreurs dans la question"
+    },
+    "EstimationValidation": {
+        "EstimationDataRequired": "Les données d'estimation sont requises",
+        "ExactValueRequired": "La valeur exacte est requise",
+        "LowerBoundRequired": "La limite inférieure est requise",
+        "UpperBoundRequired": "La limite supérieure est requise",
+        "ToleranceMarginRequired": "La marge de tolérance est requise",
+        "LowerBoundLessThanUpper": "La limite inférieure doit être inférieure à la limite supérieure",
+        "ExactValueBetweenBounds": "La valeur exacte doit se situer entre la limite inférieure et la limite supérieure",
+        "ToleranceMarginNonNegative": "La marge de tolérance doit être supérieure ou égale à 0",
+        "ToleranceMarginWithinInterval": "La marge de tolérance ne doit pas dépasser 1/4 de l'intervalle"
+    },
+    "QuizValidationError": {
+        "InvalidDuration": "La durée de réponse doit être entre 10 et 60 secondes inclusivement",
+        "QuizNameAlreadyExists": "Un quiz avec ce nom existe déjà",
+        "QuizNameEmpty": "Le nom du quiz ne peut pas être vide \n",
+        "QuizDescriptionEmpty": "La description du quiz ne peut pas être vide \n",
+        "QuizErrorsDetected": "Des erreurs ont été détectées dans le quiz:\n",
+        "NeedAtLeastOneQuestion": "Votre quiz doit posséder au moins une question:\n",
+        "QuizInvalidQuestions": "Vous avez au moins une question invalide\n",
+        "UnavailableQuiz": "Le quiz sélectionné n'est plus disponible"
+    },
+    "ChatListComponent": {
+        "ConfirmLeaveChat": "Voulez-vous vraiment quitter le canal '{{chatName}}' ?",
+        "ConfirmDeleteChat": "Voulez-vous vraiment supprimer le canal '{{chatName}}' ?"
+    },
+    "AddChatComponent": {
+        "NoEmptyName": "Le nom du canal ne peut pas être vide.",
+        "ChatNameTaken": "Le nom du canal est déjà pris.",
+        "ChatNameRestricted": "Le nom du canal est réservé.",
+        "FriendsOnly": "Amis seulement",
+        "Create": "Créer",
+        "Join": "Rejoindre",
+        "NoChats": "Aucun canal trouvé...",
+        "SelectCreate": "Créer un canal",
+        "SelectJoin": "Rejoindre un canal",
+        "SelectChatroom": "Ouvrir un canal",
+        "FilterPlaceholder": "Filtrer",
+        "ChatNamePlaceholder": "Nom du canal",
+        "OtherChatrooms": "Autres canaux"
+    },
+    "ChatService": {
+        "GameChatName": "Partie"
+    },
+    "FriendRequests": {
+        "Title": "Demandes d'ami",
+        "SentRequests": "Demandes envoyées",
+        "ReceivedRequests": "Demandes reçues",
+        "NoSentRequests": "Vous n'avez pas encore envoyé de demandes d'ami.",
+        "NoReceivedRequests": "Vous n'avez pas de demandes d'ami en attente.",
+        "NewRequestFrom": "Nouvelle demande d'ami de {{username}}",
+        "MultipleRequests": "{{count}} nouvelles demandes d'ami",
+        "RequestAccepted": "{{username}} a accepté votre demande d'ami",
+        "AddFriend": "Ajouter un ami",
+        "AnswerRequest": "Répondre à la demande",
+        "RevokeSentRequest": "Révoquer la demande",
+        "Friend": "Ami",
+        "DeleteFriend": "Enlever Ami",
+        "Delete": "Révoquer",
+        "ReceivedRequest": "Reçu une demande",
+        "Accept": "Accepter",
+        "Refuse": "Refuser",
+        "Check": "Vérifier",
+        "Close": "Fermer",
+        "SentRequest": "Demande envoyée",
+        "DeleteRequest": "Révoquer une demande",
+        "AddYourself": "Vous ne pouvez pas vous ajouter comme ami",
+        "Tooltips": {
+            "SendRequest": "Envoyer une demande d'ami",
+            "AcceptRequest": "Accepter la demande",
+            "DeclineRequest": "Refuser la demande",
+            "RevokeRequest": "Révoquer la demande"
+        }
+    },
+    "FriendsList": {
+        "Title": "Amis",
+        "NoFriends": "Vous n'avez pas encore d'amis. Commencez à vous connecter !",
+        "FindNewFriends": "Trouver de nouveaux amis"
+    },
+    "GameJoiningHeader": {
+        "RandomQuizTitle": "Quiz Aléatoire"
+    },
+    "GameEliminationService": {
+        "WrongAnswer": "Vous avez répondu faux",
+        "LastAnswer": "Vous étiez le dernier à répondre",
+        "NoAnswer": "Vous n'avez pas répondu à temps"
+    },
+    "MessageTranslation": {
+        "NotConnected": "Vous n'êtes pas connecté"
+    },
+    "UsersList": {
+        "Title": "Découvrez de nouvelles personnes",
+        "FilterLabel": "Filtrer par nom d'utilisateur",
+        "NoResults": "Aucun utilisateur ne correspond à votre recherche",
+        "VisitAccount": "Voir le profil utilisateur"
+    },
+    "KickedOutMessage": {
+        "OrganizerLeft": "L'organisateur a terminé la partie",
+        "NoPlayersLeft": "Il n'y a plus de joueur participant",
+        "Banned": "Vous avez été banni"
+    },
+    "BotDifficulty": {
+        "Beginner": "Débutant",
+        "Intermediate": "Intermédiaire",
+        "Expert": "Expert"
+    },
+    "SurvivalModeProgression": {
+        "Title": "Mode Survie"
+    },
+    "GameHeader": {
+        "GiveUp": "Abandonner",
+        "Logout": "Déconnexion",
+        "Quit": "Quitter",
+        "Terminate": "Terminer"
+    },
+    "TermsModalComponent": {
+        "Title": "Termes et conditions",
+        "Close": "Fermer"
+    },
+    "ResultWinner": {
+        "Winner": "Gagnant : ",
+        "TieBreaker": "Tiebreaker : ",
+        "AnsweredFaster": "a répondu plus vite"
+    },
+    "PublicProfile": {
+        "Level": "Niveau",
+        "XP": "EXP",
+        "Achievements": "Accomplissements",
+        "GameTime": "Temps de jeu:",
+        "BestStreak": "Meilleure séquence VIC:",
+        "CurrentStreak": "Séquence VIC courants:",
+        "GamesWon": "Jeux gagnés:",
+        "TotalPoints": "Pointage:",
+        "QuestionsSurvived": "Questions survécues:",
+        "CoinSpent": "Pièces dépensées:",
+        "CoinGained": "Pièces gagnées:",
+        "YourStats": "Accomplissements"
+    },
+    "GameWinStreak": {
+        "StreakLost": "Vous avez perdu votre série de victoire!",
+        "StreakImproved": "Votre série de victoire s'est améliorée!",
+        "StreakBest": "Vous avez atteint votre meilleure série de victoire!"
+    },
+    "GameMetrics": {
+        "Title": "Améliorations des Stats de Jeu",
+        "NoImprovements": "Aucune Amélioration",
+        "PointsGained": "Points Gagnés",
+        "QuestionsSurvived": "Questions Survécues",
+        "GameTimeAdded": "Temps de jeu",
+        "GameWon": "Parties gagnées"
+    },
+    "LeaderboardPage": {
+        "Leaderboard": "Classement",
+        "Rank": "Rang",
+        "User": "Utilisateur",
+        "Points": "Points accumulés",
+        "Questions": "Questions",
+        "GameTime": "Temps de partie",
+        "GamesWon": "Parties gagnées",
+        "CurrentStreak": "Série de victoire actuelle",
+        "BestStreak": "Meilleure série de victoire",
+        "CoinsSpent": "Pièces dépensées",
+        "CoinsGained": "Pièces gagnées"
+    },
+    "LanguageSettingsComponent": {
+        "LanguageChoice": "Choisir un language: ",
+        "French": "Français",
+        "English": "Anglais"
+    },
+    "HintComponent": {
+        "BuyHint": "Acheter un indice : {{price}} pièces"
+    },
+    "QuestionType": {
+        "QCM": "QCM",
+        "QCMLong": "Question à Choix Multiples",
+        "QRL": "QRL",
+        "QRLLong": "Question à Réponse Longue",
+        "QRE": "QRE",
+        "QRELong": "Question à Réponse Estimée"
+    },
+    "Challenge": {
+        "AnswerStreak": {
+            "Title": "Défi de Série de Réponses",
+            "Description": "Pour compléter ce défi, vous devez répondre correctement à 3 questions consécutives.",
+            "Success": "Félicitations ! Vous avez répondu correctement à 3 questions consécutives !",
+            "Failure": "Vous n'avez pas réussi à répondre correctement à 3 questions consécutives."
+        },
+        "Fastest": {
+            "Title": "Défi de Rapidité",
+            "Description": "Pour compléter ce défi, votre temps de réponse moyen doit être inférieur à 5 secondes.",
+            "Success": "Impressionnant ! Votre temps de réponse moyen était inférieur à 5 secondes !",
+            "Failure": "Votre temps de réponse moyen était supérieur à 5 secondes."
+        },
+        "BonusCollector": {
+            "Title": "Défi de Collectionneur de Bonus",
+            "Description": "Pour compléter ce défi, vous devez obtenir au moins la moitié des bonus possibles dans cette partie.",
+            "Success": "Bravo ! Vous avez collecté plus de la moitié des bonus possibles !",
+            "Failure": "Vous n'avez pas collecté assez de bonus pour compléter le défi."
+        },
+        "QuestionMaster": {
+            "Title": "Défi de Maître des Questions",
+            "Description": "Pour compléter ce défi, vous devez répondre correctement à chaque {{questionType}}.",
+            "Success": "Excellent ! Vous avez répondu correctement à toutes les {{questionType}} !",
+            "Failure": "Vous n'avez pas répondu correctement à toutes les {{questionType}}."
+        },
+        "NeverLast": {
+            "Title": "Défi de Jamais Dernier",
+            "Description": "Pour compléter ce défi, vous ne devez jamais être le dernier joueur à répondre à une question.",
+            "Success": "Parfait ! Vous n'avez jamais été le dernier à répondre !",
+            "Failure": "Vous avez été le dernier à répondre au moins une fois."
+        },
+        "Status": "Statut : {{status}}",
+        "Price": "Prix : {{price}} pièces"
+    },
+    "GameLoot": {
+        "Coins": "Pièces",
+        "CoinsGained": "Pièces Gagnées",
+        "ChallengeCoinsGained": "Récompenses de Défi",
+        "CoinsPaid": "Prix d'entrée",
+        "Experience": "Expérience",
+        "XPLabel": "Points d'Expérience",
+        "XPGained": "Expérience Gagnée",
+        "LevelUp": "Vous avez monté de niveau !",
+        "WonTheGamePot": "Vous avez gagné le pot de jeu de {{price}} pièces !"
+    },
+    "ShopPage": {
+        "shopTitle": "Votre Boutique",
+        "Price": "Prix:",
+        "Coins": "pièces",
+        "NoItems": "Aucun article disponible pour cette catégorie.",
+        "All": "Tous",
+        "Avatar": "Avatar",
+        "Background": "Fond",
+        "Theme": "Thème",
+        "Strawberry Background": "Fond Fraise",
+        "Blueberry Background": "Fond Bleuet",
+        "Orange Background": "Fond Orange",
+        "Watermelon Background": "Fond Pastèque",
+        "Lemon Background": "Fond Citron",
+        "Strawberry Theme": "Thème Fraise",
+        "Blueberry Theme": "Thème Bleuet",
+        "Watermelon Theme": "Thème Pastèque",
+        "Premium Lemon Avatar": "Avatar Premium Citron",
+        "Premium Orange Avatar": "Avatar Premium Orange",
+        "Golden Blueberry Avatar": "Avatar Bleuet Doré",
+        "Golden Lemon Avatar": "Avatar Citron Doré",
+        "Golden Watermelon Avatar": "Avatar Pastèque Doré",
+        "Buy": "Acheter",
+        "Bought": "Acheté"
+    },
+    "SurvivalBestScore": {
+        "Title": "Mode Survie",
+        "CurrentScore": "Score Actuel",
+        "BestScore": "Meilleur Score"
+    },
+
+    "QuestionBank": {
+        "Search": "Rechercher",
+        "Title":"Questions de la banque",
+        "FilterByType":"Filtrer type",
+        "AddSelected":"Ajouter les questions"
+    },
+
+    "Common":{
+        "Cancel":"Annuler"
+    },
+    "QuizModification":{
+        "PlaceHolder":"Entrez votre question"
+    }
+}

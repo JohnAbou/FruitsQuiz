@@ -1,0 +1,58 @@
+<div class="header" *ngIf="showHeader">
+    <app-logo-title class="header-logo"></app-logo-title>
+    <div class="button-group">
+        <div class="menu-dropdown-container" #gameMenuRef>
+            <button (click)="toggleGameMenu()">
+              <span class="avatar-button-content">
+                <mat-icon>sports_esports</mat-icon>
+                <span class="button-label">{{ 'HeaderComponent.GameMenu' | translate }}</span>
+                <mat-icon class="arrow-icon">{{ gameMenuOpen ? 'expand_less' : 'expand_more' }}</mat-icon>
+              </span>
+            </button>
+            <mat-expansion-panel [expanded]="gameMenuOpen" hideToggle>
+              <div class="panel-content">
+                <button mat-button routerLink="/game-creation" routerLinkActive="active">
+                  {{ 'HeaderComponent.CreateGameButton' | translate }}
+                </button>
+                <button mat-button routerLink="/game-joining" routerLinkActive="active">
+                  {{ 'HeaderComponent.JoinGameButton' | translate }}
+                </button>
+                <button mat-button routerLink="/admin" routerLinkActive="active">
+                  {{ 'HeaderComponent.Administer' | translate }}
+                </button>
+              </div>
+            </mat-expansion-panel>
+          </div>          
+        <button routerLink="/users" routerLinkActive="active">
+            <mat-icon>people</mat-icon>
+            <span>{{ 'HeaderComponent.UsersButton' | translate }}</span>
+        </button>
+        <button routerLink="/leaderboard" routerLinkActive="active">
+            <mat-icon>leaderboard</mat-icon>
+            <span>{{ 'HeaderComponent.LeaderboardButton' | translate }}</span>
+        </button>
+        <button routerLink="/shop" routerLinkActive="active">
+            <mat-icon>storefront</mat-icon>
+            <span>{{ 'HeaderComponent.ShopButton' | translate }}</span>
+        </button>
+        <div class="profile-container" #profileMenuRef>
+            <button (click)="toggleProfilePanel()">
+                <span class="avatar-button-content">
+                  <img [src]="(avatarUrl | async)" class="User-Avatar">
+                  <span class="button-label">{{(user|async)?.username}}</span>
+                  <mat-icon class="arrow-icon">{{ profilePanelOpen ? 'expand_less' : 'expand_more' }}</mat-icon>
+                </span>
+              </button>
+            <mat-expansion-panel [expanded]="profilePanelOpen" hideToggle>
+                <div class="panel-content">
+                    <button mat-button  routerLink="/public-profile" routerLinkActive="active" >{{ 'HeaderComponent.ProfileButton' | translate }}</button>
+                    <button mat-button  routerLink="/user-history" routerLinkActive="active" >{{ 'HeaderComponent.HistoryButton' | translate }}</button>
+                    <button mat-button (click)="logout()">{{ 'HeaderComponent.LogoutButton' | translate }}</button>
+                    <button *ngIf="isElectron" mat-button (click)="closeApp()">
+                      {{ 'HeaderComponent.QuitAppButton' | translate }}
+                    </button>
+                </div>
+            </mat-expansion-panel> 
+        </div>
+    </div>
+</div>

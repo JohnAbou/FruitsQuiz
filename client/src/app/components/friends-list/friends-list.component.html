@@ -1,0 +1,33 @@
+<mat-card class="main-card fruitz-card">
+  <mat-card-header class="card-header bottom-border">
+    <mat-card-title class="card-title">{{ 'FriendsList.Title' | translate }}</mat-card-title>
+  </mat-card-header>
+
+  <div class="bottom-border middle-header">
+    <button mat-raised-button color="primary" routerLink="/users" class="navigate-button">
+      <mat-icon>people</mat-icon>
+      <span class="add-friends">{{ 'FriendsList.FindNewFriends' | translate }}</span>
+    </button>
+  </div>
+
+  <mat-card-content class="card-content">
+    <div class="friends-container">
+      <div *ngFor="let friend of (friends | async)" class="friend-item bottom-border">
+        <div class="friend-info">
+          <app-profile-avatar-icon [user]="getFriendUser(friend)!" [size]="'30px'" />
+          <h3 class="friend-username">{{ friend }}</h3>
+        </div>
+
+        <mat-icon (click)="removeFriend(friend)" class="fruitz-icon">person_remove</mat-icon>
+      </div>
+
+      <div *ngIf="!(friends | async)?.length" class="no-friends-container">
+        <div class="no-results">
+          {{ 'FriendsList.NoFriends' | translate }}
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+
+  <mat-card-footer class="card-footer" />
+</mat-card>

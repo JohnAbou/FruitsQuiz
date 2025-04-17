@@ -1,0 +1,69 @@
+<div *ngIf="(challenge | async)?.code !== 0" class="challenge-container">
+    <div *ngIf="(challenge | async)?.code == 1">
+        <div class="challenge-header">
+            <h3>{{ "Challenge.AnswerStreak.Title" | translate }}</h3>
+            <p class="challenge-price">{{ "Challenge.Price" | translate: { price: (challenge | async)?.price } }}</p>
+        </div>
+        <p>{{ "Challenge.AnswerStreak.Description" | translate }}</p>
+        <div *ngIf="(challengeResult | async) as result" class="challenge-status"
+            [ngClass]="{'success': result.success, 'failure': !result.success}">
+            <p>{{ result.success ? ("Challenge.AnswerStreak.Success" | translate) : ("Challenge.AnswerStreak.Failure" |
+                translate) }}</p>
+        </div>
+    </div>
+
+    <div *ngIf="(challenge | async)?.code == 2">
+        <div class="challenge-header">
+            <h3>{{ "Challenge.Fastest.Title" | translate }}</h3>
+            <p class="challenge-price">{{ "Challenge.Price" | translate: { price: (challenge | async)?.price } }}</p>
+        </div>
+        <p>{{ "Challenge.Fastest.Description" | translate }}</p>
+        <div *ngIf="(challengeResult | async) as result" class="challenge-status"
+            [ngClass]="{'success': result.success, 'failure': !result.success}">
+            <p>{{ result.success ? ("Challenge.Fastest.Success" | translate) : ("Challenge.Fastest.Failure" | translate)
+                }}</p>
+        </div>
+    </div>
+
+    <div *ngIf="(challenge | async)?.code == 3">
+        <div class="challenge-header">
+            <h3>{{ "Challenge.BonusCollector.Title" | translate }}</h3>
+            <p class="challenge-price">{{ "Challenge.Price" | translate: { price: (challenge | async)?.price } }}</p>
+        </div>
+        <p>{{ "Challenge.BonusCollector.Description" | translate }}</p>
+        <div *ngIf="(challengeResult | async) as result" class="challenge-status"
+            [ngClass]="{'success': result.success, 'failure': !result.success}">
+            <p>{{ result.success ? ("Challenge.BonusCollector.Success" | translate) :
+                ("Challenge.BonusCollector.Failure" | translate) }}</p>
+        </div>
+    </div>
+
+    <div *ngIf="(challenge | async)?.code == 4 || (challenge | async)?.code == 5 || (challenge | async)?.code == 6">
+        <div class="challenge-header">
+            <h3>{{ "Challenge.QuestionMaster.Title" | translate }}</h3>
+            <p class="challenge-price">{{ "Challenge.Price" | translate: { price: (challenge | async)?.price } }}</p>
+        </div>
+        <p>{{ "Challenge.QuestionMaster.Description" | translate: { questionType: getQuestionType((challenge |
+            async)?.code ?? 0) } }}</p>
+        <div *ngIf="(challengeResult | async) as result" class="challenge-status"
+            [ngClass]="{'success': result.success, 'failure': !result.success}">
+            <p>{{ result.success ? ("Challenge.QuestionMaster.Success" | translate:{ questionType:
+                getQuestionType((challenge | async)?.code ?? 0) }) : ("Challenge.QuestionMaster.Failure" | translate:{
+                questionType: getQuestionType((challenge | async)?.code ?? 0) }) }}
+            </p>
+        </div>
+    </div>
+
+    <div *ngIf="(challenge | async)?.code == 7">
+        <div class="challenge-header">
+            <h3>{{ "Challenge.NeverLast.Title" | translate }}</h3>
+            <p class="challenge-price">{{ "Challenge.Price" | translate: { price: (challenge | async)?.price } }}</p>
+        </div>
+        <p>{{ "Challenge.NeverLast.Description" | translate }}</p>
+        <div *ngIf="(challengeResult | async) as result" class="challenge-status"
+            [ngClass]="{'success': result.success, 'failure': !result.success}">
+            <p>{{ result.success ? ("Challenge.NeverLast.Success" | translate) : ("Challenge.NeverLast.Failure" |
+                translate) }}</p>
+        </div>
+    </div>
+</div>

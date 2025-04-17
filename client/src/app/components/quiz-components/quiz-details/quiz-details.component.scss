@@ -1,0 +1,35 @@
+.left-align {
+    text-align: left;
+}
+
+.placeholder {
+    height: 10px;
+}
+
+.top {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.quiz-title {
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--primary-color);
+    margin-left: 16px;
+    text-align: left;
+    text-transform: capitalize;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 16px;
+}
+
+.left-info,
+.right-info {
+    width: 48%;
+    padding: 16px;
+}

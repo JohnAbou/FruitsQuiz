@@ -1,0 +1,12 @@
+<button
+  mat-raised-button
+  class="next-question-button"
+  [disabled]="!isNextQuestionButtonActive()"
+  (click)="goToNextQuestion()">
+  <span class="button-content">
+    {{ 'GameMessage.ContinueButton' | translate }}
+    <mat-icon class="next-icon">arrow_circle_right</mat-icon>
+  </span>
+</button>
+
+

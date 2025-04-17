@@ -1,0 +1,11 @@
+<mat-card *ngIf="(canBuyHint | async)" class="hint-card">
+    <mat-card-content>
+        <button mat-raised-button color="primary" [disabled]="!(hintAvailable | async)" (click)="buyHint()" class="hint-button">
+            <mat-icon>lightbulb</mat-icon>
+            {{ 'HintComponent.BuyHint' | translate: { price: (hintPrice | async) } }}
+        </button>
+    </mat-card-content>
+    <div class="balance">
+        <app-user-balance></app-user-balance>
+    </div>
+</mat-card>

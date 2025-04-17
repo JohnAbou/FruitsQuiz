@@ -1,0 +1,23 @@
+<p id="title">{{ 'LocalQuestionBankComponent.QuestionBank' | translate }}</p>
+<app-question-filter></app-question-filter>
+
+<div class="button-container">
+    <button mat-raised-button class="button" (click)="addQuestionsToQuiz()">
+        {{ 'LocalQuestionBankComponent.AddToQuiz' | translate }}
+    </button>
+</div>
+
+<mat-selection-list #questionList [(ngModel)]="selectedQuestions">
+    <mat-list-option
+        *ngFor="let question of questions"
+        [value]="question"
+        [ngClass]="{
+            'qcm-color': question.type === 'QCM',
+            'qrl-color': question.type === 'QRL',
+            'qre-color': question.type === 'QRE'
+        }"
+        
+    >
+    {{ 'QuestionTypes.' + question.type | translate }}: {{ question.text }}
+    </mat-list-option>
+</mat-selection-list>

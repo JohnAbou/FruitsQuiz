@@ -1,0 +1,95 @@
+<div id="header" class="header" [style.gridTemplateColumns]="gridTemplateColumns">
+    <div *ngIf="displayHeader" class="player-entry header-row">
+        <p class="player-name-header">{{ 'LinePlayerList.Player' | translate }}</p>
+
+        <ng-container *ngIf="showScore">
+            <div class="player-score-container">
+                <p>{{ 'LinePlayerList.Points' | translate }}</p>
+            </div>
+            <div *ngIf="showBonus" class="player-bonus-container">
+                <p>Bonus</p>
+            </div>
+        </ng-container>
+
+        <ng-container *ngIf="showRoundSurvived">
+            <div class="player-round-container">
+                <p>{{ 'LinePlayerList.RoundSurvived' | translate }}</p>
+            </div>
+        </ng-container>
+    </div>
+</div>
+<div class="player-list-wrapper fruitz-scroll">
+    <div id="player-list" class="player-list" [style.gridTemplateColumns]="gridTemplateColumns" [style.max-height]="maxHeight">
+        <ng-container *ngIf="!((players | async) ?? []).length">
+            <!-- <p>{{ 'LinePlayerList.NoPlayers' | translate }}</p> -->
+        </ng-container>
+
+        <ng-container *ngFor="let player of players | async">
+            <div class="player-entry">
+                <div class="player-name-container" [ngClass]="{ 'reduced-view': reducedView }">
+                    <div class="player-info-container">
+                        <ng-container *ngIf="getPlayerUser(player) as user">
+                            <app-profile-avatar-icon [user]="user"></app-profile-avatar-icon>
+                        </ng-container>
+                        <ng-container *ngIf="isBotPlayer(player)">
+                            <app-profile-avatar-icon [bot]="player"></app-profile-avatar-icon>
+                        </ng-container>
+                        <p class="player-name">{{ player.name }}</p>
+                    </div>
+                    <ng-container *ngIf="isBotPlayer(player) && !reducedView">
+                        <div *ngIf="!canBanPlayer" #difficultyContainer class="bot-difficulty-container2" [ngClass]="{ 'reduced-view': reducedView }">
+                            <ng-container class="difficulty-text">
+                                <span class="difficulty-label" [ngClass]="player.difficulty">{{ translateDifficulty(player.difficulty) }}</span>
+                            </ng-container>
+                        </div>
+                        <div class="bot-difficulty-container" *ngIf="canBanPlayer">
+                            <select id="difficulty-select" [(ngModel)]="player.difficulty" (change)="onDifficultyChange(player)">
+                                <option *ngFor="let difficulty of difficulties" [value]="difficulty">
+                                    {{ translateDifficulty(difficulty) }}
+                                </option>
+                            </select>
+                        </div>
+                    </ng-container>
+                    <div *ngIf="!isBotPlayer(player)"></div>
+
+
+
+                    
+                </div>
+
+                <ng-container *ngIf="showScore">
+                    <div class="player-score-container">
+                        <p>
+                            {{ player.score }}
+                        </p>
+                    </div>
+
+                    <div *ngIf="showBonus" class="player-bonus-container">
+                        <p>
+                            {{ player.bonusCount }}
+                        </p>
+                    </div>
+                </ng-container>
+
+                <ng-container *ngIf="showRoundSurvived">
+                    <div class="player-round-container">
+                        <p>
+                            {{ player.roundSurvived }}
+                        </p>
+                    </div>
+                </ng-container>
+
+                <div *ngIf="canBanPlayer" class="player-action">
+                    <button mat-fab color="primary" class="ban-button" (click)="removePlayer(player)">
+                        <mat-icon>block</mat-icon>
+                    </button>
+                </div>
+
+                <button *ngIf="canMutePlayer && !isBotPlayer(player)" (click)="banPlayer(player)" class="mute-button">
+                    <img [src]="getIconPath(player)" width="30" height="30" alt="Ban button" />
+                </button>
+                <div *ngIf="canMutePlayer && isBotPlayer(player)"></div>
+            </div>
+        </ng-container>
+    </div>
+</div>

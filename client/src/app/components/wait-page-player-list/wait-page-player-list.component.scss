@@ -1,0 +1,212 @@
+.header {
+    display: grid;
+    gap: 16px;
+    align-items: center;
+    width: 100%;
+}
+
+.player-list-wrapper {
+    display: block;
+    overflow-y: auto;
+}
+
+.player-list {
+    display: grid;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.odd-player {
+    background-color: var(--primary-color-5);
+}
+
+.even-player {
+    background-color: white;
+}
+
+mat-divider {
+    margin-top: 1.3vh;
+    margin-bottom: 1.3vh;
+    border-top: 2px solid var(--primary-color-10);
+}
+
+.player-entry {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    align-items: center;
+    padding: 0.8vh;
+    border-radius: 16px;
+}
+
+.player-info-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.player-name,
+.player-score-container,
+.player-bonus-container,
+.player-round-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.player-name {
+    font-size: 1.2rem;
+    font-weight: 550;
+    color: var(--primary-color);
+    word-break: break-word;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+.player-name-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    &.reduced-view {
+        grid-template-columns: 1fr;
+    }
+}
+
+.player-action {
+    width: 98%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.ban-button {
+    margin-right: 5px;
+    height: 40px;
+    width: 40px;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+.ban-button mat-icon {
+    color: red !important;
+}
+.mute-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.mute-button img {
+    transition: transform 0.2s ease-in-out;
+}
+
+.mute-button:hover img {
+    transform: scale(1.2);
+}
+
+.bot-difficulty-container {
+    align-self: center;
+    height: 100%;
+    width: 100%;
+    max-width: 200px;
+    box-sizing: border-box;
+
+    select {
+        font-weight: 800 !important;
+        &.Expert {
+            border: 2px solid rgba(255, 0, 0, 0.7);
+            background-color: rgba(255, 0, 0, 0.1);
+            color: rgba(255, 0, 0);
+        }
+        &.Intermediate {
+            border: 2px solid rgba(160, 160, 0, 0.7);
+            background-color: rgba(160, 160, 0, 0.1);
+            color: rgba(160, 160, 0);
+        }
+        &.Beginner {
+            border: 2px solid rgba(0, 151, 0, 0.7);
+            background-color: rgba(0, 151, 0, 0.1);
+            color: rgba(0, 151, 0, 0.7);
+        }
+
+        option {
+            background-color: white;
+            &.Expert {
+                color: rgba(255, 0, 0);
+            }
+            &.Intermediate {
+                color: rgba(160, 160, 0);
+            }
+            &.Beginner {
+                color: rgb(0, 151, 0);
+            }
+        }
+    }
+}
+
+.bot-difficulty-container2 {
+    margin-left: 10px;
+    align-self: center;
+    height: 100%;
+    flex: 0.3;
+    max-width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(197, 197, 197);
+    font-size: 18px;
+    border-radius: 16px;
+
+    font-weight: 800 !important;
+    &.Expert {
+        border: 2px solid rgba(255, 0, 0, 0.7);
+        background-color: rgba(255, 0, 0, 0.1);
+        color: rgba(255, 0, 0);
+    }
+    &.Intermediate {
+        border: 2px solid rgba(160, 160, 0, 0.7);
+        background-color: rgba(160, 160, 0, 0.1);
+        color: rgba(160, 160, 0);
+    }
+    &.Beginner {
+        border: 2px solid rgba(0, 151, 0, 0.7);
+        background-color: rgba(0, 151, 0, 0.1);
+        color: rgba(0, 151, 0, 0.7);
+    }
+}
+
+// .reduced-view {
+//     width: 5vh;
+//     height: 5vh;
+// }
+
+.fa-apple-alt {
+    font-size: 25px;
+}
+
+select {
+    width: 100%;
+    height: 100%;
+    padding: 8px 12px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 16px;
+    box-sizing: border-box;
+}
+
+.full-width-divider {
+    grid-column: 1 / -1;
+}
+
+.header-row {
+    font-weight: bold;
+    border-bottom: 1px solid #000000;
+
+    .player-name-header,
+    .player-score-container,
+    .player-bonus-container,
+    .player-round-container {
+        color: black;
+    }
+}

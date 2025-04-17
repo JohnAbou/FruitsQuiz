@@ -1,0 +1,61 @@
+<h2 mat-dialog-title>{{ 'QuestionBank.Title' | translate }}</h2>
+
+<mat-dialog-content>
+    <div class="search-filters">
+        <mat-form-field appearance="outline" class="search-field">
+            <mat-label>{{ 'QuestionBank.Search' | translate }}</mat-label>
+            <input matInput [(ngModel)]="searchTerm" placeholder="{{ 'QuestionBank.SearchPlaceholder' | translate }}">
+            <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="type-filter">
+            <mat-label>{{ 'QuestionBank.FilterByType' | translate }}</mat-label>
+            <mat-select [(ngModel)]="selectedType">
+                <mat-option *ngFor="let type of questionTypes" [value]="type.value">
+                    <mat-icon>{{ getQuestionTypeIcon(type.value) }}</mat-icon>
+                    {{ type.label }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div class="questions-container">
+        <mat-selection-list [multiple]="true" class="questions-list">
+            <mat-list-option *ngFor="let question of filteredQuestions"
+                            [selected]="isQuestionSelected(question.id)"
+                            [disabled]="isQuestionInUse(question.id)"
+                            (click)="toggleQuestionSelection(question.id)"
+                            [class.in-use]="isQuestionInUse(question.id)"
+                            class="question-item">
+                <div class="question-content">
+                    <div class="question-header">
+                        <mat-icon [class.selected]="isQuestionSelected(question.id)">
+                            {{ getQuestionTypeIcon(question.type) }}
+                        </mat-icon>
+                        <span class="question-type">{{ 'QuestionTypes.' + question.type + 'Description' | translate }}</span>
+                        <span class="question-points">{{ question.points }} pts</span>
+                    </div>
+                    <p class="question-text">{{ question.text }} - {{ question.author }}</p>
+                    <div class="question-status" *ngIf="isQuestionInUse(question.id)">
+                        <mat-icon>info</mat-icon>
+                        {{ 'QuestionBank.AlreadyInUse' | translate }}
+                    </div>
+                </div>
+            </mat-list-option>
+        </mat-selection-list>
+
+        <div class="no-questions" *ngIf="filteredQuestions.length === 0">
+            <mat-icon>search_off</mat-icon>
+            <p>{{ 'QuestionBank.NoQuestionsFound' | translate }}</p>
+        </div>
+    </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-button (click)="onCancel()">
+        {{ 'Common.Cancel' | translate }}
+    </button>
+    <button mat-raised-button color="primary" (click)="onConfirm()" [disabled]="selectedQuestions.size === 0">
+        {{ 'QuestionBank.AddSelected' | translate }}
+    </button>
+</mat-dialog-actions> 

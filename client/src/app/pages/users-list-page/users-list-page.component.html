@@ -1,0 +1,32 @@
+<app-default-page-template>
+    <div class="main-content">
+        <mat-card class="main-card fruitz-card">
+            <mat-card-header class="card-header bottom-border">
+                <mat-card-title class="card-title">{{ 'UsersList.Title' | translate }}</mat-card-title>
+            </mat-card-header>
+
+            <div class="filter-container bottom-border">
+                <app-floating-text-input [formControl]="usernameFilter" [label]="'UsersList.FilterLabel' | translate">
+                </app-floating-text-input>
+            </div>
+
+            <mat-card-content class="card-content">
+                <div class="users-container">
+                    <div *ngFor="let user of filteredUsers | async" class="user-item bottom-border">
+                        <app-profile-avatar-icon [user]="user" />
+                        <div style="width: 10px;"></div>
+                        <h3 class="user-username">{{ user.username }}</h3>
+
+                        <app-friend-request-control-line [username]="user.username" />
+                    </div>
+
+                    <div *ngIf="!((filteredUsers | async)?.length)" class="no-results">
+                        {{ 'UsersList.NoResults' | translate }}
+                    </div>
+                </div>
+            </mat-card-content>
+
+            <mat-card-footer class="card-footer" />
+        </mat-card>
+    </div>
+</app-default-page-template>

@@ -1,0 +1,9 @@
+<mat-card class="center">
+    <mat-card-title class="button-title">{{ 'QuestionFilterComponent.SelectFilter' | translate }}</mat-card-title>
+    <mat-card-content>
+      <button mat-raised-button class="custom-button" [color]="isSelected('QCM') ? 'primary' : ''" (click)="filterQuestionByQCM()">{{ 'QuestionTypes.QCMDescription' | translate}}</button>
+      <button mat-raised-button class="custom-button" [color]="isSelected('QRL') ? 'primary' : ''" (click)="filterQuestionByQRL()">{{'QuestionTypes.QRLDescription' | translate}}</button>
+      <button mat-raised-button class="custom-button" [color]="isSelected('QRE') ? 'primary' : ''" (click)="filterQuestionByQRE()">{{'QuestionTypes.QREDescription' | translate}}</button>
+      <button mat-raised-button class="custom-button" [color]="isSelected('Undefined') ? 'primary' : ''" (click)="removeFilter()">{{ 'QuestionFilterComponent.None' | translate }}</button>
+    </mat-card-content>
+</mat-card> 

@@ -1,0 +1,28 @@
+<app-default-page-template>
+    <div class="container">
+        <div class="main-content">
+            <img id="theme-logo" src='./assets/logo.png' alt="Logo" width="300" height="300" />
+
+            <div class="button-group">
+                <button mat-raised-button color="accent" class="button prominent" (click)="openJoinGameModal()">
+                    <mat-icon>login</mat-icon>
+                    {{ 'HomePage.JoinGame' | translate }}
+                </button>
+                <button mat-raised-button color="accent" class="button prominent" routerLink="/game-creation">
+                    <mat-icon>add_circle_outline</mat-icon>
+                    {{ 'HomePage.CreateGame' | translate }}
+                </button>
+            </div>
+        </div>
+
+        <footer class="footer-item">
+            <h4 class="team-name">{{ 'HomePage.Team' | translate }}</h4>
+            <p>{{ 'HomePage.TeamMembers' | translate }}</p>
+        </footer>
+
+        <app-leaderboard-carousel></app-leaderboard-carousel>
+
+    </div>
+
+
+</app-default-page-template>

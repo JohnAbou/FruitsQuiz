@@ -1,0 +1,202 @@
+.qre-editor {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    .question-section {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        .question-header {
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+        }
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        &.question-text {
+            flex: 1;
+            .input-wrapper {
+                position: relative;
+                
+                input {
+                    width: 90%;
+                    padding-right: 55px;
+                    border: 2px solid var(--sidebar-text);
+                    background-color: white;
+                }
+                
+                .char-limit {
+                    position: absolute;
+                    right: 3.5%;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    color: var(--primary-color);
+                    font-size: 13px;
+                    font-weight: 500;
+                    background: rgba(255, 255, 255, 0.9);
+                    padding: 2px 4px;
+                    border-radius: 4px;
+                    pointer-events: none;
+                }
+            }
+        }
+
+        &.points {
+            width: 100px;
+            
+            input {
+                width: 70%;
+                text-align: center;
+                border: 2px solid var(--sidebar-text);
+                background-color: white;
+            }
+        }
+    }
+
+    .label {
+        font-weight: 500;
+        color: var(--sidebar-text);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        mat-icon {
+            font-size: 18px;
+            width: 18px;
+            height: 18px;
+            color: var(--primary-color);
+            cursor: help;
+        }
+    }
+
+    input {
+        padding: 8px 12px;
+        border: 2px solid var(--sidebar-text);
+        border-radius: 4px;
+        font-size: 14px;
+        transition: border-color 0.2s;
+        color: var(--sidebar-text);
+        background-color: white;
+
+        &:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        &:disabled {
+            background-color: rgba(0, 0, 0, 0.04);
+            cursor: not-allowed;
+        }
+    }
+
+    .image-section {
+        border: 2px dashed var(--sidebar-text);
+        border-radius: 8px;
+        padding: 16px;
+        background: var(--sidebar-box);
+    }
+
+    .estimations-section {
+        background: var(--sidebar-box);
+        border-radius: 8px;
+        padding: 24px;
+        border: 2px solid var(--sidebar-text);
+
+        h3 {
+            color: var(--primary-color);
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0 0 24px 0;
+        }
+
+        .estimation-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 24px;
+
+            .estimation-field {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+
+                input {
+                    width: 120px;
+                }
+            }
+        }
+
+        .tolerance-field {
+            margin-top: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+
+            .tolerance-controls {
+                display: grid;
+                grid-template-columns: 120px 1fr;
+                gap: 16px;
+                align-items: center;
+
+                .tolerance-input {
+                    width: 70%;
+                }
+
+                .tolerance-slider {
+                    width: 100%;
+                    padding: 0;
+                }
+            }
+        }
+    }
+
+    .actions-section {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-top: 8px;
+
+        .save-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--sidebar-box);
+            border: 2px solid var(--sidebar-text);
+            color: var(--sidebar-text);
+            font-weight: 700;
+            padding: 8px 24px;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+
+            &:hover {
+                background-color: var(--primary-color);
+                border-color: var(--primary-color);
+                color: white;
+                transform: translateY(-2px);
+            }
+        }
+
+        .success-message {
+            color: #4caf50;
+            margin: 0;
+            font-size: 14px;
+        }
+    }
+}
+
+.error-message {
+    color: #f44336;
+    font-size: 12px;
+    margin-top: 4px;
+}
